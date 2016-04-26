@@ -1,0 +1,283 @@
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	font-family:arial;
+	font-size:18px;
+	line-height:1.5em;
+	margin:0 auto;
+	max-width:1080px;
+	padding:0 .5em .5em;
+}
+
+ul{
+	list-style-type:none;
+}
+
+* + * {
+	margin-top:1em;
+}
+
+.bordered{
+	border:10px solid #eee;
+    border-image:url(img/border.gif) 15 stretch;
+}
+
+.header{
+	background:#fff;
+	float:right;
+	max-width:320px;
+	padding:.5em 0 1.25em;
+	position:relative;
+	text-align:center;
+	width:100%;
+}
+
+.name{
+	display:inline-block;
+	float:left;
+	font-size:1.5em;
+	font-weight:bold;
+	width:40%;
+}
+
+.avatar{
+	background:url(img/avatar.jpg) no-repeat -10px -10px;	
+	display:inline-block;
+	height:3em;
+	margin:0;
+	max-width:176px;
+	padding:0;
+	position:absolute;
+	right:0;
+	transition:height .5s;
+	width:50%;
+}
+
+.avatar:hover{
+	height:10em;
+}
+
+.main{
+	display:inline-block;
+	width:100%;
+}
+
+.section{
+	box-sizing:border-box;
+	padding:.05em .25em;
+}
+
+.section,
+.category{
+	text-align:center;
+}
+
+.section-header{
+	margin:0 0 .5em;
+	text-align:center;
+}
+
+.screenshot{
+	float:left;
+	margin:0 .5em 0 0; 
+	width:50%;	
+}
+
+.description{
+	margin:0;
+}
+
+.event{
+	height:auto;
+	padding:.25em 1em;
+	text-align:left;
+}
+
+.event.work{
+	border-left:5px solid blue;
+	transition:background .5s;
+}
+
+.event.work:hover{
+	background:rgba(0,0,255,.05);
+}
+
+.event.life{
+	border-left:5px solid red;
+	transition:background .5s;
+}
+
+.event.life:hover{
+	background:rgba(255,0,0,.05);
+}
+
+.event.education{
+	border-left:5px solid green;
+	transition:background .5s;
+}
+
+.event.education:hover{
+	background:rgba(0,255,0,.05);
+}
+
+.event-date{
+	font-size:.9em;
+}
+
+.event-item{
+	margin:0;
+}
+
+@media only screen and (min-width : 720px){
+	.section{
+		display:inline-block;
+		height:20em;
+		overflow:hidden;
+		width:49%;
+	}
+	
+	.wide-section{
+		height:auto;
+		width:100%;
+	}
+	
+	.section:nth-child(odd){
+		margin-left:1%;
+	}
+	
+	.section:first-child{
+		margin-left:0;
+	}
+	
+	.category{
+		overflow:hidden;
+	}
+	
+	.category .category-header{
+		margin-bottom:0;
+	}
+}
+</style>
+
+<body>
+	<header class="header">
+		<div class="name">Jeremy Hale</div>
+		<div class="bordered avatar"></div>
+	</header>
+	<main class="main">
+		<section class="category">
+			<div class="section wide-section">
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs.</p>
+			</div>
+		</section>
+		
+		<section class="category">
+			<h2 class="category-header">Category Header</h2>
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Uuummmm, this is a tasty burger!</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me!</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs.</p>
+			</div>
+		</section>
+		
+		<section class="category">
+			<h2 class="category-header">Category Header</h2>		
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+		</section>
+		
+		<section class="category">
+			<h2 class="category-header">Category Header</h2>		
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>
+			
+			<div class="bordered section">
+				<h2 class="section-header">Hold on to your butts</h2>
+				<img src="img\shot.jpg" class="screenshot"/>
+				<p class="description">Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
+			</div>			
+		</section>		
+		
+		<section class="category">
+			<h2 class="category-header">Wide Category</h2>		
+			<ul class="bordered section wide-section">
+				<li class="event work">
+					<div class="event-date">4/30/2016</div>
+					<div class="event-item">I was working at CFA Institute on this day.</div>
+				</li>
+				<li class="event education">
+					<div class="event-date">4/30/2004</div>
+					<div class="event-item">I graduated from VT on this day.</div>
+				</li>
+				<li class="event life">
+					<div class="event-date">4/30/1981</div>
+					<div class="event-item">I was born on this day.</div>
+				</li>
+			</ul>
+		</section>
+	</main>
+</body>
