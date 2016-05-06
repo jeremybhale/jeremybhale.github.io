@@ -44,6 +44,10 @@ ul{
 	width:40%;
 }
 
+.name-image{
+	width:100%;
+}
+
 .avatar{
 	background:url(img/avatar.jpg) no-repeat -10px -10px;	
 	display:inline-block;
@@ -93,35 +97,46 @@ ul{
 
 .event{
 	height:auto;
-	padding:.25em 1em;
+	overflow:hidden;
+	padding:.25em 0;
 	text-align:left;
+	transition:background .5s;
 }
 
-.event.work{
-	border-left:5px solid blue;
-	transition:background .5s;
+.event:before{
+	background-repeat:no-repeat;
+	content:'';
+	display:block;
+	float:left;
+	margin-right:1em;
+	width:100px;
 }
 
 .event.work:hover{
 	background:rgba(0,0,255,.05);
 }
 
-.event.life{
-	border-left:5px solid red;
-	transition:background .5s;
+.event.work:before{
+	background-image:url(img/fedora.gif);
+	height:58px;
 }
 
 .event.life:hover{
 	background:rgba(255,0,0,.05);
 }
 
-.event.education{
-	border-left:5px solid green;
-	transition:background .5s;
+.event.life:before{
+	background-image:url(img/ballcap.gif);
+	height:58px;	
 }
 
 .event.education:hover{
 	background:rgba(0,255,0,.05);
+}
+
+.event.education:before{
+	background-image:url(img/gradcap.gif);
+	height:58px;	
 }
 
 .event-date{
@@ -165,7 +180,7 @@ ul{
 
 <body>
 	<header class="header">
-		<div class="name">Jeremy Hale</div>
+		<div class="name"><img src="img\name.gif" alt="Jeremy Hale" class="name-image"/></div>
 		<div class="bordered avatar"></div>
 	</header>
 	<main class="main">
