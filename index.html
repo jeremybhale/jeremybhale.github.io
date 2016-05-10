@@ -11,6 +11,7 @@ body{
 	margin:0 auto;
 	max-width:1080px;
 	padding:0 .5em .5em;
+	text-align:center;
 }
 
 ul{
@@ -24,6 +25,11 @@ ul{
 .bordered{
 	border:10px solid #eee;
 	border-image:url(img/border.gif) 15 stretch;
+}
+
+.header{
+	max-width:320px;
+	display:inline-block;
 }
 
 .header-avatar{
@@ -159,6 +165,11 @@ ul{
 }
 
 @media only screen and (min-width : 720px){
+	.header{
+		max-width:initial;
+		display:initial;
+	}
+
 	.header-contact{
 		margin-top:0;
 		padding:.5em 0 1.25em;
@@ -198,7 +209,7 @@ ul{
 </style>
 
 <body>
-	<header>
+	<header class="header">
 		<div class="header-avatar">
 			<div class="name">
 				<img src="img\name.gif" alt="Jeremy Hale" class="name-image"/>
