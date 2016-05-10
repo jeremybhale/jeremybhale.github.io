@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+<head></head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script>	
+	var FPS = 30,
+		CANVAS_WIDTH = 400,
+		CANVAS_HEIGHT = 400,
+		PLAYER_DIRECTION = 0,
+		PLAYER_POSITION_X = 0,
+		PLAYER_POSITION_Y = 0,
+		TIMER = 0,
+		BUTTON_PUSHED = 0,
+		PLAYER_FRAME = 0,
+		PLAYER_NEW_DIRECTION = 0;		
+		
+	var c = document.getElementById("canvas"),
+		ctx = c.getContext("2d");
+		
+	var img = new Image();
+		img.src = 'walking_pig.png';
+		
+	function Sprite(img, width, height, positions, animations){
+	  this.img = img;
+	  this.width = width;
+	  this.height = height;
+	  this.positions = positions;
+	  this.animations = animations;
+	}
+	Sprite.prototype = {
+	  draw: function(direction, x, y){
+		  var pos = this.positions[this.animations[direction][PLAYER_FRAME]];
+		  ctx.drawImage(
+			this.img,
+			pos[0],
+			pos[1],
+			this.width,
+			this.height,
+			x, y,
+			this.width,
+			this.height
+		  );
+		}
+	};	
+
+	var pigObj = new Sprite(img, 274, 210, [
+			[0,0], 		//0 - face right standing
+			[274,0],	//1 - face right step left half
+			[548,0],	//2 - face right step left full
+			[822,0],	//3 - face right step right half
+			[1096,0],	//4 - face right step right full
+			[1096,210], //5 - face left standing
+			[822,210],	//6 - face left step left half
+			[548,210],	//7 - face left step left full
+			[274,210],	//8 - face left step right half
+			[0,210],	//9 - face left step right full
+			[0,420],	//10 - face left crouch 1
+			[274,420],	//11 - face left crouch 2
+			[548,420],	//12 - face left crouch 3
+			[822,420], //13 - face left jump
+			[822,630],	//14 - face right crouch 1
+			[548,630],	//15 - face right crouch 2
+			[274,630],	//16 - face right crouch 3
+			[0,630],	//17 - face right jump
+		], [
+			[0],								//0 - Stopped Right
+			[1,2,1,0,3,4,3,0],					//1 - Walk Right
+			[6,7,6,5,8,9,8,5],					//2 - Walk Left
+			[5],								//3 - Stopped Left
+			[5,10,11,12,12,12,5,13,13,11,5],	//4 - Jump Left
+			[0,14,15,16,16,16,0,17,17,15,0]		//5 - Jump Right
+		]);
+	
+	function update(){
+		$(document).keydown( function(e){
+		//console.log(e.which)
+			if(e.which == 39){
+				PLAYER_NEW_DIRECTION = 1;
+			}else if(e.which == 37){
+				PLAYER_NEW_DIRECTION = 2;
+			}else if(e.which == 38 && (PLAYER_DIRECTION == 2 || PLAYER_DIRECTION == 3)){
+				PLAYER_NEW_DIRECTION = 4;
+			}else if(e.which == 38 && (PLAYER_DIRECTION == 0 || PLAYER_DIRECTION == 1)){
+				PLAYER_NEW_DIRECTION = 5;
+			} //else if(e.which == 40){ //crouch
+		});
+	
+		$(document).keyup( function(e){
+			if(PLAYER_DIRECTION == 2 || PLAYER_DIRECTION == 3 || PLAYER_DIRECTION == 4){
+				PLAYER_NEW_DIRECTION = 3;
+			}else{
+				PLAYER_NEW_DIRECTION = 0;
+			}
+		});
+		
+		//Increment timer
+		TIMER++;		
+
+		if(PLAYER_NEW_DIRECTION == PLAYER_DIRECTION){
+			if(TIMER%4 == 0){
+				if(PLAYER_DIRECTION == 1 || PLAYER_DIRECTION == 2){
+					//Walk
+					PLAYER_FRAME++;
+					if(PLAYER_FRAME > 7){ PLAYER_FRAME = 0; }
+				}else{
+					//Stand still
+					PLAYER_FRAME = 0;
+				}
+				
+				if(PLAYER_DIRECTION == 1){
+					PLAYER_POSITION_X = PLAYER_POSITION_X + 2;
+				}else if(PLAYER_DIRECTION == 2){
+					PLAYER_POSITION_X = PLAYER_POSITION_X - 2;
+				}
+			}
+		}else{
+			if(PLAYER_DIRECTION == 1 && pigObj.animations[1][PLAYER_FRAME] > 0){
+				if(pigObj.animations[1][PLAYER_FRAME] == 0){
+					PLAYER_DIRECTION = PLAYER_NEW_DIRECTION;
+				}else{
+					if(TIMER%4 == 0){
+						PLAYER_FRAME++;
+						if(PLAYER_FRAME > 7 || PLAYER_FRAME == 3){ 
+							PLAYER_FRAME = 0;
+							PLAYER_DIRECTION = PLAYER_NEW_DIRECTION;
+						}
+					}
+				}
+			}else if(PLAYER_DIRECTION == 2 && pigObj.animations[2][PLAYER_FRAME] > 0){
+				if(pigObj.animations[2][PLAYER_FRAME] == 0){
+					PLAYER_DIRECTION = PLAYER_NEW_DIRECTION;
+				}else{
+					if(TIMER%4 == 0){
+						PLAYER_FRAME++;
+						if(PLAYER_FRAME > 7 || PLAYER_FRAME == 3){ 
+							PLAYER_FRAME = 0;
+							PLAYER_DIRECTION = PLAYER_NEW_DIRECTION;
+						}
+					}
+				}
+			}else if(PLAYER_DIRECTION == 4 || PLAYER_DIRECTION == 5){
+				if(TIMER%2 == 0){
+					//Jump
+					PLAYER_FRAME++;
+					if(PLAYER_FRAME > 10){
+						PLAYER_FRAME = 0;
+						PLAYER_DIRECTION = PLAYER_NEW_DIRECTION;
+					}
+				}
+			}else{
+				PLAYER_FRAME = 0;
+				PLAYER_DIRECTION = PLAYER_NEW_DIRECTION;
+			}			
+		}
+		
+		//reset timer to FPS
+		if(TIMER == FPS){
+			TIMER = 0;
+		}
+	}
+
+	function draw(){
+		//clear canvas
+		ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+		//draw pig
+		pigObj.draw(PLAYER_DIRECTION, PLAYER_POSITION_X, PLAYER_POSITION_Y);
+	}
+
+	//MAIN GAME LOOP
+	setInterval(function() {
+		update();
+		draw();
+	}, 1000/FPS);
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<choices>
+	<choice>
+		<type>somewhere</type>
+		<ID>hot</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>cold</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>dry</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>humid</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>off the beaten path</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>on the coast</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>in the jungle</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>in the mountains</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>crowded</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>scenic</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>majestic</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>dangerous</ID>
+	</choice>
+	<choice>
+		<type>somewhere</type>
+		<ID>awe-inspiring</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>the holidays</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>new years</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>my birthday</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>spring break</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>my wedding</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>the hell of it</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>the end of the world</ID>
+	</choice>
+	<choice>
+		<type>for</type>
+		<ID>the zombie outbreak</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>new beginnings</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>luxury shopping</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>partying</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>inner peace</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>the great outdoors</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>an adventure</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>freedom</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>culture</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>resort life</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>the beach</ID>
+	</choice>
+	<choice>
+		<type>experience</type>
+		<ID>local customs</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>myself</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>my dad</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>my mom</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>my girlfriend</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>my boyfriend</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>the kid(s)</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>my wife</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>my husband</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>my best friend(s)</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>the cool kids</ID>
+	</choice>
+	<choice>
+		<type>with</type>
+		<ID>a supermodel</ID>
+	</choice>
+</choices>

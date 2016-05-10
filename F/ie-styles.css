@@ -1,0 +1,193 @@
+*{
+	margin:0;
+	padding:0;
+	font-family:arial;
+}
+html, body{
+	width:100%;
+	min-width:320px;
+	height:100%;
+	min-height:480px;
+	text-align:center;
+}
+body{
+	background:url('bg.jpg');
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+a img{
+	border:none;
+}
+#container{
+	display:inline-block;
+	width:100%;
+	max-width:1500px;
+	height:100%;
+	background:#ddd;
+	overflow:hidden;
+}
+#left{
+	float:left;
+	width:28%;
+	height:100%;
+	text-align:left;
+}
+#right{
+	float:right;
+	width:72%;
+	height:100%;
+	text-align:left;
+}
+.content{
+	position:relative;
+	margin:1em;
+	height:100%;
+}
+#result{
+	display:none;
+}
+#result h2{
+	font-weight:normal;
+	margin:0 0 1em;
+}
+#result-name{
+	font-weight:bold;
+}
+#result a{
+	display:block;
+	margin-bottom:.5em;
+}
+#blurb{
+	position:absolute;
+	bottom:2em;
+}
+#title{
+	margin-bottom:1em;
+}
+#title img{
+	width:100%;
+	max-width:350px;
+}
+.choices{
+	display:none;
+}
+.choices-selected{
+	display:block;
+	text-align:left;
+}
+.choices ul{
+	border-left:10px solid orange;
+	padding-left:1em;
+}
+.choice{
+	display:block;
+	list-style-type:none;
+	font-weight:bold;
+}		
+.choice:hover{
+	background:orange;
+	color:white;
+	cursor:pointer;
+}
+#adlib{
+	width:100%;				
+	background:black;
+	overflow:hidden;
+	margin:0 0 0 -1em;
+	width:48%;
+	position:relative;
+	z-index:2;	
+}
+.pic-1{
+	background:url(pic.jpg);
+	background-size:cover;
+}
+.pic-2{
+	background:url(default.jpg);
+	background-size:cover;
+}
+#refresh,
+#share{
+	text-align:right;
+	background:#ddd;
+}			
+#refresh:hover{
+	cursor:pointer;
+	background:orange;
+}
+#refresh img{
+	height:32px;
+	width:32px;
+	margin:.5em;
+	vertical-align:middle;
+}
+#share{
+	display:none;
+}
+#share:hover{
+	background:orange;
+}
+#share img{
+	height:32px;
+	width:32px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+#sentence{
+	font-size:2em;
+	color:white;
+	margin:0 .5em;
+	padding:.5em 0 .75em;
+}
+.adlib:hover,
+.selected{
+	cursor:pointer;
+	color:white;
+	background:orange;
+}
+.adlib,
+.adlib.done:hover{
+	cursor:default;
+	color:orange;
+	border-bottom:1px solid orange;
+	background:none;
+}			
+.empty{
+	display:inline-block;
+	width:3em;
+	height:.75em;
+}
+#attribution{
+	display:none;
+	width:100%;
+	background:black;
+	color:white;
+	font-size:.75em;
+	text-align:right;
+	overflow:hidden;
+	position:absolute;
+	line-height:1.5em;
+	width:auto;
+	bottom:1em;
+	right:-1.5em;
+}
+.attribution-text{
+	display:block;
+	margin:1em;
+}
+#attribution a{
+	color:orange;
+}
+#attribution img{
+	width:85px;
+	vertical-align:bottom;
+}
+.is-mobile-image{
+	width:110%;
+	position:absolute;
+	top:0;
+	left:0;
+	margin:-1em;
+}

@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<locations>
+<location>
+    <name>Dubai, United Arab Emirates</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Dubai.htm?a_aid=97732</affiliate_url>
+    <max_lat>25.098352</max_lat>
+    <min_lat></min_lat>
+    <max_long>55.132484</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Dubai</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Mexico City, Mexico</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Mexico_City.htm?a_aid=97732</affiliate_url>
+    <max_lat>19.433764</max_lat>
+    <min_lat></min_lat>
+    <max_long>-99.133599</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Mexico_City</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Lake Havasu, Arizona</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Lake_Havasu_City.htm?a_aid=97732</affiliate_url>
+    <max_lat>34.450564</max_lat>
+    <min_lat></min_lat>
+    <max_long>-114.36639</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Lake_havasu</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Livingstone, Zambia</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Livingstone.htm?a_aid=97732</affiliate_url>
+    <max_lat>-17.930906</max_lat>
+    <min_lat></min_lat>
+    <max_long>25.854616</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Livingstone,_Zambia</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Mogadishu, Somalia</name>
+    <affiliate_url></affiliate_url>
+    <max_lat>2.021762</max_lat>
+    <min_lat></min_lat>
+    <max_long>45.320415</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Mogadishu</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Palm Springs, California</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Palm_Springs.htm?a_aid=97732</affiliate_url>
+    <max_lat>33.823267</max_lat>
+    <min_lat></min_lat>
+    <max_long>-116.544262</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Palm_Springs,_California</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Siem Reap, Cambodia</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Siem_Reap.htm?a_aid=97732</affiliate_url>
+    <max_lat>13.449125</max_lat>
+    <min_lat></min_lat>
+    <max_long>103.855067</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Siem_Reap</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Yangon, Myanmar</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Yangon.htm?a_aid=97732</affiliate_url>
+    <max_lat>16.797321</max_lat>
+    <min_lat></min_lat>
+    <max_long>96.149252</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Yangon</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Varanasi, India</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Varanasi.htm?a_aid=97732</affiliate_url>
+    <max_lat>25.317077</max_lat>
+    <min_lat></min_lat>
+    <max_long>82.987653</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Varanasi</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Dominica, Carribean</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Roseau_Dominica.htm?a_aid=97732</affiliate_url>
+    <max_lat>15.525145</max_lat>
+    <min_lat></min_lat>
+    <max_long>-61.409165</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Dominica</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Monte Verde Cloud Forest, Costa Rica</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Monteverde_Cloud_Forest_Preserve.htm?a_aid=97732</affiliate_url>
+    <max_lat>10.303941</max_lat>
+    <min_lat></min_lat>
+    <max_long>-84.791711</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Monteverde_Cloud_Forest_Reserve</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Patagonia</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Patagonia_Chile.htm?a_aid=97732</affiliate_url>
+    <max_lat>-41.16272</max_lat>
+    <min_lat></min_lat>
+    <max_long>-71.478812</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Patagonia</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Antarctica</name>
+    <affiliate_url></affiliate_url>
+    <max_lat>-69.819149</max_lat>
+    <min_lat></min_lat>
+    <max_long>-65.138479</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Antarctica</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Vik i Myrdal, Iceland</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Vik.htm?a_aid=97732</affiliate_url>
+    <max_lat>63.41454</max_lat>
+    <min_lat></min_lat>
+    <max_long>-19.010793</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/V%C3%ADk_%C3%AD_M%C3%BDrdal</wikipedia_url>
+<image></image></location>
+<location>
+    <name>North Yungas Road, Bolivia</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Coroico.htm?a_aid=97732</affiliate_url>
+    <max_lat>-16.241747</max_lat>
+    <min_lat></min_lat>
+    <max_long>-67.788339</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/North_Yungas_Road</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Hua Shan, China</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Xian.htm?a_aid=97732</affiliate_url>
+    <max_lat>35.681353</max_lat>
+    <min_lat></min_lat>
+    <max_long>113.640536</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Mount_Hua</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Sydney, Australia</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Sydney.htm?a_aid=97732</affiliate_url>
+    <max_lat>-33.857124</max_lat>
+    <min_lat></min_lat>
+    <max_long>151.215143</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Sydney</wikipedia_url>
+<image></image></location>
+<location>
+    <name>South Padre Island, Texas</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/South_Padre_Island.htm?a_aid=97732</affiliate_url>
+    <max_lat>26.120648</max_lat>
+    <min_lat></min_lat>
+    <max_long>-97.16548</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/South_Padre_Island,_Texas</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Monte Carlo, Monaco</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Monte_Carlo.htm?a_aid=97732</affiliate_url>
+    <max_lat>43.739339</max_lat>
+    <min_lat></min_lat>
+    <max_long>7.427806</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Monte_carlo</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Jost Van Dyke, British Virgin Islands</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Jost_Van_Dyke.htm?a_aid=97732</affiliate_url>
+    <max_lat>18.445741</max_lat>
+    <min_lat></min_lat>
+    <max_long>-64.750012</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Jost_van_dyke</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Seychelles</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Seychelles.htm?a_aid=97732</affiliate_url>
+    <max_lat>-4.312391</max_lat>
+    <min_lat></min_lat>
+    <max_long>55.864853</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Seychelles</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Cancun, Mexico</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Cancun.htm?a_aid=97732</affiliate_url>
+    <max_lat>21.132983</max_lat>
+    <min_lat></min_lat>
+    <max_long>-86.74101</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Cancun,_Mexico</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Meads Bay, Anguilla</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Anguilla.htm?a_aid=97732</affiliate_url>
+    <max_lat>18.18092</max_lat>
+    <min_lat></min_lat>
+    <max_long>-63.140151</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Anguilla</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Andermatt, Switzerland</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Andermatt.htm?a_aid=97732</affiliate_url>
+    <max_lat>46.635312</max_lat>
+    <min_lat></min_lat>
+    <max_long>8.601391</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Andermatt,_Switzerland</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Machu Picchu, Peru</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Machupicchu.htm?a_aid=97732</affiliate_url>
+    <max_lat>-13.164614</max_lat>
+    <min_lat></min_lat>
+    <max_long>-72.546031</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Machu_Picchu</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Jackson Hole, Wyoming</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Jackson_Hole_Airport.htm?a_aid=97732</affiliate_url>
+    <max_lat>43.784573</max_lat>
+    <min_lat></min_lat>
+    <max_long>-110.933468</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Jackson_Hole,_Wyoming</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Rome, Italy</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Rome.htm?a_aid=97732</affiliate_url>
+    <max_lat>41.905942</max_lat>
+    <min_lat></min_lat>
+    <max_long>12.48227</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Rome,_Italy</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Berlin, Germany</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Berlin.htm?a_aid=97732</affiliate_url>
+    <max_lat>52.518428</max_lat>
+    <min_lat></min_lat>
+    <max_long>13.373898</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Berlin,_Germany</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Niagara Falls, Canada</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Niagara_Falls.htm?a_aid=97732</affiliate_url>
+    <max_lat>43.078159</max_lat>
+    <min_lat></min_lat>
+    <max_long>-79.075246</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Niagara_Falls,_Canada</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Las Vegas, Nevada</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Las_Vegas.htm?a_aid=97732</affiliate_url>
+    <max_lat>36.115933</max_lat>
+    <min_lat></min_lat>
+    <max_long>-115.168306</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Las_Vegas,_Nevada</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Punta Cana, Dominican Republic</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Punta_Cana.htm?a_aid=97732</affiliate_url>
+    <max_lat>18.520917</max_lat>
+    <min_lat></min_lat>
+    <max_long>-68.365008</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Punta_Cana,_Dominican_Republic</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Grand Canyon National Park, Arizona</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Grand_Canyon_National_Park.htm?a_aid=97732</affiliate_url>
+    <max_lat>36.073722</max_lat>
+    <min_lat></min_lat>
+    <max_long>-112.151132</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Grand_Canyon_National_Park</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Fraser Island, Australia</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Fraser_Island.htm?a_aid=97732</affiliate_url>
+    <max_lat>-25.457612</max_lat>
+    <min_lat></min_lat>
+    <max_long>153.132235</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Fraser_Island</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Punakha, Bhutan</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Punakha.htm?a_aid=97732</affiliate_url>
+    <max_lat>27.473761</max_lat>
+    <min_lat></min_lat>
+    <max_long>90.35025</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Punakha</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Florence, Italy</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Florence.htm?a_aid=97732</affiliate_url>
+    <max_lat>43.762723</max_lat>
+    <min_lat></min_lat>
+    <max_long>11.262662</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Florence,_Italy</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Barcelona, Spain</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Barcelona.htm?a_aid=97732</affiliate_url>
+    <max_lat>41.380607</max_lat>
+    <min_lat></min_lat>
+    <max_long>2.179081</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Barcelona,_Spain</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Ibiza, Spain</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Ibiza_Town.htm?a_aid=97732</affiliate_url>
+    <max_lat>38.880418</max_lat>
+    <min_lat></min_lat>
+    <max_long>1.404231</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Ibiza,_Spain</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Venice Beach, California</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Venice_Beach.htm?a_aid=97732</affiliate_url>
+    <max_lat>33.987354</max_lat>
+    <min_lat></min_lat>
+    <max_long>-118.474003</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Venice_Beach,_California</wikipedia_url>
+<image></image></location>
+<location>
+    <name>New Orleans, Louisiana</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/New_Orleans.htm?a_aid=97732</affiliate_url>
+    <max_lat>29.957825</max_lat>
+    <min_lat></min_lat>
+    <max_long>-90.062469</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/New_Orleans,_Louisiana</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Cape Town, South Africa</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Cape_Town.htm?a_aid=97732</affiliate_url>
+    <max_lat>-33.916013</max_lat>
+    <min_lat></min_lat>
+    <max_long>18.409603</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Cape_Town,_South_Africa</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Muang Ngoi, Laos</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Luang_Prabang.htm?a_aid=97732</affiliate_url>
+    <max_lat>18.642179</max_lat>
+    <min_lat></min_lat>
+    <max_long>104.307972</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Muang_Ngoi_Neua</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Miami Beach, Florida</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Miami_Beach.htm?a_aid=97732</affiliate_url>
+    <max_lat>25.777112</max_lat>
+    <min_lat></min_lat>
+    <max_long>-80.130502</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Miami_Beach,_Florida</wikipedia_url>
+<image></image></location>
+<location>
+    <name>San Francisco, CA</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/San_Francisco.htm?a_aid=97732</affiliate_url>
+    <max_lat>37.826735</max_lat>
+    <min_lat></min_lat>
+    <max_long>-122.490781</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/San_Francisco</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Rio de Janeiro, Brazil</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Rio_de_Janeiro.htm?a_aid=97732</affiliate_url>
+    <max_lat>-22.893245</max_lat>
+    <min_lat></min_lat>
+    <max_long>-43.19996</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Rio_de_Janeiro</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Lombok, Indonesia</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Lombok.htm?a_aid=97732</affiliate_url>
+    <max_lat>-8.497325</max_lat>
+    <min_lat></min_lat>
+    <max_long>116.044979</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Lombok</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Cordoba, Argentina</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Cordoba_Argentina.htm?a_aid=97732</affiliate_url>
+    <max_lat>-31.417159</max_lat>
+    <min_lat></min_lat>
+    <max_long>-64.183158</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Cordoba,_Argentina</wikipedia_url>
+<image></image></location>
+<location>
+    <name>Liechtenstein</name>
+    <affiliate_url>http://www.hotelscombined.com/Place/Liechtenstein.htm?a_aid=97732</affiliate_url>
+    <max_lat>47.145261</max_lat>
+    <min_lat></min_lat>
+    <max_long>9.520356</max_long>
+    <min_long></min_long>
+    <wikipedia_url>http://en.wikipedia.org/wiki/Liechtenstein</wikipedia_url>
+<image></image></location>
+</locations>

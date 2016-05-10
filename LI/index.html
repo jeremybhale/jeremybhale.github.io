@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>LOCUS IMPERIUM</title>
+<link href="page.css" rel="stylesheet" type="text/css">
+</head>
+<body class="locus" onload="init();">
+<div id="loadingScreen">Loading...</div>
+<div id="everything">
+  <div id="header">USER: Hale | LOGOUT</div>
+  <div id="leftColumn">
+    <div class="hidden" id="tl">
+      <div class="boxContent">
+        <div class="alignRight"> <img src="pictures/close.jpg" alt="close" onmouseup="closeBox('tl')"> <img src="pictures/max.jpg" alt="max" onmouseup="takeSlot('big_box', 'tl')"> <img src="pictures/move.jpg" alt="move" onmouseup="moveBox('tl')"> </div>
+        <h2 id="tlHeadline"></h2>
+        <p id="tlContent"></p>
+      </div>
+      <div class="box">
+        <div class="box-outer">
+          <div class="box-inner">
+            <h2></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden" id="bl">
+      <div class="boxContent">
+        <div class="alignRight"> <img src="pictures/close.jpg" alt="close" onmouseup="closeBox('bl')"> <img src="pictures/max.jpg" alt="max" onmouseup="takeSlot('big_box', 'bl')"> <img src="pictures/move.jpg" alt="move" onmouseup="moveBox('bl')"> </div>
+        <h2 id="blHeadline"></h2>
+        <p id="blContent"></p>
+      </div>
+      <div class="box">
+        <div class="box-outer">
+          <div class="box-inner">
+            <h2></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hiddenNone" id="faketl" onmouseup="takeSlot('tl', '0')" onmouseover="colorChange('tl', 0)" onmouseout="colorChange('tl', 1)"></div>
+    <div class="hiddenNone" id="fakebl" onmouseup="takeSlot('bl', '0')" onmouseover="colorChange('bl', 0)" onmouseout="colorChange('bl', 1)"></div>
+  </div>
+  <div id="rightColumn" class="news">
+    <div id="big_box" class="hidden">
+      <div class="boxContent">
+        <div class="alignRight"> <img src="pictures/close.jpg" alt="close" onmouseup="closeBox('big_box')"> <img src="pictures/restore.jpg" alt="restore" onmouseup="restoreBox('0','big_box')"> <img src="pictures/move.jpg" alt="move" onmouseup="moveBox('big_box')"> </div>
+        <h2 id="big_boxHeadline"></h2>
+        <p id="big_boxContent"></p>
+      </div>
+      <div class="box">
+        <div class="box-outer">
+          <div class="box-inner">
+            <h2></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="rightColumnBoxes">
+      <div class="hidden" id="tr">
+        <div class="boxContent">
+          <div class="alignRight"> <img src="pictures/close.jpg" alt="close" onmouseup="closeBox('tr')"> <img src="pictures/max.jpg" alt="max" onmouseup="takeSlot('big_box', 'tr')"> <img src="pictures/move.jpg" alt="move" onmouseup="moveBox('tr')"> </div>
+          <h2 id="trHeadline"></h2>
+          <p id="trContent"></p>
+        </div>
+        <div class="box">
+          <div class="box-outer">
+            <div class="box-inner">
+              <h2></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden" id="br">
+        <div class="boxContent">
+          <div class="alignRight"> <img src="pictures/close.jpg" alt="close" onmouseup="closeBox('br')"> <img src="pictures/max.jpg" alt="max" onmouseup="takeSlot('big_box', 'br')"> <img src="pictures/move.jpg" alt="move" onmouseup="moveBox('br')"> </div>
+          <h2 id="brHeadline"></h2>
+          <p id="brContent"></p>
+        </div>
+        <div class="box">
+          <div class="box-outer">
+            <div class="box-inner">
+              <h2></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hiddenNone" id="faketr" onmouseup="takeSlot('tr', '0')" onmouseover="colorChange('tr', 0)" onmouseout="colorChange('tr', 1)"></div>
+      <div class="hiddenNone" id="fakebr" onmouseup="takeSlot('br', '0')" onmouseover="colorChange('br', 0)" onmouseout="colorChange('br', 1)"></div>
+    </div>
+  </div>
+  <div id="main_navigation">
+    <ul id="mainnav">
+      <li class="locus"><a href="javascript:mainNavigation('locus', 1)">LOCUS</a></li>
+      <li class="media"><a href="javascript:mainNavigation('media', 1)">MEDIA</a></li>
+      <li class="exhibits"><a href="javascript:mainNavigation('exhibits', 1)">EXHIBITS</a></li>
+      <li class="social"><a href="javascript:mainNavigation('social', 1)">SOCIAL</a></li>
+      <li class="account"><a href="javascript:mainNavigation('account', 1)">ACCOUNT</a></li>
+    </ul>
+  </div>
+  <div id="sub_navigation">
+    <ul id="locus" class="shown">
+      <li class="news"><a href="javascript:openBigBox('News0')">NEWS</a></li>
+      <li class="partners"><a href="javascript:openBigBox('Partners0')">PARTNERS</a></li>
+      <li class="about"><a href="javascript:openBigBox('About0')">ABOUT</a></li>
+      <li class="contacts"><a href="javascript:openBigBox('Contacts0')">CONTACTS</a></li>
+    </ul>
+    <ul id="media" class="hiddenNone">
+      <li class="video"><a href="javascript:openBigBox('Video1')">VIDEO</a></li>
+      <li class="music"><a href="javascript:openBigBox('Music1')">MUSIC</a></li>
+      <li class="photos"><a href="javascript:openBigBox('Photos1')">PHOTOS</a></li>
+      <li class="art"><a href="javascript:openBigBox('Art1')">ART</a></li>
+    </ul>
+    <ul id="exhibits" class="hiddenNone">
+      <li class="pages"><a href="javascript:openBigBox('Pages2')">PAGES</a></li>
+      <li class="artifacts"><a href="javascript:openBigBox('Artifacts2')">ARTIFACTS</a></li>
+      <li class="maps"><a href="javascript:openBigBox('Maps2')">MAPS</a></li>
+      <li class="timeline"><a href="javascript:openBigBox('Timeline2')">TIMELINE</a></li>
+    </ul>
+    <ul id="social" class="hiddenNone">
+      <li class="forum"><a href="javascript:openBigBox('Forum3')">FORUM</a></li>
+      <li class="chat"><a href="javascript:openBigBox('Chat3')">CHAT</a></li>
+      <li class="blog"><a href="javascript:openBigBox('Blog3')">BLOG</a></li>
+      <li class="wiki"><a href="javascript:openBigBox('Wiki3')">WIKI</a></li>
+      <li class="network"><a href="javascript:openBigBox('Network3')">NETWORK</a></li>
+    </ul>
+    <ul id="account" class="hiddenNone">
+      <li class="profile"><a href="javascript:openBigBox('Profile4')">PROFILE</a></li>
+      <li class="dashboard"><a href="javascript:openBigBox('Dashboard4')">DASHBOARD</a></li>
+      <li class="security"><a href="javascript:openBigBox('Security4')">SECURITY</a></li>
+      <li class="logout"><a href="javascript:openBigBox('Logout4')">LOGOUT</a></li>
+    </ul>
+  </div>
+  <div id="footer">@2010 Locus Imperium</div>
+</div>
+<div id="orbitBox">
+  <div id="orbiter"><img src="pictures/locus.png" alt="locus" onclick="selectItem(0, 0);" onmouseover="infoMaker();" class="dragclass"><img src="pictures/media.png" alt="media" onclick="selectItem(1, 0);" onmouseover="infoMaker();" class="dragclass"><img src="pictures/exhibits.png" alt="exhibits" onclick="selectItem(2, 0);" onmouseover="infoMaker();" class="dragclass"><img src="pictures/social.png" alt="social" onclick="selectItem(3, 0);" onmouseover="infoMaker();" class="dragclass"><img src="pictures/orbiter.png" alt="account" onclick="selectItem(4, 0);" onmouseover="infoMaker();" class="dragclass"></div>
+  <img src="pictures/falcon.png" alt="falcon"> </div>
+
+<script type="text/javascript" src="code/functions.js"></script>
+
+<!--[if lte IE 6]>
+
+<script type="text/javascript" src="code/supersleight-min.js"></script>
+ 
+<![endif]-->
+
+</body>
+</html>

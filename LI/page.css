@@ -1,0 +1,310 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight: bold;
+}
+
+body {
+  cursor: default;
+  height: 100%;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff, #dcfffe);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dcfffe));
+ filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#ffffff', EndColorStr='#dcfffe', GradientType=0);
+}
+
+#loadingScreen {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  margin-top: -50px;
+  left: 50%;
+  margin-left: -50px;
+}
+
+#everything {
+  display: none;
+  position: absolute;
+  width: 98%;
+  height: 98%;
+  top: 0px;
+  left: 50%;
+  margin-left: -49%;
+  z-Index: 2;
+}
+
+#header {
+  position: relative;
+  top: 0px;
+  padding-bottom: 4px;
+  text-align: right;
+  font-size: small;
+}
+
+#leftColumn {
+  float: left;
+  position: relative;
+  width: 25%;
+  height: 83%;
+}
+
+#faketl {
+  position: absolute;
+  width: 99%;
+  height: 48%;
+  background: #66ccff;
+  border: 2px solid #66ccff;
+}
+
+#fakebl {
+  position: absolute;
+  width: 99%;
+  height: 48%;
+  bottom: 0px;
+  background: #66ccff;
+  border: 2px solid #66ccff;
+}
+
+#tl {
+  position: absolute;
+  width: 100%;
+  height: 48%;
+  text-align: left;
+  overflow: hidden;
+}
+
+.boxContent {
+  position: absolute;
+  float: left;
+  width: 100%;
+  height: 100%;
+  z-Index: 3;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  background: url('pictures/bottomleft.png') no-repeat bottom left;
+  opacity:.25;
+  filter:alpha(opacity=25);
+}
+
+.box-outer {
+  width: 100%;
+  height: 100%;
+  background: url('pictures/bottomright.png') no-repeat bottom right;
+}
+
+.box-inner {
+  width: 100%;
+  background: url('pictures/topleft.png') no-repeat top left;
+}
+
+.box h2, #big_boxHeadline {
+  background: url('pictures/topright.png') no-repeat top right;
+  padding-bottom: 2%;
+}
+
+.boxContent h2, .boxContent p {
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#bl {
+  position: absolute;
+  bottom: 0px;
+  text-align: left;
+  width: 100%;
+  height: 48%;
+  overflow: hidden;
+}
+
+#rightColumn {
+  float: right;
+  position: relative;
+  width: 73%;
+  height: 83%;
+}
+
+#big_box {
+  position: absolute;
+  width: 64%;
+  height: 95%;
+  top: 2%;
+  text-align: left;
+}
+
+#rightColumnBoxes {
+  position: absolute;
+  width: 33%;
+  height: 100%;
+  right: 0px;
+}
+
+#faketr {
+  position: absolute;
+  width: 99%;
+  height: 48%;
+  right: 0px;
+  background: #66ccff;
+  border: 2px solid #66ccff;
+}
+
+#fakebr {
+  position: absolute;
+  width: 99%;
+  height: 48%;
+  right: 0px;
+  bottom: 0px;
+  background: #66ccff;
+  border: 2px solid #66ccff;
+}
+
+#tr {
+  position: absolute;
+  width: 100%;
+  height: 48%;
+  right: 0px;
+  text-align: left;
+  overflow: hidden;
+}
+
+#br {
+  position: absolute;
+  width: 100%;
+  height: 48%;
+  right: 0px;
+  bottom: 0px;
+  text-align: left;
+  overflow: hidden;
+}
+
+#main_navigation {
+  clear: both;
+  padding-top: 8px;
+  width: 720px;
+  position: relative;
+  left: 50%;
+  margin-left: -360px;
+}
+
+#mainnav {
+  list-style: none;
+  text-align: center;
+  background: #dcfffe;
+}
+
+#mainnav li {
+  display: inline;
+}
+
+#mainnav a {
+  padding: 0 2em;
+  text-decoration: none;
+  color: #000000;
+  outline: none;
+}
+
+#mainnav a:hover {
+  color: #aaaaaa;
+}
+
+.locus #mainnav .locus a, .media #mainnav .media a, .exhibits #mainnav .exhibits a, .social #mainnav .social a, .account #mainnav .account a {
+  cursor: default;
+  background: #3333ff;
+  color: #aaaaaa;
+}
+
+#sub_navigation .shown {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  list-style: none;
+  background: #3333ff;
+  opacity:.25;
+  filter:alpha(opacity=25);
+  width: 720px;
+}
+
+#sub_navigation .shown li {
+  display: inline;
+}
+
+#sub_navigation .shown a {
+  padding: 0em 2.5em;
+  line-height: 1.8em;
+  text-decoration: none;
+  color: #fff;
+  outline: none;
+}
+
+#sub_navigation .shown a:hover {
+  color: #aaaaaa;
+}
+
+.news .shown .news a, .partners .shown .partners a, .about .shown .about a, .contacts .shown .contacts a, .video .shown .video a, .music .shown .music a, .photos .shown .photos a, .art .shown .art a, .pages .shown .pages a, .artifacts .shown .artifacts a, .maps .shown .maps a, .timeline .shown .timeline a, .forum .shown .forum a, .blog .shown .blog a, .chat .shown .chat a, .wiki .shown .wiki a, .network .shown .network a, .profile .shown .profile a, .dashboard .shown .dashboard a, .security .shown .security a, .logout .shown .logout a {
+  cursor: default;
+  color: #aaaaaa;
+}
+
+#footer {
+  text-align: right;
+  font-size: small;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.alignLeft {
+  float: left;
+  padding-left: 5px;
+}
+
+.alignRight {
+  float: right;
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+.cancelFloat {
+  padding-left: 10px;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.hiddenNone {
+  display: none;
+}
+
+.fakeBoxShow {
+  width: 304px;
+  height: 263px;
+  filter:alpha(opacity=60);
+  opacity:0.6;
+}
+
+#orbitBox {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -212px;
+  top: 50%;
+  margin-top: -155px;
+  z-Index: 2;
+}
+
+#orbiter img {
+  position: absolute;
+  visibility: hidden;
+  z-Index: 3;
+}

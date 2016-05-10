@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html>
+<head></head>
+<body style="background:#666;text-align:center;margin:0;padding:0;">
+<canvas id="canvas" width="900" height="900"></canvas>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script>
+	var FPS = 30,
+		CANVAS_WIDTH = 900,
+		CANVAS_HEIGHT = 900,
+		SCALE = 1,
+		SCORE = 0,
+		PLAYER_DIRECTION = 0,
+		PLAYER_POSITION_X = 848,
+		PLAYER_POSITION_Y = 1600,
+		ALIENS = [],
+		ALIEN_LEFT = 0,
+		ALIEN_RIGHT = 0,
+		ALIEN_RIGHT_CONST = 0,
+		ALIEN_MOVE_X = 200,
+		ALIEN_MOVE_Y = 100,
+		ALIEN_DIRECTION = 1,
+		ALIEN_OLD_DIRECTION = 1,
+		TIMER = 0,
+		BUTTON_PUSHED = 0,
+		PLAYER_FRAME = 0,
+		ALIEN_FRAME = 0,
+		UFO_ALIVE = 6,
+		UFO_POSITION_X = 1800,
+		UFO_SCORE = 0,
+		FIRING_LASER = false,
+		LASERS = [],
+		COL_COUNT = [0,0,0,0,0,0,0,0,0,0,0];
+
+	windowHeight = window.innerHeight;
+	windowWidth = window.innerWidth;
+	if(windowHeight < 900 && windowHeight < windowWidth){
+		$("canvas").attr("WIDTH", windowHeight).attr("HEIGHT", windowHeight);
+		CANVAS_WIDTH = windowHeight;
+		CANVAS_HEIGHT = windowHeight;
+		SCALE = windowHeight/900;
+	}
+	else if(windowWidth < 900 && windowWidth < windowHeight){
+		$("canvas").attr("WIDTH", windowWidth).attr("HEIGHT", windowWidth);
+		CANVAS_WIDTH = windowWidth;
+		CANVAS_HEIGHT = windowWidth;
+		SCALE = windowWidth/900;
+	}
+		
+	var c = document.getElementById("canvas"),
+		ctx = c.getContext("2d");
+		ctx.scale(SCALE*.5,SCALE*.5);
+		
+	var img = new Image();
+		img.src = 'aliens.png';
+	
+	function Sprite(img, width, height, positions, animations){
+		this.img = img;
+		this.width = width;
+		this.height = height;
+		this.positions = positions;
+		this.animations = animations;
+	}
+	Sprite.prototype = {
+		draw: function(direction, x, y, frame){
+			var pos = this.positions[this.animations[direction][frame]];
+			ctx.drawImage(
+				this.img,
+				pos[0],
+				pos[1],
+				this.width,
+				this.height,
+				x, y,
+				this.width,
+				this.height
+			);
+		}
+	};	
+
+	var alienOneObj = new Sprite(img, 96, 64, [
+			[129,0], 	//0 - frame 1
+			[226,0],	//1 - frame 2
+			[214,129], 	//2 - Explode
+		], [
+			[0, 1],		//0 - Moving animation
+			[2]			//1 - Explode
+		]);
+
+	var alienTwoObj = new Sprite(img, 88, 64, [
+			[0,57], 	//0 - frame 1
+			[0,122],	//1 - frame 2
+			[218,129], 	//2 - Explode
+		], [
+			[0, 1],		//0 - Moving animation
+			[2]			//1 - Explode
+		]);
+
+	var alienThreeObj = new Sprite(img, 65, 64, [
+			[89,65], 	//0 - frame 1
+			[154,65],	//1 - frame 2
+			[229,129], 	//2 - Explode
+		], [
+			[0, 1],		//0 - Moving animation
+			[2]			//1 - Explode
+		]);
+		
+	var alienUfoObj = new Sprite(img, 128, 56, [
+			[0,0], 		//0 - frame 1
+			[210,135], 	//1 - Explode
+		], [
+			[0],		//0 - Moving animation
+			[1]			//1 - Explode
+		]);
+
+	var playerObj = new Sprite(img, 104, 64, [
+			[219,65], 	//0 - frame 1
+		], [
+			[0]		//0 - Moving animation
+		]);
+		
+	function Alien(sprite, column, row, alive, score, offsetX, offsetY){
+		this.sprite = sprite;
+		this.column = column;
+		this.row = row;
+		this.alive = alive;
+		this.score = score;
+		this.offsetX = offsetX;
+		this.offsetY = offsetY;
+	}		
+		
+	function CreateAliens(){
+		var x = 0,
+			y = 0,
+			type = 0,
+			sprite = alienThreeObj,
+			offsetX = 15,
+			offsetY = 0,
+			tempAlien = [];
+			
+		for(i=1; i<67; i++){
+			tempAlien.push(new Alien(sprite, x, y, 0, 200-(50*type), offsetX, offsetY));
+			COL_COUNT[x]++;
+			x++;
+			if(i%11 == 0) {
+				x = 0;
+				y++;
+			}
+			
+			if(i%22 == 0) {
+				type++;
+			}
+			
+			if(type == 0) { 
+				offsetX = 15 + (125 * x);
+				sprite = alienThreeObj;
+			} else if(type == 1) {
+				offsetX = 4 + (125 * x);
+				sprite = alienTwoObj;
+			} else {
+				offsetX = 125 * x;
+				sprite = alienOneObj;
+			}
+			
+			offsetY = 100 * y;
+		}
+		
+		ALIEN_RIGHT = 125*COL_COUNT.length;
+		ALIEN_RIGHT_CONST = ALIEN_RIGHT;
+
+		return tempAlien;
+	}	
+	
+	ALIENS = CreateAliens();
+		
+	function Laser(x, y){
+		this.x = x;
+		this.y = y;
+	}
+	Laser.prototype = {
+		draw: function(x, y){
+			ctx.beginPath();
+			ctx.rect(x-2,y-30,5,30);
+			ctx.fillStyle="#fff";
+			ctx.fill();
+		}
+	};	
+		
+	function ShootGun(){
+		if(!FIRING_LASER){
+			FIRING_LASER = true;			
+			LASERS.push(new Laser(PLAYER_POSITION_X+52,1600));
+		}
+	}
+	
+	function CheckCollision(laserX, laserY){
+		var blowUp = false;
+		$.each(ALIENS, function(i){
+			if (this.alive > 0){
+				return true;
+			}
+			if (this.offsetX+ALIEN_MOVE_X < laserX + 5 &&
+				this.offsetX+ALIEN_MOVE_X + this.sprite.width > laserX &&
+				this.offsetY+ALIEN_MOVE_Y < laserY + 30 &&
+				this.offsetY+ALIEN_MOVE_Y + this.sprite.height > laserY) {
+					COL_COUNT[this.column]--;
+					this.alive = 1;
+					blowUp = true;
+					SCORE += this.score;
+					return false;
+			}
+		});
+		
+		if(blowUp){
+			var leftmost = -1,
+				rightmost = -1;
+			$.each(COL_COUNT, function(i){
+				if(this == 0 && i-1 == leftmost) {
+					leftmost++;
+				}
+			});
+			
+			$.each(COL_COUNT.reverse(), function(i) {  
+				if(this == 0 && i-1 == rightmost) {
+					rightmost++;
+				}
+			});
+			
+			COL_COUNT.reverse();
+			
+			ALIEN_LEFT = 125*(leftmost+1);
+			ALIEN_RIGHT = ALIEN_RIGHT_CONST - 125*(rightmost+1);
+		}
+		
+		if (UFO_POSITION_X < laserX + 5 &&
+			UFO_POSITION_X + 128 > laserX &&
+			10 < laserY + 30 &&
+			66 > laserY && UFO_ALIVE == 0) {
+				UFO_ALIVE = 1;
+				UFO_SCORE = 100 * Math.floor((Math.random() * 2) + 1);
+				blowUp = true;
+		}
+
+		return blowUp;
+	}
+	
+	function DrawScore(score, x, y){
+		ctx.font = "bold 32px Courier New";
+		ctx.fillStyle = "#fff";
+		ctx.fillText(score,x,y);
+		ctx.strokeStyle = "#000";
+		ctx.strokeText(score,x,y);
+	}
+	
+	function update(){
+		$(document).keydown( function(e){
+		//console.log(e.which)
+			if(e.which == 39){
+				PLAYER_DIRECTION = 1;
+				return false;
+			}
+			
+			if(e.which == 37){
+				PLAYER_DIRECTION = 2;
+				return false;
+			}
+			
+			if(e.which == 32 && !FIRING_LASER){
+				ShootGun();
+				return false;
+			}
+		});
+		
+		$(document).keyup( function(e){
+			if(e.which == 39 || e.which == 37){
+				PLAYER_DIRECTION = 0;
+			}
+		});
+		
+		//Increment timer
+		TIMER++;
+		
+		//remove dead aliens
+		$.each(ALIENS, function(i){
+			if (this.alive > 0) this.alive++;
+			if (this.alive > 5) ALIENS.splice(i,1);
+		});
+		//remove dead UFO
+		if (UFO_ALIVE > 0 && UFO_ALIVE < 6) UFO_ALIVE++;
+
+		//move aliens
+		if(TIMER%15 == 0){
+			ALIEN_FRAME++;
+			if(ALIEN_FRAME > 1) ALIEN_FRAME = 0;
+			if(ALIEN_RIGHT + ALIEN_MOVE_X >= 1790 && ALIEN_DIRECTION == ALIEN_OLD_DIRECTION){
+				ALIEN_DIRECTION = 0;
+				ALIEN_MOVE_Y += 65;
+			} else if(ALIEN_LEFT + ALIEN_MOVE_X <= 20 && ALIEN_DIRECTION == ALIEN_OLD_DIRECTION){
+				ALIEN_DIRECTION = 1;
+				ALIEN_MOVE_Y += 65;
+			} else if(ALIEN_DIRECTION == 1){
+				ALIEN_MOVE_X += 20;
+				if(ALIEN_OLD_DIRECTION != ALIEN_DIRECTION) ALIEN_OLD_DIRECTION = ALIEN_DIRECTION;
+			} else {
+				ALIEN_MOVE_X -= 20;
+				if(ALIEN_OLD_DIRECTION != ALIEN_DIRECTION) ALIEN_OLD_DIRECTION = ALIEN_DIRECTION;
+			}			
+		}
+		
+		//move player
+		if(PLAYER_DIRECTION == 1 && PLAYER_POSITION_X < 1646) PLAYER_POSITION_X += 20;
+		if(PLAYER_DIRECTION == 2 && PLAYER_POSITION_X > 50) PLAYER_POSITION_X -= 20;
+		
+		//move UFO if alive
+		if(UFO_ALIVE == 0){
+			UFO_POSITION_X -= 10;
+			if(UFO_POSITION_X < -128) {
+				UFO_ALIVE = 6;
+				UFO_POSITION_X = 1800;
+			}
+		}
+		
+		//move lasers
+		$.each(LASERS, function(i){
+			this.y -= 50;
+			if(CheckCollision(this.x, this.y) || this.y < -30){
+				LASERS.splice(i,1);
+				FIRING_LASER = false;
+			}
+		});
+		
+		//reset timer to FPS
+		if(TIMER == FPS){
+			TIMER = 0;
+			if(UFO_ALIVE == 6 && Math.floor((Math.random() * 1000) + 1) > 900){
+				UFO_POSITION_X = 1800;
+				UFO_ALIVE = 0;
+			}
+		}
+	}
+
+	function draw(){
+		//clear canvas
+		ctx.rect(0, 0, CANVAS_WIDTH/(SCALE*.5), CANVAS_HEIGHT/(SCALE*.5));
+		ctx.fillStyle="#000";
+		ctx.fill();
+		//draw aliens
+		$.each(ALIENS, function(){
+			if(this.alive == 0) {
+				this.sprite.draw(0, this.offsetX+ALIEN_MOVE_X, this.offsetY+ALIEN_MOVE_Y, ALIEN_FRAME);
+			}
+			else {
+				this.sprite.draw(1, this.offsetX+ALIEN_MOVE_X, this.offsetY+ALIEN_MOVE_Y, 0);
+				DrawScore(this.score,this.offsetX+ALIEN_MOVE_X+(this.sprite.width/2)-24,this.offsetY+ALIEN_MOVE_Y+(this.sprite.height/2)+10);
+			}
+		});
+		//draw player
+		playerObj.draw(0, PLAYER_POSITION_X, PLAYER_POSITION_Y, 0);
+		//draw UFO
+		if(UFO_ALIVE == 0){
+			alienUfoObj.draw(0, UFO_POSITION_X, 10, 0);
+		}else if(UFO_ALIVE < 6) {
+			alienUfoObj.draw(1, UFO_POSITION_X, 10, 0);
+			DrawScore(UFO_SCORE,UFO_POSITION_X+25,46);
+		}
+		//draw lasers
+		$.each(LASERS, function(){
+			this.draw(this.x, this.y);
+		});		
+		//draw score
+		ctx.font = "bold 48px Courier New";
+		ctx.fillStyle = "#fff";
+		ctx.fillText("SCORE: "+SCORE,20,CANVAS_HEIGHT/(SCALE*.5)-20);
+	}
+
+	//MAIN GAME LOOP
+	setInterval(function() {
+		update();
+		draw();
+	}, 1000/FPS);
+	
+</script>
+</body>
+</html>

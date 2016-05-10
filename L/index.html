@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>
+			function scrollToLeft(){
+				var curX = parseInt($("#bg").css("left"));
+				if(curX >= -689){
+					$("#photo img").each(function(){
+						curX = parseInt($(this).css("left"));
+						$(this).css("left", curX-2+"px");
+					});
+				}
+			}
+			function scrollToRight(){
+				var curX = parseInt($("#bg").css("left"));
+				if(curX <= 57){
+					$("#photo img").each(function(){
+						curX = parseInt($(this).css("left"));
+						$(this).css("left", curX+2+"px");
+					});
+				}			
+			}
+			function scrollDown(){
+				var curY = parseInt($("#bg").css("top"));
+				if(curY <= 44){
+					$("#photo img").each(function(){
+						curY = parseInt($(this).css("top"));
+						$(this).css("top", curY+2+"px");
+					});				
+				}
+			}
+			function scrollUp(){
+				var curY = parseInt($("#bg").css("top"));
+				if(curY >= -19){
+					$("#photo img").each(function(){
+						curY = parseInt($(this).css("top"));
+						$(this).css("top", curY-2+"px");
+					});					
+				}			
+			}			
+			$(document).ready(function () {
+				var tX, tY;
+				$("#container").mousemove(function(event){
+					clearInterval(tX);
+					clearInterval(tY);
+					var offset = $(this).offset();
+					var relX = event.pageX - offset.left - 640;
+					var relY = event.pageY - offset.top - 650;
+					$("#light").css("left", relX+"px");
+					$("#light").css("top", relY+"px");
+					if(relX < -550 && relX > -583){ tX = setInterval(function(){ scrollToRight(); }, 33); }
+					else if(relX > -84 && relX < -51){ tX = setInterval(function(){ scrollToLeft(); }, 33); }
+					if(relY > -605 && relY < -572){ tY = setInterval(function(){ scrollDown(); }, 33); }
+					else if(relY < -172 && relY > -205){ tY = setInterval(function(){ scrollUp(); }, 33); }
+				});
+				$("#container").click(function(event){
+					if($("#frame").is(":visible")){
+						$("#frame, #light").hide();
+						$(document.elementFromPoint(event.pageX, event.pageY)).click();
+						$("#frame, #light").show();
+						$("#light").css("opacity", "0").animate({ opacity: 1 }, 300);
+					}
+				});
+				$(document).on("click", ".hobj", function(event){
+					$("#progress").append("<img class='icon' src='"+$(this).data("num")+".png'>");
+					//$("#progress").animate({ opacity: 0 }, 3000, function(){ $(this).text("").css("opacity", 1); });
+					$(this).removeClass("hobj");
+				});				
+			});
+		</script>
+		<style>
+			.icon{
+				background:url(s-frame.png);
+				margin:.75em .25em;
+				transform:rotate(10deg);
+			}
+			
+			.icon:nth-child(even){
+				transform:rotate(-5deg);
+			}
+		</style>
+	</head>
+	<body style="background:#000;color:#fff;">
+		<div id="progress" style="position:relative;width:640px;height:100px;left:-320px;margin-left:50%;text-align:center"></div>
+		<div id="container" style="overflow:hidden;position:relative;width:640px;height:640px;left:-320px;margin-left:50%;">
+			<div id="photo">
+				<img id="bg" src="bg.png" style="position:absolute;left:-320px;top:13px;">
+				<img src="hobj1.png" data-num="1" class="hobj" style="position:absolute;left:613px;top:349px;">
+				<img src="hobj2.png" data-num="2" class="hobj" style="position:absolute;left:-76px;top:293px;">
+				<img src="hobj3.png" data-num="3" class="hobj" style="position:absolute;left:-320px;top:484px;">
+				<img src="hobj4.png" data-num="4" class="hobj" style="position:absolute;left:-135px;top:139px;">
+				<img src="hobj5.png" data-num="5" class="hobj" style="position:absolute;left:284px;top:281px;">
+				<img src="hobj6.png" data-num="6" class="hobj" style="position:absolute;left:384px;top:263px;">
+				<img src="hobj7.png" data-num="7" class="hobj" style="position:absolute;left:758px;top:13px;">
+			</div>
+			<img id="light" src="light.png" style="position:absolute;left:0;top:0;">
+			<img id="frame" src="frame.png" style="position:absolute;left:0;top:0;">
+		</div>
+	</body>
+</html>
