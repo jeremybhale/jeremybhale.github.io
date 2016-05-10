@@ -1,372 +1,378 @@
-<style>
-*{
-	margin:0;
-	padding:0;
-}
-
-body{
-	font-family:arial;
-	font-size:18px;
-	line-height:1.5em;
-	margin:0 auto;
-	max-width:1080px;
-	padding:0 .5em .5em;
-	text-align:center;
-}
-
-ul{
-	list-style-type:none;
-}
-
-* + * {
-	margin-top:1em;
-}
-
-.bordered{
-	border:10px solid #eee;
-	border-image:url(img/border.gif) 15 stretch;
-}
-
-.header{
-	max-width:320px;
-	display:inline-block;
-}
-
-.header-avatar{
-	float:right;
-	max-width:320px;
-	padding:.5em 0 1.25em;
-	position:relative;
-	width:100%;
-}
-
-.header-contact{
-	float:left;
-	padding:.5em 0 1.25em;
-	text-align:center;
-	width:100%;
-}
-
-.name{
-	display:inline-block;
-	float:left;
-	font-size:1.5em;
-	font-weight:bold;
-	width:40%;
-}
-
-.name-image{
-	width:100%;
-}
-
-.title-image{
-	margin:0;
-	width:100%;
-}
-
-.avatar{
-	background:url(img/avatar.jpg) no-repeat -10px -10px;	
-	display:inline-block;
-	height:4.5em;
-	margin:0;
-	max-width:176px;
-	padding:0;
-	position:absolute;
-	right:0;
-	transition:height .5s;
-	width:50%;
-}
-
-.avatar:hover{
-	height:10em;
-}
-
-.main{
-	display:inline-block;
-	width:100%;
-}
-
-.section{
-	box-sizing:border-box;
-	padding:.05em .25em;
-}
-
-.section,
-.category{
-	text-align:center;
-}
-
-.section-header{
-	margin:0 0 .5em;
-	text-align:center;
-}
-
-.screenshot{
-	float:left;
-	margin:0 .5em 0 0;
-	max-height:6em;
-	max-width:50%;
-	width:auto;
-}
-
-.description{
-	margin:0;
-}
-
-.section .description{
-	float:right;
-	text-align:left;
-	width:50%;
-}
-
-.event{
-	height:auto;
-	overflow:hidden;
-	padding:.25em 0;
-	text-align:left;
-	transition:background .5s;
-}
-
-.event:before{
-	background-repeat:no-repeat;
-	background-size:50px;
-	content:'';
-	display:block;
-	float:left;
-	height:50px;
-	margin:.5em 1em 0 0;
-	width:50px;
-}
-
-.event.work:hover{
-	background:rgba(0,0,255,.05);
-}
-
-.event.work:before{
-	background-image:url(img/fedora.gif);
-}
-
-.event.life:hover{
-	background:rgba(255,0,0,.05);
-}
-
-.event.life:before{
-	background-image:url(img/ballcap.gif);
-}
-
-.event.education:hover{
-	background:rgba(0,255,0,.05);
-}
-
-.event.education:before{
-	background-image:url(img/gradcap.gif);
-}
-
-.event-date{
-	font-size:.9em;
-}
-
-.event-item{
-	margin:0;
-}
-
-@media only screen and (min-width : 720px){
-	.header{
-		max-width:initial;
-		display:initial;
-	}
-
-	.header-contact{
-		margin-top:0;
-		padding:.5em 0 1.25em;
-		text-align:left;
-		width:auto;
-	}
-	
-	.section{
-		display:inline-block;
-		height:17em;
-		overflow:hidden;
-		width:49%;
-	}
-	
-	.wide-section{
-		height:auto;
-		width:100%;
-	}
-	
-	.section:nth-child(odd){
-		margin-left:1%;
-	}
-	
-	.section:first-child{
-		margin-left:0;
-	}
-	
-	.category{
-		overflow:hidden;
-	}
-	
-	.category .category-header{
-		margin-bottom:0;
-		margin-top:1em;
-	}
-}
-</style>
-
-<body>
-	<header class="header">
-		<div class="header-avatar">
-			<div class="name">
-				<img src="img\name.gif" alt="Jeremy Hale" class="name-image"/>
-				<img src="img\fed.gif" alt="Front End Developer" class="title-image"/>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Jeremy Hale | Front End Developer</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			
+			body{
+				font-family:arial;
+				font-size:18px;
+				line-height:1.5em;
+				margin:0 auto;
+				max-width:1080px;
+				padding:0 .5em .5em;
+				text-align:center;
+			}
+			
+			ul{
+				list-style-type:none;
+			}
+			
+			* + * {
+				margin-top:1em;
+			}
+			
+			.bordered{
+				border:10px solid #eee;
+				border-image:url(img/border.gif) 15 stretch;
+			}
+			
+			.header{
+				max-width:320px;
+				display:inline-block;
+			}
+			
+			.header-avatar{
+				float:right;
+				max-width:320px;
+				padding:.5em 0 1.25em;
+				position:relative;
+				width:100%;
+			}
+			
+			.header-contact{
+				float:left;
+				padding:.5em 0 1.25em;
+				text-align:center;
+				width:100%;
+			}
+			
+			.name{
+				display:inline-block;
+				float:left;
+				font-size:1.5em;
+				font-weight:bold;
+				width:40%;
+			}
+			
+			.name-image{
+				width:100%;
+			}
+			
+			.title-image{
+				margin:0;
+				width:100%;
+			}
+			
+			.avatar{
+				background:url(img/avatar.jpg) no-repeat -10px -10px;	
+				display:inline-block;
+				height:4.5em;
+				margin:0;
+				max-width:176px;
+				padding:0;
+				position:absolute;
+				right:0;
+				transition:height .5s;
+				width:50%;
+			}
+			
+			.avatar:hover{
+				height:10em;
+			}
+			
+			.main{
+				display:inline-block;
+				width:100%;
+			}
+			
+			.section{
+				box-sizing:border-box;
+				padding:.05em .25em;
+			}
+			
+			.section,
+			.category{
+				text-align:center;
+			}
+			
+			.section-header{
+				margin:0 0 .5em;
+				text-align:center;
+			}
+			
+			.screenshot{
+				float:left;
+				margin:0 .5em 0 0;
+				max-height:6em;
+				max-width:50%;
+				width:auto;
+			}
+			
+			.description{
+				margin:0;
+			}
+			
+			.section .description{
+				float:right;
+				text-align:left;
+				width:50%;
+			}
+			
+			.event{
+				height:auto;
+				overflow:hidden;
+				padding:.25em 0;
+				text-align:left;
+				transition:background .5s;
+			}
+			
+			.event:before{
+				background-repeat:no-repeat;
+				background-size:50px;
+				content:'';
+				display:block;
+				float:left;
+				height:50px;
+				margin:.5em 1em 0 0;
+				width:50px;
+			}
+			
+			.event.work:hover{
+				background:rgba(0,0,255,.05);
+			}
+			
+			.event.work:before{
+				background-image:url(img/fedora.gif);
+			}
+			
+			.event.life:hover{
+				background:rgba(255,0,0,.05);
+			}
+			
+			.event.life:before{
+				background-image:url(img/ballcap.gif);
+			}
+			
+			.event.education:hover{
+				background:rgba(0,255,0,.05);
+			}
+			
+			.event.education:before{
+				background-image:url(img/gradcap.gif);
+			}
+			
+			.event-date{
+				font-size:.9em;
+			}
+			
+			.event-item{
+				margin:0;
+			}
+			
+			@media only screen and (min-width : 720px){
+				.header{
+					max-width:initial;
+					display:initial;
+				}
+			
+				.header-contact{
+					margin-top:0;
+					padding:.5em 0 1.25em;
+					text-align:left;
+					width:auto;
+				}
+				
+				.section{
+					display:inline-block;
+					height:17em;
+					overflow:hidden;
+					width:49%;
+				}
+				
+				.wide-section{
+					height:auto;
+					width:100%;
+				}
+				
+				.section:nth-child(odd){
+					margin-left:1%;
+				}
+				
+				.section:first-child{
+					margin-left:0;
+				}
+				
+				.category{
+					overflow:hidden;
+				}
+				
+				.category .category-header{
+					margin-bottom:0;
+					margin-top:1em;
+				}
+			}
+			</style>
+	</head>
+	<body>
+		<header class="header">
+			<div class="header-avatar">
+				<div class="name">
+					<img src="img\name.gif" alt="Jeremy Hale" class="name-image"/>
+					<img src="img\fed.gif" alt="Front End Developer" class="title-image"/>
+				</div>
+				<div class="bordered avatar"></div>
 			</div>
-			<div class="bordered avatar"></div>
-		</div>
-		<div class="header-contact">
-			<p class="description">142 Rucker Drive</p>
-			<p class="description">Ruckersville, VA 22968</p>
-			<p class="description">434 806-7087</p>
-		</div>
-	</header>
-	<main class="main">
-		<section class="category">
-			<h2 class="category-header"><img src="img\skills.gif" alt="Skills and Acronyms"/></h2>		
-			<div class="bordered section">
-				<h2 class="section-header">Structure</h2>
-				<ul>
-					<li>HTML 5</li>
-					<li>Semantic Code</li>
-					<li>Progressive Enhancement</li>
-					<li>Content First</li>
-					<li>Accessibility</li>
+			<div class="header-contact">
+				<p class="description">142 Rucker Drive</p>
+				<p class="description">Ruckersville, VA 22968</p>
+				<p class="description">434 806-7087</p>
+			</div>
+		</header>
+		<main class="main">
+			<section class="category">
+				<h2 class="category-header"><img src="img\skills.gif" alt="Skills and Acronyms"/></h2>		
+				<div class="bordered section">
+					<h2 class="section-header">Structure</h2>
+					<ul>
+						<li>HTML 5</li>
+						<li>Semantic Code</li>
+						<li>Progressive Enhancement</li>
+						<li>Content First</li>
+						<li>Accessibility</li>
+					</ul>
+				</div>
+				
+				<div class="bordered section">
+					<h2 class="section-header">Design</h2>
+					<ul>
+						<li>CSS3</li>
+						<li>SASS</li>
+						<li>SMACSS</li>
+						<li>Responsive Design</li>
+						<li>Adobe CS Suite</li>
+					</ul>
+				</div>
+				
+				<div class="bordered section">
+					<h2 class="section-header">Function</h2>
+					<ul>
+						<li>jQuery</li>
+						<li>Ajax</li>
+						<li>Unobtrusive Scripting</li>
+						<li>Prototyping</li>
+						<li>Cross browser testing</li>
+					</ul>
+				</div>
+			</section>
+			
+			<section class="category">
+				<h2 class="category-header"><img src="img\projects.gif" alt="Projects"/></h2>
+				<p class="description">These are just a few of the things I've built over the last few years.</p>
+				<div class="bordered section">
+					<h2 class="section-header"><a href="SI/index.html">Space Invaders</a></h2>
+					<img src="img\si.jpg" class="screenshot"/>
+					<p class="description">I got to thinking about how little space was available on old arcade systems, and I wanted to see how small I could make something similar. It's not complete, and not quite as small as the original. Arrow keys move, space bar fires.</p>
+				</div>
+				
+				<div class="bordered section">
+					<h2 class="section-header"><a href="L/index.html">The Leshy</a></h2>
+					<img src="img\l.jpg" class="screenshot"/>
+					<p class="description">I love puzzles, scavenger hunts, and mysteries. One summer, I took a photography contest and turned it into an opportunity to start a little game for my friends. Can you find the creepy dessert, drink, umbrella, landscape, outfit, wildlife, and stranger?</p>
+				</div>
+				
+				<div class="bordered section">
+					<h2 class="section-header"><a href="PT/index.html">Pick Three</a></h2>
+					<img src="img\pt.jpg" class="screenshot"/>
+					<p class="description">I participated in prototyping a gamified way to make studying more fun. This is a stripped down version of the game. Answering questions correctly earns points, and there's a chance to double your score.</p>
+				</div>
+				
+				<div class="bordered section">
+					<h2 class="section-header"><a href="CW/index.html">Clara Walks</a></h2>
+					<img src="img\cw.jpg" class="screenshot"/>
+					<p class="description">I've always like the idea of making cartoons. Usually I don't have the patience for it, but I liked the pig from the gamification project so I went for it. Try the left, right, and up arrow keys.</p>
+				</div>
+				
+				<div class="bordered section">
+					<h2 class="section-header"><a href="LI/index.html">Locus Imperium</a></h2>
+					<img src="img\li.jpg" class="screenshot"/>
+					<p class="description">This is another example of a page I made for a puzzle, though this one came about several years ago. I was experimenting with navigation styles, and to this day I still load this up to spin the orbit with the mouse.</p>
+				</div>
+				
+				<div class="bordered section">
+					<h2 class="section-header"><a href="SVG/index.html">SVG Map</a></h2>
+					<img src="img\svg.jpg" class="screenshot"/>
+					<p class="description">I worked on a project with a vendor who had a hard time keeping up with our requirements. I said to myself, "I could do this in an hour". It took a bit longer than an hour, but this basic SVG map worked a lot better than what was delivered.</p>
+				</div>
+							
+			</section>		
+			
+			<section class="category">
+				<h2 class="category-header"><img src="img\events.gif" alt="Life Events"/></h2>		
+				<ul class="bordered section wide-section">
+					<li class="event work">
+						<div class="event-date">Today</div>
+						<div id="today" class="event-item">Was an okay day.</div>
+					</li>
+					<li class="event life">
+						<div class="event-date">12/18/2012</div>
+						<div class="event-item">My son was born today.</div>
+					</li>
+					<li class="event life">
+						<div class="event-date">9/23/2009</div>
+						<div class="event-item">My daughter was born today.</div>
+					</li>
+					<li class="event work">
+						<div class="event-date">4/23/2009</div>
+						<div class="event-item">I started working at <a href="https://www.cfainstitute.org">CFA Institute</a>.</div>
+					</li>
+					<li class="event life">
+						<div class="event-date">3/2009</div>
+						<div class="event-item">I moved back to Virginia.</div>
+					</li>
+					<li class="event work">
+						<div class="event-date">1/2009</div>
+						<div class="event-item">I started working at Universal Sports.</div>
+					</li>
+					<li class="event life">
+						<div class="event-date">5/24/2008</div>
+						<div class="event-item">I got married today.</div>
+					</li>				
+					<li class="event work">
+						<div class="event-date">4/24/2007</div>
+						<div class="event-item">I started working for Playboy TV today.</div>
+					</li>
+					<li class="event work">
+						<div class="event-date">6/2007</div>
+						<div class="event-item">I started working for Tower Communications.</div>
+					</li>				
+					<li class="event life">
+						<div class="event-date">3/2006</div>
+						<div class="event-item">I moved to Los Angeles.</div>
+					</li>
+					<li class="event work">
+						<div class="event-date">10/2004</div>
+						<div class="event-item">I started working for Gray Television.</div>
+					</li>				
+					<li class="event education">
+						<div class="event-date">5/14/2004</div>
+						<div class="event-item">I graduated from VT on this day.</div>
+					</li>
+					<li class="event education">
+						<div class="event-date">6/1999</div>
+						<div class="event-item">I graduated from William Monroe High School.</div>
+					</li>				
+					<li class="event life">
+						<div class="event-date">4/30/1981</div>
+						<div class="event-item">I was born on this day.</div>
+					</li>
 				</ul>
-			</div>
-			
-			<div class="bordered section">
-				<h2 class="section-header">Design</h2>
-				<ul>
-					<li>CSS3</li>
-					<li>SASS</li>
-					<li>SMACSS</li>
-					<li>Responsive Design</li>
-					<li>Adobe CS Suite</li>
-				</ul>
-			</div>
-			
-			<div class="bordered section">
-				<h2 class="section-header">Function</h2>
-				<ul>
-					<li>jQuery</li>
-					<li>Ajax</li>
-					<li>Unobtrusive Scripting</li>
-					<li>Prototyping</li>
-					<li>Cross browser testing</li>
-				</ul>
-			</div>
-		</section>
-		
-		<section class="category">
-			<h2 class="category-header"><img src="img\projects.gif" alt="Projects"/></h2>
-			<p class="description">These are just a few of the things I've built over the last few years.</p>
-			<div class="bordered section">
-				<h2 class="section-header"><a href="SI/index.html">Space Invaders</a></h2>
-				<img src="img\si.jpg" class="screenshot"/>
-				<p class="description">I got to thinking about how little space was available on old arcade systems, and I wanted to see how small I could make something similar. It's not complete, and not quite as small as the original. Arrow keys move, space bar fires.</p>
-			</div>
-			
-			<div class="bordered section">
-				<h2 class="section-header"><a href="L/index.html">The Leshy</a></h2>
-				<img src="img\l.jpg" class="screenshot"/>
-				<p class="description">I love puzzles, scavenger hunts, and mysteries. One summer, I took a photography contest and turned it into an opportunity to start a little game for my friends. Can you find the creepy dessert, drink, umbrella, landscape, outfit, wildlife, and stranger?</p>
-			</div>
-			
-			<div class="bordered section">
-				<h2 class="section-header"><a href="PT/index.html">Pick Three</a></h2>
-				<img src="img\pt.jpg" class="screenshot"/>
-				<p class="description">I participated in prototyping a gamified way to make studying more fun. This is a stripped down version of the game. Answering questions correctly earns points, and there's a chance to double your score.</p>
-			</div>
-			
-			<div class="bordered section">
-				<h2 class="section-header"><a href="CW/index.html">Clara Walks</a></h2>
-				<img src="img\cw.jpg" class="screenshot"/>
-				<p class="description">I've always like the idea of making cartoons. Usually I don't have the patience for it, but I liked the pig from the gamification project so I went for it. Try the left, right, and up arrow keys.</p>
-			</div>
-			
-			<div class="bordered section">
-				<h2 class="section-header"><a href="LI/index.html">Locus Imperium</a></h2>
-				<img src="img\li.jpg" class="screenshot"/>
-				<p class="description">This is another example of a page I made for a puzzle, though this one came about several years ago. I was experimenting with navigation styles, and to this day I still load this up to spin the orbit with the mouse.</p>
-			</div>
-			
-			<div class="bordered section">
-				<h2 class="section-header"><a href="SVG/index.html">SVG Map</a></h2>
-				<img src="img\svg.jpg" class="screenshot"/>
-				<p class="description">I worked on a project with a vendor who had a hard time keeping up with our requirements. I said to myself, "I could do this in an hour". It took a bit longer than an hour, but this basic SVG map worked a lot better than what was delivered.</p>
-			</div>
-						
-		</section>		
-		
-		<section class="category">
-			<h2 class="category-header"><img src="img\events.gif" alt="Life Events"/></h2>		
-			<ul class="bordered section wide-section">
-				<li class="event work">
-					<div class="event-date">Today</div>
-					<div id="today" class="event-item">Was an okay day.</div>
-				</li>
-				<li class="event life">
-					<div class="event-date">12/18/2012</div>
-					<div class="event-item">My son was born today.</div>
-				</li>
-				<li class="event life">
-					<div class="event-date">9/23/2009</div>
-					<div class="event-item">My daughter was born today.</div>
-				</li>
-				<li class="event work">
-					<div class="event-date">4/23/2009</div>
-					<div class="event-item">I started working at <a href="https://www.cfainstitute.org">CFA Institute</a>.</div>
-				</li>
-				<li class="event life">
-					<div class="event-date">3/2009</div>
-					<div class="event-item">I moved back to Virginia.</div>
-				</li>
-				<li class="event work">
-					<div class="event-date">1/2009</div>
-					<div class="event-item">I started working at Universal Sports.</div>
-				</li>
-				<li class="event life">
-					<div class="event-date">5/24/2008</div>
-					<div class="event-item">I got married today.</div>
-				</li>				
-				<li class="event work">
-					<div class="event-date">4/24/2007</div>
-					<div class="event-item">I started working for Playboy TV today.</div>
-				</li>
-				<li class="event work">
-					<div class="event-date">6/2007</div>
-					<div class="event-item">I started working for Tower Communications.</div>
-				</li>				
-				<li class="event life">
-					<div class="event-date">3/2006</div>
-					<div class="event-item">I moved to Los Angeles.</div>
-				</li>
-				<li class="event work">
-					<div class="event-date">10/2004</div>
-					<div class="event-item">I started working for Gray Television.</div>
-				</li>				
-				<li class="event education">
-					<div class="event-date">5/14/2004</div>
-					<div class="event-item">I graduated from VT on this day.</div>
-				</li>
-				<li class="event education">
-					<div class="event-date">6/1999</div>
-					<div class="event-item">I graduated from William Monroe High School.</div>
-				</li>				
-				<li class="event life">
-					<div class="event-date">4/30/1981</div>
-					<div class="event-item">I was born on this day.</div>
-				</li>
-			</ul>
-		</section>
-	</main>
-</body>
+			</section>
+		</main>
+	</body>
+</html>
