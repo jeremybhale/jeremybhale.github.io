@@ -26,14 +26,18 @@ ul{
 	border-image:url(img/border.gif) 15 stretch;
 }
 
-.header{
-	background:#fff;
+.header-avatar{
 	float:right;
 	max-width:320px;
 	padding:.5em 0 1.25em;
 	position:relative;
-	text-align:center;
 	width:100%;
+}
+
+.header-contact{
+	float:left;
+	padding:.5em 0 1.25em;
+	text-align:left;
 }
 
 .name{
@@ -184,22 +188,21 @@ ul{
 </style>
 
 <body>
-	<header class="header">
-		<div class="name">
-			<img src="img\name.gif" alt="Jeremy Hale" class="name-image"/>
-			<img src="img\fed.gif" alt="Front End Developer" class="title-image"/>
+	<header>
+		<div class="header-contact">
+			<p class="description">142 Rucker Drive</p>
+			<p class="description">Ruckersville, VA 22968</p>
+			<p class="description">434 806-7087</p>
 		</div>
-		<div class="bordered avatar"></div>
+		<div class="header-avatar">
+			<div class="name">
+				<img src="img\name.gif" alt="Jeremy Hale" class="name-image"/>
+				<img src="img\fed.gif" alt="Front End Developer" class="title-image"/>
+			</div>
+			<div class="bordered avatar"></div>
+		</div>
 	</header>
 	<main class="main">
-		<section class="category">
-			<div class="section wide-section">
-				<p class="description">142 Rucker Drive</p>
-				<p class="description">Ruckersville, VA 22968</p>
-				<p class="description">434 806-7087</p>
-			</div>
-		</section>
-		
 		<section class="category">
 			<h2 class="category-header">Skills & Acronyms</h2>		
 			<div class="bordered section">
