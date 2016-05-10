@@ -37,7 +37,8 @@ ul{
 .header-contact{
 	float:left;
 	padding:.5em 0 1.25em;
-	text-align:left;
+	text-align:center;
+	width:100%;
 }
 
 .name{
@@ -96,8 +97,10 @@ ul{
 
 .screenshot{
 	float:left;
-	margin:0 .5em 0 0; 
-	width:50%;	
+	margin:0 .5em 0 0;
+	max-height:6em;
+	max-width:50%;
+	width:auto;
 }
 
 .description{
@@ -156,6 +159,13 @@ ul{
 }
 
 @media only screen and (min-width : 720px){
+	.header-contact{
+		margin-top:0;
+		padding:.5em 0 1.25em;
+		text-align:left;
+		width:auto;
+	}
+	
 	.section{
 		display:inline-block;
 		height:17em;
@@ -189,17 +199,17 @@ ul{
 
 <body>
 	<header>
-		<div class="header-contact">
-			<p class="description">142 Rucker Drive</p>
-			<p class="description">Ruckersville, VA 22968</p>
-			<p class="description">434 806-7087</p>
-		</div>
 		<div class="header-avatar">
 			<div class="name">
 				<img src="img\name.gif" alt="Jeremy Hale" class="name-image"/>
 				<img src="img\fed.gif" alt="Front End Developer" class="title-image"/>
 			</div>
 			<div class="bordered avatar"></div>
+		</div>
+		<div class="header-contact">
+			<p class="description">142 Rucker Drive</p>
+			<p class="description">Ruckersville, VA 22968</p>
+			<p class="description">434 806-7087</p>
 		</div>
 	</header>
 	<main class="main">
