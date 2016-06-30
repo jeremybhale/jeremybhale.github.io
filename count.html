@@ -1,0 +1,113 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+	<div id="timer">
+		<span class="s4"></span>
+		<span class="s8"></span>
+		<span class="s3"></span>
+		<span class="s8"></span>
+		<span class="s4"></span>
+		<span class="s0"></span>
+		<span class="s0"></span>
+		<span class="s0"></span>
+	</div>
+	<style>
+		body{
+			background:#000;
+		}
+		.s0{
+			background:url(num.png) -92px -4px;
+			display:inline-block;
+			height:463px;
+			width:319px;
+		}
+		.s1{
+			background:url(num.png) -419px -4px;
+			display:inline-block;
+			height:463px;
+			width:204px;
+		}
+		.s2{
+			background:url(num.png) -623px -4px;
+			display:inline-block;
+			height:463px;
+			width:293px;
+		}
+		.s3{
+			background:url(num.png) -919px -4px;
+			display:inline-block;
+			height:463px;
+			width:283px;
+		}
+		.s4{
+			background:url(num.png) -1212px -4px;
+			display:inline-block;
+			height:463px;
+			width:333px;
+		}
+		.s5{
+			background:url(num.png) -5px -483px;
+			display:inline-block;
+			height:457px;
+			width:280px;
+		}
+		.s6{
+			background:url(num.png) -291px -483px;
+			display:inline-block;
+			height:457px;
+			width:306px;
+		}
+		.s7{
+			background:url(num.png) -604px -483px;
+			display:inline-block;
+			height:457px;
+			width:298px;
+		}
+		.s8{
+			background:url(num.png) -918px -474px;
+			display:inline-block;
+			height:461px;
+			width:306px;
+		}
+		.s9{
+			background:url(num.png) -1242px -483px;
+			display:inline-block;
+			height:457px;
+			width:303px;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		;  (function ($) {
+		  'use strict';
+		  
+		  var cT = 4838400;
+		  setInterval(function(){ 
+				cT--;
+				var d = ("0" + ~~(cT / 86400)).slice(-2);
+				var s = cT - (86400 * d);
+				var h = ("0" + ~~(s / 3600)).slice(-2);
+				s = s - (3600 * h);
+				var m = ("0" + ~~(s / 60)).slice(-2);
+				s = ("0" + ~~(s - (60 * m))).slice(-2);
+				
+				//console.log(d + ':' + h + ':' + m + ':' + s);
+				
+				//$('#timer').html('<span class="s' + d.charAt(0) + '"></span>' +
+				//'<span class="s' + d.charAt(1) + '"></span>'+
+				//'<span class="s' + h.charAt(0) + '"></span>'+
+				//'<span class="s' + h.charAt(1) + '"></span>'+
+				//'<span class="s' + m.charAt(0) + '"></span>'+
+				//'<span class="s' + m.charAt(1) + '"></span>'+
+				//'<span class="s' + s.charAt(0) + '"></span>'+
+				//'<span class="s' + s.charAt(1) + '"></span>');
+		  }, 1000);
+		  
+		})(jQuery);
+	</script>
+</body>
+</html>
