@@ -6,78 +6,86 @@
 </head>
 <body>
 	<div id="timer">
-		<span class="s5"></span>
-		<span class="s6"></span>:
-		<span class="s0"></span>
-		<span class="s0"></span>:
-		<span class="s0"></span>
-		<span class="s0"></span>:
-		<span class="s0"></span>
-		<span class="s0"></span>
+		<a href="https://twitter.com/heysilverlining">@heysilverlining</a>
 	</div>
 	<style>
 		body{
 			background:#000;
+			background:url(bg.png);
 		}
 		.s0{
-			background:url(num.png) -92px -4px;
+			background:url(num.png) 0 0;
 			display:inline-block;
-			height:463px;
-			width:319px;
+			height:105px;
+			width:105px;
 		}
 		.s1{
-			background:url(num.png) -419px -4px;
+			background:url(num.png) -105px 0;
 			display:inline-block;
-			height:463px;
-			width:204px;
+			height:105px;
+			width:105px;
 		}
 		.s2{
-			background:url(num.png) -623px -4px;
+			background:url(num.png) -210px 0;
 			display:inline-block;
-			height:463px;
-			width:293px;
+			height:105px;
+			width:105px;
 		}
 		.s3{
-			background:url(num.png) -919px -4px;
+			background:url(num.png) -315px 0;
 			display:inline-block;
-			height:463px;
-			width:283px;
+			height:105px;
+			width:105px;
 		}
 		.s4{
-			background:url(num.png) -1212px -4px;
+			background:url(num.png) -420px 0;
 			display:inline-block;
-			height:463px;
-			width:333px;
+			height:105px;
+			width:105px;
 		}
 		.s5{
-			background:url(num.png) -5px -483px;
+			background:url(num.png) -525px 0;
 			display:inline-block;
-			height:457px;
-			width:280px;
+			height:105px;
+			width:105px;
 		}
 		.s6{
-			background:url(num.png) -291px -483px;
+			background:url(num.png) -630px 0;
 			display:inline-block;
-			height:457px;
-			width:306px;
+			height:105px;
+			width:105px;
 		}
 		.s7{
-			background:url(num.png) -604px -483px;
+			background:url(num.png) -735px 0;
 			display:inline-block;
-			height:457px;
-			width:298px;
+			height:105px;
+			width:105px;
 		}
 		.s8{
-			background:url(num.png) -918px -474px;
+			background:url(num.png) -840px 0;
 			display:inline-block;
-			height:461px;
-			width:306px;
+			height:105px;
+			width:105px;
 		}
 		.s9{
-			background:url(num.png) -1242px -483px;
+			background:url(num.png) -945px 0;
 			display:inline-block;
-			height:457px;
-			width:303px;
+			height:105px;
+			width:105px;
+		}
+		
+		.sC{
+			background:url(num.png) -1075px 0;
+			display:inline-block;
+			height:105px;
+			width:60px;
+		}
+		#timer{
+			color:#fff;
+			margin:-52.5px 0 0;
+			position:relative;
+			text-align:center;
+			top:50%;
 		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -95,14 +103,15 @@
 				var m = ("0" + ~~(s / 60)).slice(-2);
 				s = ("0" + ~~(s - (60 * m))).slice(-2);
 				
-				//console.log(d + ':' + h + ':' + m + ':' + s);
-				
 				$('#timer').html('<span class="s' + d.charAt(0) + '"></span>' +
 				'<span class="s' + d.charAt(1) + '"></span>'+
+				'<span class="sC"></span>'+
 				'<span class="s' + h.charAt(0) + '"></span>'+
 				'<span class="s' + h.charAt(1) + '"></span>'+
+				'<span class="sC"></span>'+
 				'<span class="s' + m.charAt(0) + '"></span>'+
 				'<span class="s' + m.charAt(1) + '"></span>'+
+				'<span class="sC"></span>'+
 				'<span class="s' + s.charAt(0) + '"></span>'+
 				'<span class="s' + s.charAt(1) + '"></span>');
 		  }, 1000);
