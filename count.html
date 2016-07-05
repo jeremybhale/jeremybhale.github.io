@@ -13,72 +13,46 @@
 			background:#000;
 			background:url(bg.png);
 		}
-		.s0{
-			background:url(num.png) 0 0;
+		.s{
+			background:url(num.png);
+			background-size:1142%;
 			display:inline-block;
-			height:105px;
-			width:105px;
+			height:0;
+			padding-bottom:8%;
+			width:8%;
+		}
+		.s0{
+			background-position:0 0;
 		}
 		.s1{
-			background:url(num.png) -105px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:10% 0;
 		}
 		.s2{
-			background:url(num.png) -210px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:20% 0;
 		}
 		.s3{
-			background:url(num.png) -315px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:30% 0;
 		}
 		.s4{
-			background:url(num.png) -420px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:40% 0;
 		}
 		.s5{
-			background:url(num.png) -525px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:50% 0;
 		}
 		.s6{
-			background:url(num.png) -630px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:60% 0;
 		}
 		.s7{
-			background:url(num.png) -735px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:70% 0;
 		}
 		.s8{
-			background:url(num.png) -840px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
+			background-position:80% 0;
 		}
 		.s9{
-			background:url(num.png) -945px 0;
-			display:inline-block;
-			height:105px;
-			width:105px;
-		}
-		
+			background-position:90% 0;
+		}		
 		.sC{
-			background:url(num.png) -1075px 0;
-			display:inline-block;
-			height:105px;
-			width:60px;
+			background-position:100% 0;
 		}
 		#timer{
 			color:#fff;
@@ -86,6 +60,12 @@
 			position:relative;
 			text-align:center;
 			top:50%;
+		}
+		@media only screen and (min-width: 500px){
+			.s{
+				padding-bottom:5.515%;
+				width:5.515%;
+			}
 		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -103,17 +83,17 @@
 				var m = ("0" + ~~(s / 60)).slice(-2);
 				s = ("0" + ~~(s - (60 * m))).slice(-2);
 				
-				$('#timer').html('<span class="s' + d.charAt(0) + '"></span>' +
-				'<span class="s' + d.charAt(1) + '"></span>'+
-				'<span class="sC"></span>'+
-				'<span class="s' + h.charAt(0) + '"></span>'+
-				'<span class="s' + h.charAt(1) + '"></span>'+
-				'<span class="sC"></span>'+
-				'<span class="s' + m.charAt(0) + '"></span>'+
-				'<span class="s' + m.charAt(1) + '"></span>'+
-				'<span class="sC"></span>'+
-				'<span class="s' + s.charAt(0) + '"></span>'+
-				'<span class="s' + s.charAt(1) + '"></span>');
+				$('#timer').html('<span class="s s' + d.charAt(0) + '"></span>' +
+				'<span class="s s' + d.charAt(1) + '"></span>'+
+				'<span class="s sC"></span>'+
+				'<span class="s s' + h.charAt(0) + '"></span>'+
+				'<span class="s s' + h.charAt(1) + '"></span>'+
+				'<span class="s sC"></span>'+
+				'<span class="s s' + m.charAt(0) + '"></span>'+
+				'<span class="s s' + m.charAt(1) + '"></span>'+
+				'<span class="s sC"></span>'+
+				'<span class="s s' + s.charAt(0) + '"></span>'+
+				'<span class="s s' + s.charAt(1) + '"></span>');
 		  }, 1000);
 		  
 		})(jQuery);
