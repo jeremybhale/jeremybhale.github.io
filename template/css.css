@@ -43,7 +43,7 @@ h3{
 section{
 	overflow:hidden;
 	padding:1em 0;
-	text-align:center;
+	text-align:left;
 	width:100%;
 }
 .opaque{
@@ -84,7 +84,7 @@ section{
 	display:inline-block;
 	margin:0 1em;
 	padding:1em;
-	text-align:center;
+	text-align:left;
 }
 .description p{
 	font-size:.8em;
