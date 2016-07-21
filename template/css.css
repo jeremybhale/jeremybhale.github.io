@@ -49,6 +49,13 @@ section{
 .opaque{
 	background:#000;
 }
+.down{
+	position:absolute;
+    bottom:1em;
+    left:50%;
+    margin-left:-.5em;
+    width:1em;
+}
 .words{
 	margin:0 1em;
 }
@@ -87,7 +94,7 @@ section{
 	color:#fff;
     border:2px solid #fff;
     padding:.25em .5em;
-    margin:1em 0 0;
+    margin:.25em 0 0;
     display:inline-block;
     text-decoration:none;
 }
@@ -100,8 +107,23 @@ section{
 	padding:1em;
 	text-align:center;
 }
+.half{
+	margin:1em;
+	text-align:center;
+}
 .third img{
 	max-width:100%;
+}
+input{
+	font-size:.5em;
+	margin-top:1em;
+	padding:.5em;
+	width:100%;
+}
+.social{
+	margin-top:.25em;
+	max-width:2em;
+	width:30%;
 }
 footer{
 	color:#444;
@@ -151,6 +173,9 @@ footer{
 .sC{
 	background-position:100% 0;
 }
+.timer{
+	font-size:.75em;
+}
 #timer{
 	color:#fff;
 	margin:auto;
@@ -165,6 +190,10 @@ footer{
   	section{
 		padding:3em 0em;
 	}
+	.down{
+		margin-left: -1em;
+		width: 2em;
+	}
 	.description{
 		padding:2em 1em;
 		width:40%;
@@ -175,6 +204,20 @@ footer{
 		margin:0 1.5%;
 		padding:0;
 		width: 30%;	
+	}
+	.half{
+		display: inline-block;
+		float:left;
+		margin:0 2.5%;
+		width: 45%;
+	}
+	input{
+		font-size:.7em;
+		width:initial;
+	}
+	.timer{
+		font-size:inherit;
+		margin:1em;
 	}
 	#timer{
 		width:50%;
