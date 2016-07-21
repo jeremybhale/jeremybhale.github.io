@@ -94,7 +94,7 @@ section{
 	color:#fff;
     border:2px solid #fff;
     padding:.25em .5em;
-    margin:.25em 0 0;
+    margin:1em 0 0;
     display:inline-block;
     text-decoration:none;
 }
@@ -110,6 +110,9 @@ section{
 .half{
 	margin:1em;
 	text-align:center;
+}
+.half .action{
+	margin-top:.25em;
 }
 .third img{
 	max-width:100%;
@@ -132,6 +135,7 @@ footer{
 	text-align:center;
 }
 
+/*countdown*/
 .s{
 	background-image:url("img/num.png");
 	background-size:1142%;
@@ -182,6 +186,7 @@ footer{
 	text-align:center;
 }
 
+/*bigger than mobile*/
 @media only screen 
   and (min-width: 720px){
 	.background{
