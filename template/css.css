@@ -11,7 +11,7 @@ body{
 	background-image:url("img/bg.png");
 	color:#fff;
 	font-size:2em;
-	font-family:arial;
+	font-family:Estrangelo Edessa, arial;
 }
 main{
 	width:100%;
@@ -104,9 +104,59 @@ section{
 	max-width:100%;
 }
 footer{
+	color:#444;
+	font-size:.5em;
 	padding:.5em;
-	text-align:right;
+	text-align:center;
 }
+
+.s{
+	background-image:url("img/num.png");
+	background-size:1142%;
+	display:inline-block;
+	height:0;
+	padding-bottom:8%;
+	width:8%;
+}
+.s0{
+	background-position:0 0;
+}
+.s1{
+	background-position:10% 0;
+}
+.s2{
+	background-position:20% 0;
+}
+.s3{
+	background-position:30% 0;
+}
+.s4{
+	background-position:40% 0;
+}
+.s5{
+	background-position:50% 0;
+}
+.s6{
+	background-position:60% 0;
+}
+.s7{
+	background-position:70% 0;
+}
+.s8{
+	background-position:80% 0;
+}
+.s9{
+	background-position:90% 0;
+}		
+.sC{
+	background-position:100% 0;
+}
+#timer{
+	color:#fff;
+	margin:auto;
+	text-align:center;
+}
+
 @media only screen 
   and (min-width: 720px){
 	.background{
@@ -126,4 +176,11 @@ footer{
 		padding:0;
 		width: 30%;	
 	}
+	#timer{
+		width:50%;
+	}
+}
+
+.hidden{
+	display:none;
 }
