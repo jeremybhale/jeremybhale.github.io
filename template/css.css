@@ -84,10 +84,10 @@ section{
 	display:inline-block;
 	margin:0 1em;
 	padding:1em;
-	text-align:left;
+	text-align:justify;
 }
 .description p{
-	font-size:.8em;
+	font-size:.7em;
 	line-height:1.5em;
 }
 .action{
@@ -196,6 +196,7 @@ footer{
 		padding:3em 0em;
 	}
 	.down{
+		bottom:1em;
 		margin-left: -1em;
 		width: 2em;
 	}
