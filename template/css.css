@@ -58,6 +58,7 @@ section{
 }
 .words{
 	margin:1em 1em 0;
+	text-align:justify;
 }
 .background{
 	background-attachment:fixed;
