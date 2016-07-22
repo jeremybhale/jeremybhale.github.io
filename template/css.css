@@ -80,7 +80,7 @@ section{
 }
 .description{
 	background:#000;
-	background:rgba(0,0,0,.75);
+	background:rgba(0,0,0,.5);
 	display:inline-block;
 	margin:0 1em;
 	padding:1em;
