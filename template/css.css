@@ -51,13 +51,13 @@ section{
 }
 .down{
 	position:absolute;
-    bottom:1em;
-    left:50%;
-    margin-left:-.5em;
-    width:1em;
+	bottom:0;
+	left:50%;
+	margin-left:-.5em;
+	width:1em;
 }
 .words{
-	margin:0 1em;
+	margin:1em 1em 0;
 }
 .background{
 	background-attachment:fixed;
@@ -198,6 +198,10 @@ footer{
 	.down{
 		margin-left: -1em;
 		width: 2em;
+	}
+	.words{
+		bottom:1em;
+		margin:0 1em;
 	}
 	.description{
 		padding:2em 1em;
