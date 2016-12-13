@@ -1,0 +1,54 @@
+<button>Start</button>
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="md5.js"></script>
+<script>
+var map = ['ojvtpuvg']; //answer: ?
+//tests
+//map = ['abc']; //answer: 18f47a30, 05ace8e3
+//map = ['abc3231929'];
+var integer = 0;
+var hash = false;
+var answerOne = '';
+
+var answerTwo = [ '', '', '', '', '', '', '', '' ];
+
+var go = true;
+
+$("button").on("click", function(){
+	if(go == true){
+		var count = 0;
+		while(count < 8){
+			while(hash == false){
+				var test = md5(map+integer);
+				if(test[0] == "0" &&
+				   test[1] == "0" &&
+				   test[2] == "0" &&
+				   test[3] == "0" &&
+				   test[4] == "0"){
+				    if(answerOne.length < 8){
+						answerOne += test[5];
+					}
+					if(Number.isInteger(parseInt(test[5])) &&
+					   parseInt(test[5]) < 8 &&
+					   answerTwo[parseInt(test[5])] == ''){
+						answerTwo[parseInt(test[5])] = test[6];
+						count++;
+					}
+					hash = true;
+					console.log(count +", "+test+", "+answerTwo.toString());
+				}
+				integer++;
+			}
+			hash = false;
+		}
+
+		$("#answerOne").text(answerOne);
+		$("#answerTwo").text(answerTwo.toString());
+		go = false;
+	}
+});
+
+</script>

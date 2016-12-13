@@ -1,0 +1,70 @@
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var map = ['R4', 'R5', 'L5', 'L5', 'L3', 'R2', 'R1', 'R1', 'L5', 'R5', 'R2', 'L1', 'L3', 'L4', 'R3', 'L1', 'L1', 'R2', 'R3', 'R3', 'R1', 'L3', 'L5', 'R3', 'R1', 'L1', 'R1', 'R2', 'L1', 'L4', 'L5', 'R4', 'R2', 'L192', 'R5', 'L2', 'R53', 'R1', 'L5', 'R73', 'R5', 'L5', 'R186', 'L3', 'L2', 'R1', 'R3', 'L3', 'L3', 'R1', 'L4', 'L2', 'R3', 'L5', 'R4', 'R3', 'R1', 'L1', 'R5', 'R2', 'R1', 'R1', 'R1', 'R3', 'R2', 'L1', 'R5', 'R1', 'L5', 'R2', 'L2', 'L4', 'R3', 'L1', 'R4', 'L5', 'R4', 'R3', 'L5', 'L3', 'R4', 'R2', 'L5', 'L5', 'R2', 'R3', 'R5', 'R4', 'R2', 'R1', 'L1', 'L5', 'L2', 'L3', 'L4', 'L5', 'L4', 'L5', 'L1', 'R3', 'R4', 'R5', 'R3', 'L5', 'L4', 'L3', 'L1', 'L4', 'R2', 'R5', 'R5', 'R4', 'L2', 'L4', 'R3', 'R1', 'L2', 'R5', 'L5', 'R1', 'R1', 'L1', 'L5', 'L5', 'L2', 'L1', 'R5', 'R2', 'L4', 'L1', 'R4', 'R3', 'L3', 'R1', 'R5', 'L1', 'L4', 'R2', 'L3', 'R5', 'R3', 'R1', 'L3']; //answer: 250
+//tests
+//map = ['R2', 'L3'];
+//map = ['R2', 'R2', 'R2'];
+//map = ['R5', 'L5', 'R5', 'R3'];
+//map = ['R5', 'R100', 'R5'];
+//map = ['R8', 'R4', 'R4', 'R8']
+var direction = 0;
+var x = 0;
+var y = 0;
+var visited = ['0,0'];
+var answerOne = 0;
+var answerTwo = 0;
+
+$.each(map, function(){
+	var distance = this.split(/([RL])/);
+	if(distance[1] === 'R') {
+		direction++;
+		if(parseInt(direction) > 3){
+			direction = 0;
+		}
+	} else {
+		direction--;
+		if(parseInt(direction) < 0){
+			direction = 3;
+		}
+	}
+	
+	for(var i=1;i<=parseInt(distance[2]);i++){
+		if(direction === 1) {
+			x++;
+			visited.push(x+','+y);
+		} else if(direction === 3) {
+			x--;
+			visited.push(x+','+y);
+		} else if(direction === 0){
+			y++;
+			visited.push(x+','+y);
+		} else {
+			y--;
+			visited.push(x+','+y);
+		}
+	}
+});
+
+var one = visited[visited.length-1].split(",");
+answerOne = Math.abs(parseInt(one[0])) + Math.abs(parseInt(one[1]));
+
+$.each(visited, function(){
+	var cur = this.toString();
+	var count = 0;
+	$.each(visited, function(){
+		if(this.toString() === cur){
+			count++;			
+		}
+		if(parseInt(count) > 1 && parseInt(answerTwo) === 0){			
+			cur = cur.split(",");
+			answerTwo = Math.abs(parseInt(cur[0])) + Math.abs(parseInt(cur[1]));
+		}
+	});
+});
+
+$("#answerOne").text(answerOne);
+$("#answerTwo").text(answerTwo);
+</script>

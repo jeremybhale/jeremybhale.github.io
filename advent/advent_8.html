@@ -1,0 +1,297 @@
+<style>
+	span {
+		width:1em;
+		float:left;
+	}
+</style>
+
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var map = ['rect 1x1',
+'rotate row y=0 by 5',
+'rect 1x1',
+'rotate row y=0 by 5',
+'rect 1x1',
+'rotate row y=0 by 5',
+'rect 1x1',
+'rotate row y=0 by 5',
+'rect 1x1',
+'rotate row y=0 by 2',
+'rect 1x1',
+'rotate row y=0 by 2',
+'rect 1x1',
+'rotate row y=0 by 3',
+'rect 1x1',
+'rotate row y=0 by 3',
+'rect 2x1',
+'rotate row y=0 by 2',
+'rect 1x1',
+'rotate row y=0 by 3',
+'rect 2x1',
+'rotate row y=0 by 2',
+'rect 1x1',
+'rotate row y=0 by 3',
+'rect 2x1',
+'rotate row y=0 by 5',
+'rect 4x1',
+'rotate row y=0 by 5',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate row y=0 by 10',
+'rotate column x=5 by 2',
+'rotate column x=0 by 1',
+'rect 9x1',
+'rotate row y=2 by 5',
+'rotate row y=0 by 5',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate row y=2 by 5',
+'rotate row y=0 by 5',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate column x=40 by 1',
+'rotate column x=27 by 1',
+'rotate column x=22 by 1',
+'rotate column x=17 by 1',
+'rotate column x=12 by 1',
+'rotate column x=7 by 1',
+'rotate column x=2 by 1',
+'rotate row y=2 by 5',
+'rotate row y=1 by 3',
+'rotate row y=0 by 5',
+'rect 1x3',
+'rotate row y=2 by 10',
+'rotate row y=1 by 7',
+'rotate row y=0 by 2',
+'rotate column x=3 by 2',
+'rotate column x=2 by 1',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate row y=2 by 5',
+'rotate row y=1 by 3',
+'rotate row y=0 by 3',
+'rect 1x3',
+'rotate column x=45 by 1',
+'rotate row y=2 by 7',
+'rotate row y=1 by 10',
+'rotate row y=0 by 2',
+'rotate column x=3 by 1',
+'rotate column x=2 by 2',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate row y=2 by 13',
+'rotate row y=0 by 5',
+'rotate column x=3 by 1',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate row y=3 by 10',
+'rotate row y=2 by 10',
+'rotate row y=0 by 5',
+'rotate column x=3 by 1',
+'rotate column x=2 by 1',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate row y=3 by 8',
+'rotate row y=0 by 5',
+'rotate column x=3 by 1',
+'rotate column x=2 by 1',
+'rotate column x=0 by 1',
+'rect 4x1',
+'rotate row y=3 by 17',
+'rotate row y=2 by 20',
+'rotate row y=0 by 15',
+'rotate column x=13 by 1',
+'rotate column x=12 by 3',
+'rotate column x=10 by 1',
+'rotate column x=8 by 1',
+'rotate column x=7 by 2',
+'rotate column x=6 by 1',
+'rotate column x=5 by 1',
+'rotate column x=3 by 1',
+'rotate column x=2 by 2',
+'rotate column x=0 by 1',
+'rect 14x1',
+'rotate row y=1 by 47',
+'rotate column x=9 by 1',
+'rotate column x=4 by 1',
+'rotate row y=3 by 3',
+'rotate row y=2 by 10',
+'rotate row y=1 by 8',
+'rotate row y=0 by 5',
+'rotate column x=2 by 2',
+'rotate column x=0 by 2',
+'rect 3x2',
+'rotate row y=3 by 12',
+'rotate row y=2 by 10',
+'rotate row y=0 by 10',
+'rotate column x=8 by 1',
+'rotate column x=7 by 3',
+'rotate column x=5 by 1',
+'rotate column x=3 by 1',
+'rotate column x=2 by 1',
+'rotate column x=1 by 1',
+'rotate column x=0 by 1',
+'rect 9x1',
+'rotate row y=0 by 20',
+'rotate column x=46 by 1',
+'rotate row y=4 by 17',
+'rotate row y=3 by 10',
+'rotate row y=2 by 10',
+'rotate row y=1 by 5',
+'rotate column x=8 by 1',
+'rotate column x=7 by 1',
+'rotate column x=6 by 1',
+'rotate column x=5 by 1',
+'rotate column x=3 by 1',
+'rotate column x=2 by 2',
+'rotate column x=1 by 1',
+'rotate column x=0 by 1',
+'rect 9x1',
+'rotate column x=32 by 4',
+'rotate row y=4 by 33',
+'rotate row y=3 by 5',
+'rotate row y=2 by 15',
+'rotate row y=0 by 15',
+'rotate column x=13 by 1',
+'rotate column x=12 by 3',
+'rotate column x=10 by 1',
+'rotate column x=8 by 1',
+'rotate column x=7 by 2',
+'rotate column x=6 by 1',
+'rotate column x=5 by 1',
+'rotate column x=3 by 1',
+'rotate column x=2 by 1',
+'rotate column x=1 by 1',
+'rotate column x=0 by 1',
+'rect 14x1',
+'rotate column x=39 by 3',
+'rotate column x=35 by 4',
+'rotate column x=20 by 4',
+'rotate column x=19 by 3',
+'rotate column x=10 by 4',
+'rotate column x=9 by 3',
+'rotate column x=8 by 3',
+'rotate column x=5 by 4',
+'rotate column x=4 by 3',
+'rotate row y=5 by 5',
+'rotate row y=4 by 5',
+'rotate row y=3 by 33',
+'rotate row y=1 by 30',
+'rotate column x=48 by 1',
+'rotate column x=47 by 5',
+'rotate column x=46 by 5',
+'rotate column x=45 by 1',
+'rotate column x=43 by 1',
+'rotate column x=38 by 3',
+'rotate column x=37 by 3',
+'rotate column x=36 by 5',
+'rotate column x=35 by 1',
+'rotate column x=33 by 1',
+'rotate column x=32 by 5',
+'rotate column x=31 by 5',
+'rotate column x=30 by 1',
+'rotate column x=23 by 4',
+'rotate column x=22 by 3',
+'rotate column x=21 by 3',
+'rotate column x=20 by 1',
+'rotate column x=12 by 2',
+'rotate column x=11 by 2',
+'rotate column x=3 by 5',
+'rotate column x=2 by 5',
+'rotate column x=1 by 3',
+'rotate column x=0 by 4']; //answer: ?
+//tests
+//map = ['rect 3x2']; //answer: 6
+//map = ['rect 3x2', 'rotate column x=1 by 1']; //answer: 6
+//map = ['rect 3x2', 'rotate column x=1 by 2']; //answer: 6
+//map = ['rect 3x2', 'rotate column x=1 by 5']; //answer: 6
+//map = ['rect 3x2', 'rotate column x=1 by 33']; //answer: 6
+//map = ['rect 3x2', 'rotate row x=1 by 1']; //answer: 6
+//map = ['rect 3x2', 'rotate row x=1 by 2']; //answer: 6
+//map = ['rect 3x2', 'rotate row x=1 by 5']; //answer: 6
+//map = ['rect 3x2', 'rotate row x=1 by 33']; //answer: 6
+
+var recombine = [];
+var screen = [];
+var answerOne = 0;
+var answerTwo = '';
+
+for(var x = 0; x < 50; x++){
+	screen.push([]);
+	for(var y = 0; y < 6; y++){
+		screen[x].push(0);
+	}
+}
+
+$.each(map, function(index, element){
+	var test = element.split(' ');
+	recombine.push(test);
+});
+
+$.each(recombine, function(index, element){
+	if(element[0] == 'rect'){
+		var direction = element[1].split('x');
+		for(var x = 0; x < direction[0]; x++){
+			for(var y = 0; y < direction[1]; y++){
+				screen[x][y] = 1;
+			}
+		}
+	} else if(element[0] == 'rotate' &&
+	          element[1] == 'column'){
+		var direction = element[2].split('=');
+		var temp = [];
+		for(var y = 0; y < 6; y++){
+			element[4] = element[4] % 6;
+			var prev = Math.abs(y + (6 - element[4]));
+			if(prev > 5){
+				prev = prev - 6;
+			}
+			temp.push(screen[direction[1]][prev]);
+		}
+		for(var y = 0; y < 6; y++){
+			screen[direction[1]][y] = temp[y];
+		}
+	} else if(element[0] == 'rotate' &&
+	          element[1] == 'row'){
+		var direction = element[2].split('=');
+		var temp = [];
+		for(var x = 0; x < 50; x++){
+			element[4] = element[4] % 50;
+			var prev = Math.abs(x + (50 - element[4]));
+			if(prev > 49){
+				prev = prev - 50;
+			}
+			temp.push(screen[prev][direction[1]]);
+		}
+		for(var x = 0; x < 50; x++){
+			screen[x][direction[1]] = temp[x];
+		}
+	}
+});
+
+for(var x = 0; x < 50; x++){
+	for(var y = 0; y < 6; y++){
+		if(screen[x][y] == 1){
+			answerOne++;
+		}
+	}
+}
+
+for(var x = 0; x < 50; x++){
+	answerTwo += "<span>";
+	for(var y = 0; y < 6; y++){
+		if(screen[x][y] == 1){
+			answerTwo += "*<br/>";
+		} else {
+			answerTwo += "<br/>";
+		}
+	}
+	answerTwo += "</span>";
+}
+
+$("#answerOne").text(answerOne);
+$("#answerTwo").html(answerTwo);
+</script>

@@ -1,0 +1,67 @@
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var map = ['cpy 1 a',
+'cpy 1 b',
+'cpy 26 d',
+'jnz c 2',
+'jnz 1 5',
+'cpy 7 c',
+'inc d',
+'dec c',
+'jnz c -2',
+'cpy a c',
+'inc a',
+'dec b',
+'jnz b -2',
+'cpy c b',
+'dec d',
+'jnz d -6',
+'cpy 14 c',
+'cpy 14 d',
+'inc a',
+'dec d',
+'jnz d -2',
+'dec c',
+'jnz c -5'];
+//tests
+//map = ['cpy 41 a', 'inc a', 'inc a', 'dec a', 'jnz a 2', 'dec a']; //answer: a = 42
+
+var registers = {a: 0, b: 0, c: 1, d: 0};
+var i = 0;
+
+var answerOne = 0;
+var answerTwo = 0;
+
+while(i < map.length){
+	var instructions = map[i].split(' ');
+	if(instructions[0] == 'cpy' && Number.isInteger(parseInt(instructions[1]))){
+		registers[instructions[2]] = parseInt(instructions[1]);
+		i++;
+	} else if(instructions[0] == 'cpy'){
+		registers[instructions[2]] = registers[instructions[1]];
+		console.log("values: " + registers.a + ", " + registers.b + ", " + registers.c + ", " + registers.d);
+		i++;
+	} else if(instructions[0] == 'inc'){
+		registers[instructions[1]]++;
+		i++;
+	} else if(instructions[0] == 'dec'){
+		registers[instructions[1]]--;
+		i++;
+	} else if(instructions[0] == 'jnz' && (Number.isInteger(instructions[1]) || registers[instructions[1]] != 0)){
+		i += parseInt(instructions[2]);
+	} else {
+		i++;
+	}
+	//console.log("step: " + i);
+	//console.log("instructions: " + instructions.toString());
+	//console.log("values: " + registers.a + ", " + registers.b + ", " + registers.c + ", " + registers.d);
+}
+
+answerOne = registers.a;
+
+$("#answerOne").text(answerOne);
+$("#answerTwo").html(answerTwo);
+</script>

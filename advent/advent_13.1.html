@@ -1,0 +1,87 @@
+<style>
+	*{
+		font-family:courier;
+		background:#000;
+	}
+	
+	.ex31.why39{
+		background:red;
+	}
+	
+	.space{
+		cursor: pointer;
+		background: #fff;
+	}
+	
+	.wall{
+		background: #000;
+	}
+	
+	.current{
+		background:green;
+	}
+</style>
+
+<div id="answerOne"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var map = 1358;
+
+var answerOne = '';
+
+for(var y = 0; y < 50; y++){
+	answerOne += "<div>";
+	for(var x = 0; x < 50; x++){
+		var temp = x*x + 3*x + 2*x*y + y + y*y;
+		temp += map;
+		temp = temp.toString(2);
+		var ones = 0;
+		for (var i = 0; i < temp.length; i++) {
+			if(temp[i] == "1"){
+				ones++;
+			}
+		}
+		if(ones % 2 == 0){
+			answerOne += "<span class='ex"+x+" why"+y+" space'>&nbsp;</span>";
+		} else {
+			answerOne += "<span class='ex"+x+" why"+y+" wall'>&nbsp;</span>";
+		}
+	}
+	answerOne += "</div>";
+}
+
+$("#answerOne").html(answerOne);
+$(".ex1.why1").addClass("current");
+
+var leftKey = 37, upKey = 38, rightKey = 39, downKey = 40;
+var posX = 1, posY = 1;
+
+$(document).on("keyup", function(e){
+	if(e.keyCode == leftKey &&
+			posX > 0 &&
+			$(".ex"+(posX - 1)+".why"+posY).hasClass("space")){
+		$(".ex"+posX+".why"+posY).removeClass("current");
+		posX--;
+		$(".ex"+posX+".why"+posY).addClass("current");
+	} else if(e.keyCode == rightKey &&
+			posX < 51 &&
+			$(".ex"+(posX + 1)+".why"+posY).hasClass("space")){
+		$(".ex"+posX+".why"+posY).removeClass("current");
+		posX++;
+		$(".ex"+posX+".why"+posY).addClass("current");
+	} else if(e.keyCode == upKey &&
+			posY > 0 &&
+			$(".ex"+posX+".why"+(posY - 1)).hasClass("space")){
+		$(".ex"+posX+".why"+posY).removeClass("current");
+		posY--;
+		$(".ex"+posX+".why"+posY).addClass("current");
+	} else if(e.keyCode == downKey &&
+			posY < 51 &&
+			$(".ex"+posX+".why"+(posY + 1)).hasClass("space")){
+		$(".ex"+posX+".why"+posY).removeClass("current");
+		posY++;
+		$(".ex"+posX+".why"+posY).addClass("current");
+	}
+});
+</script>

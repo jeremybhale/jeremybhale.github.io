@@ -1,0 +1,83 @@
+<style>
+	*{
+		font-family:courier;
+	}
+	
+	.ex1.why1{
+		background:green;
+	}
+	
+	.ex31.why39{
+		background:red;
+	}
+	
+	.space{
+		cursor: pointer;
+	}
+	
+	.wall{
+		background: #000;
+	}
+	
+	.visit{
+		background: #f00;
+	}
+</style>
+
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="PathFinding.js"></script>
+<script>
+var map = 1358;
+//tests
+//map = 10; //answer: a = 11
+
+var grid = new PF.Grid(50, 50);
+
+var answerOne = '';
+var answerTwo = 0;
+
+for(var y = 0; y < 50; y++){
+	answerOne += "<div>";
+	for(var x = 0; x < 50; x++){
+		var temp = x*x + 3*x + 2*x*y + y + y*y;
+		//console.log("temp 1: " + temp);
+		temp += map;
+		//console.log("temp 2: " + temp);
+		temp = temp.toString(2);
+		//console.log("binary: " + temp);
+		var ones = 0;
+		for (var i = 0; i < temp.length; i++) {
+			if(temp[i] == "1"){
+				ones++;
+			}
+		}
+		console.log("ones: " + ones);
+		if(ones % 2 == 0){
+			answerOne += "<span class='ex"+x+" why"+y+" space'>&nbsp;</span>";
+		} else {
+			answerOne += "<span class='ex"+x+" why"+y+" wall'>&nbsp;</span>";
+			grid.setWalkableAt(x, y, false);
+		}
+	}
+	answerOne += "</div>";
+}
+
+var finder = new PF.DijkstraFinder();
+var path = finder.findPath(31, 39, 1, 1, grid);
+
+//console.log(path.length);
+
+var i = 1;
+
+$("#answerOne").html(answerOne);
+//$("#answerTwo").html(answerTwo);
+
+$(".space").on("click", function(element){
+	$(this).addClass("visit");
+	i++
+	console.log(i);
+});
+</script>
