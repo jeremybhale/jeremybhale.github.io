@@ -2,7 +2,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-var map = [[13,10],[17,15],[19,17],[7,1],[5,0],[3,1],[11,0]]; //answer: ?
+var map = [[13,10],[17,15],[19,17],[7,1],[5,0],[3,1]]; //answer: ?
+map = [[13,10],[17,15],[19,17],[7,1],[5,0],[3,1],[11,0]]; //answer: 203660 
 //tests
 //map = [[5,4],[2,1]]; //answer: 5
 var startTime = 0;
@@ -12,20 +13,17 @@ while(answerOne == ''){
 	var count = 0;
 	$.each(map, function(index, element){
 		var test = element[1];
-		for(var i = 0; i < startTime + index + 1; i++){
-			test++;
-			if(test == element[0]){
-				test = 0;
-			}
+		var modulus = (startTime + index + 1) % element[0];
+		test += modulus;
+		if(test >= element[0]){
+			test = test - element[0];
 		}
 		if(test == 0){
 			count++;
 		}
 	});
-	//console.log("count: " + count);
 	if(count == map.length){
 		answerOne = startTime;
-		break;
 	} else {
 		startTime++;
 	}
