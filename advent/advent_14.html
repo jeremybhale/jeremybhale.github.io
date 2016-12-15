@@ -1,0 +1,62 @@
+<div id="answerOne"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="md5.js"></script>
+<script>
+var map = ['jlmsuwbz']; //answer: ?
+//tests
+//map = ['abc']; //answer: 22728, 22551
+var integer = 0;
+var hashes = [];
+var keys = [];
+var answerOne = '';
+
+function newHash(){
+	var test = md5(map+integer);
+	// answer two
+	for(var i=0; i < 2016; i++){
+		test = md5(test);
+	}
+	// end answer two
+	hashes.push([integer, test]);
+	integer++;
+}
+
+function searchHashes(letter){
+	var match = -1;
+	var test = letter+letter+letter+letter+letter;
+	$.each(hashes, function(index, element){
+		if(element[1].includes(test)){
+			match = element[0];
+			//console.log("match index, hash: " + match + ", " + element[1]);
+			return false;
+		}
+	});
+	return match;
+}
+
+for(var i = 0; i < 1000; i++){
+	newHash();
+}
+
+while(keys.length < 64){
+	var test = hashes.splice(0, 1);
+	var match = -1;
+	for(var i = 0; i+2 < test[0][1].length; i++){
+		if(test[0][1][i] === test[0][1][i+1] && 
+		   test[0][1][i] == test[0][1][i+2]){
+			match = searchHashes(test[0][1][i]);
+			if(match > -1){
+				//console.log("test index, hash: " + test[0][0] + ", " +test[0][1]);
+				keys.push(test[0][0]);
+			}
+			break;
+		}
+	}
+	newHash();
+}
+
+answerOne = keys[keys.length-1];
+$("#answerOne").html(answerOne);
+
+</script>
