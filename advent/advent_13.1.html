@@ -4,6 +4,16 @@
 		background:#000;
 	}
 	
+	body{
+		color:#fff;
+		text-align:center;
+	}
+	
+	#play{
+		display:inline-block;
+		width:30em;
+	}
+	
 	#maze{
 		padding:auto;
 	}
@@ -20,7 +30,6 @@
 	#fw2,
 	#fw3{
 		display:none;
-		color:#fff;
 		text-align:center;
 		width:30em;
 	}
@@ -51,8 +60,19 @@
 	.current{
 		background:green;
 	}
+	
+	#info{
+		display:inline-block;
+		margin: -1em 0 0 1em;
+		text-align:left;
+		vertical-align:top;
+	}
+	
+	.title{
+		text-decoration: underline;
+	}
 </style>
-
+<div id="play">
 <div id="answerOne"></div>
 <div id="load">
 <pre>
@@ -97,6 +117,12 @@
  █ █  █ █  ██
 </pre>
 </div>
+</div>
+<div id="info">
+	<p class="title">A-Maze-ing Adventure</p>
+	<span>Level <span id="level">1</span></span><br/>
+	<span>Energy <span id="energy">50</span></span>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -105,6 +131,7 @@ var maps = [31,179,523,650,662,755,757,763,1174,1344,1350,1352,1358,1362,1364,14
 
 var leftKey = 37, upKey = 38, rightKey = 39, downKey = 40;
 var posX = 1, posY = 1;
+var energy = 50, level = 1, move = 0;
 
 function newMaze(){
 	var answerOne = '';
@@ -141,59 +168,76 @@ $("#win").hide();
 $("#load").hide();
 $("#answerOne").show();
 
+function movement(){
+	move++;
+	if(move % 2 == 0){
+		energy--;
+		$("#energy").text(energy);
+	}
+	
+	if(energy == 0){
+		console.log("GAME OVER");
+	} else if($(".ex"+posX+".why"+posY).hasClass("end")) {
+		winning();
+	}
+}
+
+function winning() {
+	$("#answerOne").hide();
+	$("#win").show().delay(500).fadeOut(1).delay(500).fadeIn(1).delay(500).fadeOut(1).delay(500).fadeIn(1).delay(500).fadeOut(1);
+	$("#fw1").show().delay(500).fadeOut(1, function(){
+		$("#fw2").show().delay(500).fadeOut(1, function(){
+			$("#fw3").show().delay(500).fadeOut(1, function(){
+				$("#fw1").show().delay(500).fadeOut(1, function(){
+					$("#fw2").show().delay(500).fadeOut(1, function(){
+						$("#fw3").show().delay(500).fadeOut(1);
+					});
+				});
+			});
+		});
+	});
+	setTimeout(function(){
+		$("#win").hide();
+		$("#fw1").hide();
+		$("#fw2").hide();
+		$("#fw3").hide();
+		$("#load").show();
+		map = Math.floor((Math.random() * 1000) + 1);
+		newMaze();
+		energy = 50, level++;
+		$("#energy").text(energy);
+		$("#level").text(level);
+		$("#load").hide();
+		$("#answerOne").show();
+		console.log(map);
+	}, 3300);
+}
+
 $(document).on("keyup", function(e){
 	if(e.keyCode == leftKey &&
 			posX > 0 &&
 			$(".ex"+(posX - 1)+".why"+posY).hasClass("space")){
 		$(".ex"+posX+".why"+posY).removeClass("current");
-		posX--;
+		posX--; movement();
 		$(".ex"+posX+".why"+posY).addClass("current");
 	} else if(e.keyCode == rightKey &&
 			posX < 51 &&
 			$(".ex"+(posX + 1)+".why"+posY).hasClass("space")){
 		$(".ex"+posX+".why"+posY).removeClass("current");
-		posX++;
+		posX++; movement();
 		$(".ex"+posX+".why"+posY).addClass("current");
 	} else if(e.keyCode == upKey &&
 			posY > 0 &&
 			$(".ex"+posX+".why"+(posY - 1)).hasClass("space")){
 		$(".ex"+posX+".why"+posY).removeClass("current");
-		posY--;
+		posY--; movement();
 		$(".ex"+posX+".why"+posY).addClass("current");
 	} else if(e.keyCode == downKey &&
 			posY < 51 &&
 			$(".ex"+posX+".why"+(posY + 1)).hasClass("space")){
 		$(".ex"+posX+".why"+posY).removeClass("current");
-		posY++;
+		posY++; movement();
 		$(".ex"+posX+".why"+posY).addClass("current");
-	}
-	
-	if($(".ex"+posX+".why"+posY).hasClass("end")){
-		$("#answerOne").hide();
-		$("#win").show().delay(500).fadeOut(1).delay(500).fadeIn(1).delay(500).fadeOut(1).delay(500).fadeIn(1).delay(500).fadeOut(1);
-		$("#fw1").show().delay(500).fadeOut(1, function(){
-			$("#fw2").show().delay(500).fadeOut(1, function(){
-				$("#fw3").show().delay(500).fadeOut(1, function(){
-					$("#fw1").show().delay(500).fadeOut(1, function(){
-						$("#fw2").show().delay(500).fadeOut(1, function(){
-							$("#fw3").show().delay(500).fadeOut(1);
-						});
-					});
-				});
-			});
-		});
-		setTimeout(function(){
-			$("#win").hide();
-			$("#fw1").hide();
-			$("#fw2").hide();
-			$("#fw3").hide();
-			$("#load").show();
-			map = Math.floor((Math.random() * 1000) + 1);
-			newMaze();
-			$("#load").hide();
-			$("#answerOne").show();
-			console.log(map);
-		}, 3300);
 	}
 });
 </script>
