@@ -1,0 +1,72 @@
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var map = ['10001001100000001', 272]; //answer: 10101001010100001
+map = ['10001001100000001', 35651584];
+
+var answerOne = 0;
+
+//tests
+//map = ['10000', 20]; // 01100
+
+function dragon(a){
+	var b = '';
+	var test = '';
+	
+	b = a.split("");
+	b = b.reverse();
+	b = b.join("");
+	
+	for(var i = 0; i < b.length; i++){
+		if(b[i] == '1'){
+			test += '0';
+		} else {
+			test += '1';
+		}
+	}
+	
+	b = test;
+
+	return a + '0' + b;
+}
+
+function checksum(original){
+	var test = '';
+	if(original[0] == original[1]){
+		test = '1';
+	} else {
+		test = '0';
+	}
+	
+	return test;
+}
+
+function findPairs(){
+	var pairs = '';
+	while(map[0].length > 0){
+		pairs += checksum(map[0].substr(0, 2));
+		map[0] = map[0].substr(2);
+	}
+	return pairs;
+}
+
+map[0] = dragon(map[0]);
+
+while(map[0].length < map[1]){
+	map[0] = dragon(map[0]);
+}
+
+map[0] = map[0].slice(0, map[1]);
+
+map[0] = findPairs();
+
+while(map[0].length % 2 == 0){
+	map[0] = findPairs();
+}
+
+answerOne = map[0];
+
+$("#answerOne").text(answerOne);
+</script>
