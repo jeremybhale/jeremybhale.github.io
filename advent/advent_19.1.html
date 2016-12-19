@@ -1,0 +1,63 @@
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var map = 3014603; //answer: ?
+//tests
+//map = 5; //answer: 3
+map = 1; //answer: 9
+
+var elvesOne = [];
+var elvesTwo = [];
+var win = 1;
+var next = 1;
+
+var answerOne = 0;
+var answerTwo = [];
+
+for(var i = 1; i < map + 1; i++){
+	win += 2;
+	if(i == next){
+		win = 1;
+		next = next * 2;
+	}
+}
+
+answerOne = win;
+
+for(var i = 1; i < map + 1; i++){
+	if(map % 2 != 0 && i == (map / 2) + .5){
+		elvesOne.push(i);
+	} else if(i < map / 2){
+		elvesOne.push(i);
+	} else {
+		elvesTwo.push(i);
+	}
+}
+
+while(answerTwo.length == 0){
+	if((elvesOne.length + elvesTwo.length) % 2 == 0){
+		elvesTwo.splice(0, 1);
+	} else {
+		elvesOne.splice(-1);
+	}
+	
+	//console.log("one: " + elvesOne.length);
+	//console.log("two: " + elvesTwo.length);
+	
+	if(elvesOne.length == 1 && elvesTwo.length == 0 ||
+		elvesTwo.length == 1 && elvesOne.length == 0){
+		//console.log("here");
+		answerTwo = elvesOne.concat(elvesTwo);
+	} else {	
+		elvesOne.push(elvesTwo[0]);
+		elvesTwo.push(elvesOne[0]);
+		elvesOne.splice(0, 1);
+		elvesTwo.splice(0, 1);
+	}
+}
+
+$("#answerOne").text(answerOne);
+$("#answerTwo").text(answerTwo.toString());
+</script>
