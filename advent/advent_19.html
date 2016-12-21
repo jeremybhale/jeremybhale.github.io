@@ -3,10 +3,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-var map = 3014603; //answer: ?
-//tests
-//map = 5; //answer: 3
-//map = 1; //answer: 9
+var map = 3014603; //answer: 1834903, 1420280
 
 var elvesOne = [];
 var elvesTwo = [];
@@ -16,6 +13,7 @@ var next = 1;
 var answerOne = 0;
 var answerTwo = [];
 
+//part 1
 for(var i = 1; i < map + 1; i++){
 	win += 2;
 	if(i == next){
@@ -25,11 +23,10 @@ for(var i = 1; i < map + 1; i++){
 }
 
 answerOne = win;
+	
+$("#answerOne").text(answerOne);
 
-answerTwo = [];
-elvesOne = [];
-elvesTwo = [];
-
+//part 2
 for(var i = 1; i < map + 1; i++){
 	if(map % 2 != 0 && i == (map / 2) + .5){
 		elvesOne.push(i);
@@ -57,6 +54,5 @@ while(answerTwo.length == 0){
 	}
 }
 
-$("#answerOne").text(answerOne);
 $("#answerTwo").text(answerTwo.toString());
 </script>
