@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'CFA Breuer';
+  src: url(http://azdevuxpatterns.azurewebsites.net/Content/fonts/CFABreuerBold.woff2) format('woff2');
+}
+
+.font-test {
+  font-family: 'CFA Breuer', Arial, Helvetica, sans-serif;
+}
