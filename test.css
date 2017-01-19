@@ -3,7 +3,7 @@
   src: url(http://jeremybhale.github.io/CFABreuerBold.woff2) format('woff2');
 }
 
-.font-test {
+.video-title {
   font-size: 2em;
   font-family: 'CFA Breuer', Arial, Helvetica, sans-serif;
 }
