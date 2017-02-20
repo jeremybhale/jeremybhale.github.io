@@ -1,0 +1,89 @@
+<div id="answerOne"></div>
+<div id="answerTwo"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var map = ['cpy a b',
+'dec b',
+'cpy a d',
+'cpy 0 a',
+'cpy b c',
+'inc a',
+'dec c',
+'jnz c -2',
+'dec d',
+'jnz d -5',
+'dec b',
+'cpy b c',
+'cpy c d',
+'dec d',
+'inc c',
+'jnz d -2',
+'tgl c',
+'cpy -16 c',
+'jnz 1 c',
+'cpy 86 c',
+'jnz 77 d',
+'inc a',
+'inc d',
+'jnz d -2',
+'inc c',
+'jnz c -5'];
+//tests
+//map = ['cpy 2 a', 'tgl a', 'tgl a', 'tgl a', 'cpy 1 a', 'dec a', 'dec a']; //answer: a = 3
+
+var registers = {a: 12, b: 0, c: 0, d: 0};
+var i = 0;
+
+var answerOne = 0;
+var answerTwo = 0;
+
+while(i < map.length){
+	var instructions = map[i].split(' ');
+	if(instructions[0] == 'cpy' && Number.isInteger(parseInt(instructions[1]))){
+		registers[instructions[2]] = parseInt(instructions[1]);
+		i++;
+	} else if(instructions[0] == 'cpy' && !Number.isInteger(parseInt(instructions[1]))){
+		registers[instructions[2]] = registers[instructions[1]];
+		i++;
+	} else if(instructions[0] == 'inc'){
+		registers[instructions[1]]++;
+		i++;
+	} else if(instructions[0] == 'dec'){
+		registers[instructions[1]]--;
+		i++;
+	} else if(instructions[0] == 'jnz' && (Number.isInteger(instructions[1]) || registers[instructions[1]] != 0)){
+		if(Number.isInteger(parseInt(instructions[2]))){
+			i += parseInt(instructions[2]);
+		} else {
+			i += parseInt(registers[instructions[2]]);
+		}
+	} else if(instructions[0] == 'tgl'){
+		if(i + registers[instructions[1]] < map.length && i + registers[instructions[1]] >= 0){
+			var newCmd = map[i + registers[instructions[1]]].split(' ');
+			if(newCmd.length == 2 && newCmd[0] == 'inc'){
+				newCmd[0] = 'dec';
+				map[i + registers[instructions[1]]] = newCmd[0] + " " + newCmd[1];
+			}else if(newCmd.length == 2){
+				newCmd[0] = 'inc';
+				map[i + registers[instructions[1]]] = newCmd[0] + " " + newCmd[1];
+			}else if(newCmd[0] == 'jnz'){
+				newCmd[0] = 'cpy';
+				map[i + registers[instructions[1]]] = newCmd[0] + " " + newCmd[1] + " " + newCmd[2];
+			}else{
+				newCmd[0] = 'jnz';
+				map[i + registers[instructions[1]]] = newCmd[0] + " " + newCmd[1] + " " + newCmd[2];
+			}
+		}
+		i++;
+	} else {
+		i++;
+	}
+	//console.log("values: " + registers.a + ", " + registers.b + ", " + registers.c + ", " + registers.d);
+}
+
+answerOne = registers.a;
+
+$("#answerOne").text(answerOne);
+$("#answerTwo").html(answerTwo);
+</script>
