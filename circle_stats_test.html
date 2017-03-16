@@ -1,0 +1,195 @@
+<style>
+	* {
+		font-family:arial;
+		margin:0;
+		padding:0;
+	}
+	
+	.circle-stat-single{
+		position:relative;
+		float:left;
+		margin: .5em;
+	}
+	
+	.circle-stat-single-svg{
+		position:absolute;
+		z-index:-1;
+	}
+	
+	.circle-stat-single-text{
+		margin:2.75em auto;
+		overflow:hidden;
+	}
+	
+	.circle-stat-single-text-number{
+		float:left;
+		width:3.5em;
+		font-size:2.5em;		
+		color: #008ed6;
+		text-align:center;
+	}
+	
+	.circle-stat-single-text-desc{
+		float:left;
+		width:8em;
+		margin-left:.5em;
+		color: #008ed6;
+	}
+
+	.sparkline-bg{
+		position:absolute;
+		top:5.75em;
+		left:1.8em;
+		width:5em;
+		height:.25em;
+		background:#cccccc;
+		text-align:left;
+		overflow:hidden;
+	}
+
+	.sparkline,
+	.sparkline-cyan
+	{
+		height:100%;
+		background:#008ed6;
+	}
+	
+	svg{
+		display:none;
+	}
+	
+	.js .no-js{
+		display:none;
+	}
+	
+	.js svg{
+		display:inline-block;
+	}
+</style>
+
+<body>
+<div class="circle-stat-single">
+	<div class="sparkline-bg no-js">
+		<div style="width: 6%;" class="sparkline-cyan"></div>
+	</div>
+	<svg id="circle-stat-single-svg" class="circle-stat-single-svg" width="136" height="136" data-percent="6">
+		<title>Single Stat</title>
+		<desc>
+			<div class="sparkline-bg">
+				<div style="width: 6%;" class="sparkline-cyan"></div>
+			</div>
+		</desc>
+	  <circle cx="68" cy="68" r="60" stroke="#eeeeee" stroke-width="16" fill="none" />
+	</svg>
+	<div class="circle-stat-single-text">
+		<span class="circle-stat-single-text-number">6%</span>
+		<span class="circle-stat-single-text-desc">were able to eat the peppers raw</span>
+	</div>
+</div>
+
+<div class="circle-stat-single">
+	<div class="sparkline-bg no-js">
+		<div style="width: 82%;" class="sparkline-cyan"></div>
+	</div>
+	<svg id="circle-stat-single-svg" class="circle-stat-single-svg" width="136" height="136" data-percent="82">
+		<title>Single Stat</title>
+		<desc>
+			<div class="sparkline-bg">
+				<div style="width: 82%;" class="sparkline-cyan"></div>
+			</div>
+		</desc>
+	  <circle cx="68" cy="68" r="60" stroke="#eeeeee" stroke-width="16" fill="none" />
+	</svg>
+	<div class="circle-stat-single-text">
+		<span class="circle-stat-single-text-number">82%</span>
+		<span class="circle-stat-single-text-desc">ate the peppers with minimal crying</span>
+	</div>
+</div>
+
+<div class="circle-stat-single">
+	<div class="sparkline-bg no-js">
+		<div style="width: 12%;" class="sparkline-cyan"></div>
+	</div>
+	<svg id="circle-stat-single-svg" class="circle-stat-single-svg" width="136" height="136" data-percent="12">
+		<title>Single Stat</title>
+		<desc>
+			<div class="sparkline-bg">
+				<div style="width: 12%;" class="sparkline-cyan"></div>
+			</div>
+		</desc>
+	  <circle cx="68" cy="68" r="60" stroke="#eeeeee" stroke-width="16" fill="none" />
+	</svg>
+	<div class="circle-stat-single-text">
+		<span class="circle-stat-single-text-number">12%</span>
+		<span class="circle-stat-single-text-desc">could not eat the peppers at all</span>
+	</div>
+</div>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script>
+; (function ($) {
+    $.singleStatGraphic = function (options) {
+        var singleStatGraphic = {
+            options: $.extend({
+                "stats": $(".circle-stat-single-svg"),
+				"curPercent": 0
+            }, options),
+            pToC: function (centerX, centerY, radius, angleInDegrees) {
+                var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
+
+				return {
+					x: centerX + (radius * Math.cos(angleInRadians)),
+					y: centerY + (radius * Math.sin(angleInRadians))
+				};
+            },
+            describeArc: function (x, y, radius, startAngle, endAngle) {
+				endAngle = (endAngle/100)*360;
+                var start = singleStatGraphic.pToC(x, y, radius, endAngle);
+				var end = singleStatGraphic.pToC(x, y, radius, startAngle);
+
+				var arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
+
+				var d = [
+					"M", start.x, start.y, 
+					"A", radius, radius, 0, arcSweep, 0, end.x, end.y
+				].join(" ");
+
+				return d;
+            },
+			createNode: function ($element) {
+				var node = document.createElementNS("http://www.w3.org/2000/svg","path");
+			
+				node.setAttribute("d", singleStatGraphic.describeArc(68,68,60,0,singleStatGraphic.options.curpercent));
+				node.setAttribute("stroke", "#008ed6");
+				node.setAttribute("fill", "none");
+				node.setAttribute("stroke-width", "16");
+
+				$element.append(node);
+			},
+			init: function () {
+                $.each(singleStatGraphic.options.stats, function (){
+					singleStatGraphic.options.curpercent = $(this).data("percent");
+					singleStatGraphic.createNode($(this));
+				});
+            }
+        };
+
+        return {
+            init: singleStatGraphic.init
+        };
+    };
+})(jQuery);	
+</script>
+<script>
+	jQuery(function () {
+		$("body").addClass("js");
+
+		if (jQuery.singleStatGraphic) {
+			var new_stat = jQuery.singleStatGraphic({			
+			});
+		}
+		
+		new_stat.init();
+	});
+</script>
