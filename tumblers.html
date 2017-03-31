@@ -1,0 +1,50 @@
+<style>
+	.tumbler{
+		display: inline-block;
+		margin: 1em;
+		font-size: 2em;
+		font-family: arial;
+		text-align: center;
+	}
+</style>
+
+<div class="tumbler tumbler1"></div>
+<div class="tumbler tumbler2" data-rotate="2"></div>
+<div class="tumbler tumbler3" data-rotate="3"></div>
+<div class="tumbler tumbler4" data-rotate="4"></div>
+<div class="tumbler tumbler5" data-rotate="5"></div>
+<div class="tumbler tumbler6" data-rotate="6"></div>
+<div class="tumbler tumbler7" data-rotate="7"></div>
+<div class="tumbler tumbler8" data-rotate="8"></div>
+<div class="tumbler tumbler9" data-rotate="9"></div>
+<div class="tumbler tumbler10" data-rotate="10"></div>
+<div class="tumbler tumbler11" data-rotate="11"></div>
+<div class="tumbler tumbler12" data-rotate="12"></div>
+<div class="tumbler tumbler13" data-rotate="13"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var tumblers = [['t','w','t','m','a','c','t','n','w','b','t','o','f'],['u','o','n','i','h','e','h','o','n','a','h','a','i'],['r','e','l','i','s','d','l','o','v','t','t','l','e'],['n','i','p','s','g','c','s','t','p','i','u','i','h'],['t','a','o','l','h','e','b','g','g','i','o','f','e'],['h','a','n','w','t','r','t','t','m','a','a','r','r'],['e','b','z','p','a','t','t','t','w','t','s','a','e'],['t','s','e','h','e','h','o','k','k','s','y','a','l'],['a','p','e','b','e','n','e','e','a','r','r','e','e'],['b','m','a','e','l','i','d','x','y','s','a','m','e'],['l','n','o','i','o','y','t','i','g','a','u','b','p'],['e','t','t','u','n','u','o','h','n','i','r','s','o'],['s','g','r','u','s','d','n','s','t','w','r','o','h']];
+
+function display(){
+	for(var t = 1; t < 14; t++){
+		$(".tumbler"+parseInt(t)).text("");
+	}
+	for(var i = 0; i < tumblers.length; i++){
+		for(var c = 0; c < tumblers[i].length; c++){
+			$(".tumbler"+parseInt(i+1)).html($(".tumbler"+parseInt(i+1)).html() + '<div>'+tumblers[i][c]+'</div>');
+		}		
+	}
+}
+
+function rotate(num){
+	tumblers[num-1].push(tumblers[num-1].shift());
+	display();
+}
+
+display();
+
+$(".tumbler").on("click", function(){
+	rotate($(this).data("rotate"));
+});
+</script>
