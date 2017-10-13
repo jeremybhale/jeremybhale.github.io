@@ -766,15 +766,38 @@
 		border: 2px solid #000;
 		border-radius: 32px;
 		background: none;
-		color: #000;
 		width: 32px;
 		height: 32px;
 		padding: 14px;
 		stroke-width: 2px;
 	}
 	
-	.icon.small {
-		width:
+	.icon.red {
+		color: #af272f;
+	}
+	
+	.icon.blue {
+		color: #00b5e2;
+	}
+	
+	.icon.outline.red {
+		border: 2px solid #af272f;
+	}
+	
+	.icon.outline.blue {
+		border: 2px solid #00b5e2;
+	}
+	
+	.icon.solid.red {
+		border: 2px solid #af272f;
+		background: #af272f;
+		color: #fff;		
+	}
+	
+	.icon.solid.blue {
+		border: 2px solid #00b5e2;
+		background: #00b5e2;
+		color: #fff;
 	}
 	
 	.svg-stroke {
@@ -795,6 +818,12 @@
 	<button id="normal">Normal</button>
 	<button id="outline">Outline</button>
 	<button id="solid">Solid</button>	
+</div>
+<br/>
+<div>	
+	<button id="black">Black</button>
+	<button id="blue">Blue</button>
+	<button id="red">Red</button>	
 </div>
 
 
@@ -1386,6 +1415,9 @@
 		var outlineButton = document.getElementById("outline");
 		var solidButton = document.getElementById("solid");
 		var normalButton = document.getElementById("normal");
+		var blackButton = document.getElementById("black");
+		var blueButton = document.getElementById("blue");
+		var redButton = document.getElementById("red");
 
 		outlineButton.onclick = function() {			
 			var ta = document.getElementsByClassName("icon");
@@ -1405,6 +1437,32 @@
 			var ta = document.getElementsByClassName("icon");
 			for (item of ta) {
 				item.setAttribute('class', 'icon');
+			}
+		};
+		
+		blackButton.onclick = function() {			
+			var ta = document.getElementsByClassName("icon");
+			for (item of ta) {
+				item.classList.remove('red');
+				item.classList.remove('blue');
+			}
+		};
+		
+		blueButton.onclick = function() {
+			var ta = document.getElementsByClassName("icon");
+			for (item of ta) {
+				item.classList.remove('red');
+				item.classList.remove('blue');
+				item.setAttribute('class', item.getAttribute("class") + ' blue');
+			}
+		};
+		
+		redButton.onclick = function() {
+			var ta = document.getElementsByClassName("icon");
+			for (item of ta) {
+				item.classList.remove('blue');
+				item.classList.remove('red');
+				item.setAttribute('class', item.getAttribute("class") + ' red');
 			}
 		};
 	</script>
