@@ -1,0 +1,58 @@
+<html>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+<script>
+
+/* Test */
+var input = "3,4,1,5";
+
+/* Input */
+input = "120,93,0,90,5,80,129,74,1,165,204,255,254,2,50,113";
+
+var pos = 0;
+var skip = 0;
+
+var array = [];
+for(i = 0; i < 256; i++) array.push(i);
+
+/* Test */
+//array = [0, 1, 2, 3, 4];
+
+input = input.split(",");
+console.log("input: "+ input);
+
+$.each(input, function() {
+	var length = parseInt(this);
+	var start = [];
+	var end = [];
+	
+	for(i = 0; i < length; i++) {
+		if (pos + i < array.length) start.push(array[pos+i]);
+		else end.push(array[pos+i-array.length]);
+	}
+	
+	var set = start.concat(end).reverse();
+	
+	console.log("set: " + set);
+	
+	for(i = 0; i < set.length; i++) {
+		if (pos + i < array.length) array[pos+i] = set[i];
+		else array[pos+i-array.length] = set[i];
+	}
+	
+	console.log("array: " + array);
+
+	pos = pos + length + skip;
+	while(pos > array.length) pos = pos - array.length;
+	console.log("pos: " + pos);
+	skip++;
+	console.log("skip: " + skip);
+});
+
+var answer = array[0] * array[1];
+console.log("answer: " + answer);
+
+</script>
+</body>
+</html>

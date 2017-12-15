@@ -1,0 +1,82 @@
+<html>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+<script>
+
+/* Test */
+var input = "";
+
+/* Input */
+input = "120,93,0,90,5,80,129,74,1,165,204,255,254,2,50,113";
+var lengthSequence = [];
+
+var pos = 0;
+var skip = 0;
+
+var array = [];
+for(i = 0; i < 256; i++) array.push(i);
+
+/* Test */
+//array = [0, 1, 2, 3, 4];
+
+for (i = 0; i < input.length; i++){
+	lengthSequence.push(input[i].charCodeAt(0));
+};
+lengthSequence = lengthSequence.concat([17,31,73,47,23]);
+console.log("length sequence: "+ lengthSequence);
+
+for(x = 0; x < 64; x++){
+	$.each(lengthSequence, function() {
+		var length = parseInt(this);
+		var start = [];
+		var end = [];
+		
+		for(i = 0; i < length; i++) {
+			if (pos + i < array.length) start.push(array[pos+i]);
+			else end.push(array[pos+i-array.length]);
+		}
+		
+		var set = start.concat(end).reverse();
+		
+		//console.log("set: " + set);
+		
+		for(i = 0; i < set.length; i++) {
+			if (pos + i < array.length) array[pos+i] = set[i];
+			else array[pos+i-array.length] = set[i];
+		}
+		
+		//console.log("array: " + array);
+
+		pos = pos + length + skip;
+		while(pos > array.length) pos = pos - array.length;
+		//console.log("pos: " + pos);
+		skip++;
+		//console.log("skip: " + skip);
+	});
+}
+
+var dense = [];
+
+for (i = 0; i < 16; i++) {
+	var index = 16 * i;
+	var test = array[index] ^ array[index+1] ^ array[index+2] ^ array[index+3] ^ array[index+4] ^ array[index+5] ^ array[index+6] ^ array[index+7] ^ array[index+8] ^ array[index+9] ^ array[index+10] ^ array[index+11] ^ array[index+12] ^ array[index+13] ^ array[index+14] ^ array[index+15];
+	dense.push(test);
+}
+
+console.log("dense: " + dense);
+
+var hex = "";
+
+$.each(dense, function() {
+	var str = this.toString(16);
+	if (str.length == 1) str = "0" + str;
+	if (str.length == 0) str = "00";
+	hex += str;
+});
+
+console.log(hex);
+
+</script>
+</body>
+</html>

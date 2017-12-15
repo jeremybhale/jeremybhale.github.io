@@ -1,0 +1,44 @@
+<html>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+<script>
+
+var input = 289326;
+
+//var input = 1024;
+
+var area = 1;
+var i = 0;
+
+while (Math.pow(area, 2) < input) {
+	area += 2;
+	i++;
+}
+console.log("per side: "+area);
+console.log("iter: "+ i);
+
+var minimum = area / 2 - .5;
+console.log("min: "+minimum);
+
+var maximum = area - 1;
+console.log("max: "+maximum);
+
+var position = area * area - input;
+console.log("pos: "+position);
+
+i = maximum;
+var dir = -1;
+var x = Math.pow(area, 2);
+while ( x != input ) {
+	x--;
+	i = i + dir;
+	if(i == minimum) dir = 1;
+	if(i == maximum) dir = -1;
+}
+
+console.log("answer: "+i);
+
+</script>
+</body>
+</html>

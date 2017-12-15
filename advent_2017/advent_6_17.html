@@ -1,0 +1,43 @@
+<html>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div id="answer1"></div>
+
+<script>
+
+var array = [2, 8, 8, 5, 4, 2, 3, 1, 5, 5, 1, 2, 15, 13, 5, 14];
+
+/* Part One tests */
+//var array = [0, 2, 7, 0];
+
+var seen = [];
+
+while (seen.indexOf(array.join()) == -1) {
+	seen.push(array.join());
+	//console.log(seen);
+	
+	var max = array.reduce(function(a, b) {
+		return Math.max(a, b);
+	});
+	var ind = array.indexOf(max);
+	
+	array[ind] = 0;
+	var pos = ind + 1;
+	if (pos > array.length - 1) pos = 0;
+	
+	for (var i = max; i > 0; i--) {
+		array[pos]++;
+		pos++;
+		if (pos > array.length - 1) pos = 0;
+	}
+	
+	//console.log(array);
+}
+	
+console.log(seen.length);
+console.log(seen.length - seen.indexOf(array.join()))
+
+</script>
+</body>
+</html>
