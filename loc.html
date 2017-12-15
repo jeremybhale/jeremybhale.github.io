@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>LIGHTS OUT CHICAGO presented by Locus Industries</title>
+<body>
+<style>
+	body {
+		color: #fff;
+		margin: 0;
+		background: #000;
+		width: 100%;
+		height: 100%;
+	}
+	.city {
+		width: 100%;
+		position: absolute;
+		left:0;
+		right: 0;
+		bottom: 0;
+		text-align: center;
+	}
+	#beam {
+		display: none;
+	}
+	#beam.on {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left:0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		text-align: center;
+	}
+	.beam {
+		background: #fff;
+		height: 100%;
+		width: 10px;
+		display: inline-block;
+	}
+	#moon {
+	    height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+	}
+	.light,
+	.moon {
+		background: #fff;
+		border: 1px solid #fff;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+	}
+	.moon {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		position:relative;
+		top: 80%;
+	}
+	.light.off,
+	.moon.off	{
+		background: #000;
+		border-color: #999;
+	}
+	.light:not(.off),
+	#beam.on .beam{
+	  animation: pulse 10s infinite;
+	}
+	.light:not(.off):nth-of-type(3n) {
+	  animation: pulse 10s 5s infinite;
+	}
+	.light:not(.off):nth-of-type(2n) {
+	  animation: pulse 10s 3s infinite;
+	}
+
+	@keyframes pulse {
+	  0%, 100% {
+		background-color: #fff;
+		border-color: #fff;
+	  }
+	  50% {
+		background-color: #ccc;
+		border-color: #ccc;
+	  }
+	}
+	
+	.moon {
+	  animation: xAxis 600s 1 linear;
+	}
+
+	@keyframes xAxis {
+	  100% {
+		animation-timing-function: ease-in;
+		transform: translate(1850%, -1850%);
+	  }
+	}
+	
+	.two {
+		width: 5%;
+	}
+	
+	.two {
+		height: 77px;
+		width: 12%;
+	}
+	
+	.three {
+		height: 40px;
+		width: 9%;
+	}
+	
+	.four {
+		height: 100px;
+		width: 13%;
+	}
+	
+	.five {
+		height: 80px;
+		width: 12%;
+	}
+	
+	.six {
+		height: 40px;
+		width: 11%;
+	}
+	
+	.seven {
+		height: 50px;
+		width: 8%;
+	}
+	
+	.eight {
+		height: 70px;
+		width: 5%;
+	}
+</style>
+
+<h1>LIGHTS OUT CHICAGO</h1>
+<div id="beam">
+	<span class="beam"></span>
+</div>
+<div id="moon">
+	<span class="moon"></span>
+</div>
+<div class="city">
+	<span class="light one" data-pos="1"></span>
+	<span class="light two" data-pos="2"></span>
+	<span class="light three" data-pos="3"></span>
+	<span class="light four" data-pos="4"></span>
+	<span class="light five" data-pos="5"></span>
+	<span class="light six" data-pos="6"></span>
+	<span class="light seven" data-pos="7"></span>
+	<span class="light eight" data-pos="8"></span>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(".light").on("click", function(){
+	if($(".light.off").length != 8) {
+		$(this).toggleClass("off");
+		var pos = $(this).data("pos");
+		if(pos == 1) $(".light[data-pos='2']").toggleClass("off");
+		else if(pos == 8) $(".light[data-pos='7']").toggleClass("off");
+		else {
+			$(".light[data-pos='" + (pos-1) + "'], .light[data-pos='" + (pos+1) + "']").toggleClass("off");
+		}
+		if($(".light.off").length == 8) $("#beam").addClass("on");
+	}
+});
+
+$(".moon").on("click", function(){
+	if($(".light.off").length == 8) $(this).toggleClass("off");
+});
+
+</script>
+</body>
+</html>
