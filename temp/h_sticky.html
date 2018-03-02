@@ -1,15 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sticky Demo</title>
 <style>
-* { margin: 0; padding: 0; }
+  * { 
+    margin: 0;
+    padding: 0;
+  }
+  body {
+	  display: inline-block;
+  }
+  header,
+  main,
+  footer {
+    display: block;
+  }
+  header { 
+    background: linear-gradient(to right, red , yellow);
+    height: 50px;  
+  }
+  .sticky {
+    left: 0;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    width: 98vw;
+  }
+  .logo {
+    margin-left: 2em;
+  }
+  .menu {
+    float: right;
+    margin-right: 2em;
+  }
+  .big-content {
+    background-color: #ccc;
+    height: 500px;
+    width: 2000px;
+  }
+  footer {
+    background: linear-gradient(to right, red , yellow);
+  }
 </style>
-<header style="display:block;background: linear-gradient(to right, red , yellow);width:2000px;height:50px;">
-	<div style="position:fixed;color:#fff;width:100%;">
-		<span style="margin-left:2em;">Logo</span>
-		<span style="float:right;margin-right:2em;">Button</span>
+</head>
+<body>
+<header>
+	<div class="sticky">
+		<span class="logo">Logo</span>
+		<span class="menu">Menu Button</span>
 	</div>
 </header>
-<main style="display:block;">
-	<div style="height:500px;width:2000px;background-color:#ccc;">Big content</div>
+<main>
+	<div class="big-content">Big content</div>
 </main>
-<footer style="display:block;background: linear-gradient(to right, red , yellow);">
+<footer>
 	<span>Something in the footer</span>
 </footer>
+</body>
+</html>
