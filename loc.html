@@ -10,169 +10,98 @@
 		width: 100%;
 		height: 100%;
 	}
-	.city {
-		width: 100%;
-		position: absolute;
-		left:0;
-		right: 0;
-		bottom: 0;
-		text-align: center;
-	}
-	#beam {
-		display: none;
-	}
-	#beam.on {
-		display: block;
-		width: 100%;
+	
+	.poster {
+		background: url(loc.jpg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
 		height: 100%;
-		position: absolute;
-		left:0;
-		right: 0;
-		bottom: 0;
-		top: 0;
-		text-align: center;
-	}
-	.beam {
-		background: #fff;
-		height: 100%;
-		width: 10px;
-		display: inline-block;
-	}
-	#moon {
-	    height: 100%;
 		width: 100%;
-		position: absolute;
-		top: 0;
 	}
-	.light,
-	.moon {
-		background: #fff;
-		border: 1px solid #fff;
-		display: inline-block;
-		width: 20px;
-		height: 20px;
+	
+	.grid {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		grid-column-gap: 1em;
+		grid-row-gap: 1em;
+		height: 100%;
 	}
-	.moon {
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		position:relative;
-		top: 80%;
-	}
-	.light.off,
-	.moon.off	{
+	
+	.light.out {
 		background: #000;
-		border-color: #999;
-	}
-	.light:not(.off),
-	#beam.on .beam{
-	  animation: pulse 10s infinite;
-	}
-	.light:not(.off):nth-of-type(3n) {
-	  animation: pulse 10s 5s infinite;
-	}
-	.light:not(.off):nth-of-type(2n) {
-	  animation: pulse 10s 3s infinite;
-	}
-
-	@keyframes pulse {
-	  0%, 100% {
-		background-color: #fff;
-		border-color: #fff;
-	  }
-	  50% {
-		background-color: #ccc;
-		border-color: #ccc;
-	  }
 	}
 	
-	.moon {
-	  animation: xAxis 600s 1 linear;
-	}
-
-	@keyframes xAxis {
-	  100% {
-		animation-timing-function: ease-in;
-		transform: translate(1850%, -1850%);
-	  }
-	}
-	
-	.two {
-		width: 5%;
+	.msg {
+		color: #0f0;
+		display: none;
+		font-family: monospace;
+		font-size: 1.25em;
+	    position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 	}
 	
-	.two {
-		height: 77px;
-		width: 12%;
-	}
-	
-	.three {
-		height: 40px;
-		width: 9%;
-	}
-	
-	.four {
-		height: 100px;
-		width: 13%;
-	}
-	
-	.five {
-		height: 80px;
-		width: 12%;
-	}
-	
-	.six {
-		height: 40px;
-		width: 11%;
-	}
-	
-	.seven {
-		height: 50px;
-		width: 8%;
-	}
-	
-	.eight {
-		height: 70px;
-		width: 5%;
+	.msg.active pre:after {
+		content: " ";
+		text-decoration: underline;
 	}
 </style>
 
-<h1>LIGHTS OUT CHICAGO</h1>
-<div id="beam">
-	<span class="beam"></span>
-</div>
-<div id="moon">
-	<span class="moon"></span>
-</div>
-<div class="city">
-	<span class="light one" data-pos="1"></span>
-	<span class="light two" data-pos="2"></span>
-	<span class="light three" data-pos="3"></span>
-	<span class="light four" data-pos="4"></span>
-	<span class="light five" data-pos="5"></span>
-	<span class="light six" data-pos="6"></span>
-	<span class="light seven" data-pos="7"></span>
-	<span class="light eight" data-pos="8"></span>
+<div class="poster">
+	<div class="grid">
+		<div class="light" data-x="1" data-y="1"></div>
+		<div class="light" data-x="2" data-y="1"></div>
+		<div class="light" data-x="3" data-y="1"></div>
+		<div class="light" data-x="1" data-y="2"></div>
+		<div class="light" data-x="2" data-y="2"></div>
+		<div class="light" data-x="3" data-y="2"></div>
+		<div class="light" data-x="1" data-y="3"></div>
+		<div class="light" data-x="2" data-y="3"></div>
+		<div class="light" data-x="3" data-y="3"></div>
+	</div>
+	<div class="msg active">
+<pre></pre>
+	</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
-$(".light").on("click", function(){
-	if($(".light.off").length != 8) {
-		$(this).toggleClass("off");
-		var pos = $(this).data("pos");
-		if(pos == 1) $(".light[data-pos='2']").toggleClass("off");
-		else if(pos == 8) $(".light[data-pos='7']").toggleClass("off");
-		else {
-			$(".light[data-pos='" + (pos-1) + "'], .light[data-pos='" + (pos+1) + "']").toggleClass("off");
-		}
-		if($(".light.off").length == 8) $("#beam").addClass("on");
-	}
-});
+var i = 0;
+var txt = ' INCOMING MESSAGE...                              \n\n PROJECT APPROVAL RECEIVED.                       \n\n WIRE DIAGRAM UPDATE FOR 35 + ARCHER.             \n\n		  * . +      .                            \n  		  . . .      &                            \n 		  . & .      .                            \n		  . . .      .                            \n		             ^                            \n		             .                            \n		             ^                            \n		             .                            \n		             .                            \n		             *                            \n		             .                            \n		             .                            \n		             +                            \n\n SILVER LINING WILL GO LIVE AS SCHEDULED.      \n\n END MESSAGE.';
+var speed = 50; /* The speed/duration of the effect in milliseconds */
 
-$(".moon").on("click", function(){
-	if($(".light.off").length == 8) $(this).toggleClass("off");
+function typeWriter() {
+  if (i < txt.length) {
+    $(".msg pre").text($(".msg pre").text() + txt.charAt(i));
+    i++;
+    setTimeout(typeWriter, speed);
+  } else {
+	$(".msg").removeClass("active");
+  }
+}
+
+$(".light").on("click", function(){
+	if($(".light.out").length != 9) {
+		$(this).toggleClass("out");
+		
+		var x = $(this).data("x");
+		var y = $(this).data("y");
+		
+		if(x-1 > 0) $(".light[data-x='"+(x-1)+"'][data-y='"+y+"']").toggleClass("out");
+		if(x+1 < 4) $(".light[data-x='"+(x+1)+"'][data-y='"+y+"']").toggleClass("out");
+		if(y-1 > 0) $(".light[data-y='"+(y-1)+"'][data-x='"+x+"']").toggleClass("out");
+		if(y+1 < 4) $(".light[data-y='"+(y+1)+"'][data-x='"+x+"']").toggleClass("out");
+		
+		if($(".light.out").length == 9) {
+			$(".poster").css("background", "#000");
+			$(".msg").show();
+			typeWriter();
+		}
+	}
 });
 
 </script>
