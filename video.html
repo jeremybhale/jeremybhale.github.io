@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<style>
+ * {
+	margin: 0;
+	padding: 0;
+ }
+ 
+ html,
+ body,
+ video {
+	height:100%;
+	width:100%;
+ }
+ 
+ body {
+	background: #000;
+ }
+ 
+ .control {
+	position: absolute;
+	top: 0;
+ }
+</style>
+
+</head>
+<body>
+
+<video id="video" src="glitch.mp4" autoplay muted loop></video>
+
+<div class="control">
+	<button onclick="swapVideo('glitch.mp4')">Vid 1</button>
+	<button onclick="swapVideo('ny.mp4')">Vid 2</button>
+</div>
+
+<script>
+	
+	function swapVideo(source) {
+		document.getElementById('video').setAttribute("src", source);
+	}
+	
+</script>
+
+</body>
+
+</html>
