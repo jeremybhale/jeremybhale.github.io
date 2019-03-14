@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 *{
 margin:0;
@@ -28,6 +28,10 @@ text-align:center;
 }
 input {
 text-align:center;
+width:90%;
+padding:5px;
+border:2px solid #000;
+font-weight:bold;
 }
 input[type=submit]{
 background-color: #000;
@@ -59,9 +63,11 @@ width:50px;
 		
 	var c = document.getElementById("canvas"),
 		ctx = c.getContext("2d");
+		
+		console.log(window.innerWidth);
 	
-	c.width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-	c.height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+	c.width = window.innerWidth;
+	c.height = window.innerHeight;
 	CANVAS_WIDTH = c.width;
 	CANVAS_HEIGHT = c.height;
 	
