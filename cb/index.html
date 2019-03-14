@@ -60,8 +60,8 @@ width:50px;
 	var c = document.getElementById("canvas"),
 		ctx = c.getContext("2d");
 	
-	c.width = window.innerWidth;
-	c.height = window.innerHeight;
+	c.width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+	c.height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 	CANVAS_WIDTH = c.width;
 	CANVAS_HEIGHT = c.height;
 	
