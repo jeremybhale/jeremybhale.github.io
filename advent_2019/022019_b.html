@@ -1,0 +1,91 @@
+<html>
+<body>
+<script>
+
+	//read number
+
+	//divide by 3
+	
+	//round down
+	
+	//subtract 2
+	
+	//add to total
+
+//else
+
+	//print total
+
+	//close file
+
+</script>
+
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+
+<script>
+function handleFileSelect(e) {
+    var files = e.target.files;
+	
+    for (var i = 0, f; f = files[i]; i++) {	
+		var reader = new FileReader();
+
+		reader.onload = (function(theFile) {
+			return function(e) {
+				//Custom per challenge
+				var input = e.target.result.split(",");
+				var answer = false;
+
+				//Part B
+				for (n = 0; n < 100; n++) {
+					for (v = 0; v < 100; v++) {
+						var temp = input.slice(0);
+						
+						temp[1] = n;
+						temp[2] = v;						
+						
+						for (var i = 0; i < input.length - 1; i = i + 4) {
+							if(temp[i] == 99)
+								break;
+								
+							if (temp.length < i + 2) {
+								while (temp.length < i + 2)
+									temp.push("");
+							}
+
+							temp[input[i+3]] = parseInput(temp, temp[i], temp[i+1], temp[i+2]);
+						}
+						
+						//Answer
+						if(temp[0] == 19690720) {
+							answer = 100 * temp[1] + temp[2];	
+							break;
+						}
+					}
+					
+					if(answer)
+						break;
+				}
+				
+				console.log(answer);
+			};
+		})(f);
+
+		reader.readAsText(f);
+	}
+}
+
+function parseInput(input, o, f, s){
+	if (o == 1)
+		return parseInt(input[f]) + parseInt(input[s]);
+	else if (o == 2) 
+		return parseInt(input[f]) * parseInt(input[s]);
+		
+	return false;
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+</script>
+</body>
+</html>

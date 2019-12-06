@@ -1,0 +1,68 @@
+<html>
+<body>
+<script>
+
+	//read number
+
+	//divide by 3
+	
+	//round down
+	
+	//subtract 2
+	
+	//add to total
+
+//else
+
+	//print total
+
+	//close file
+
+</script>
+
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+
+<script>
+function handleFileSelect(e) {
+    var files = e.target.files;
+	
+    for (var i = 0, f; f = files[i]; i++) {	
+		var reader = new FileReader();
+
+		reader.onload = (function(theFile) {
+			return function(e) {
+				//Custom per challenge
+				var input = e.target.result.split(/\n/);
+				var total = 0;
+				
+				for (var i = 0; i < input.length; i++) {
+					total = total + parseInput(input[i]);
+				}
+				
+				console.log(total);
+			};
+		})(f);
+
+		reader.readAsText(f);
+	}
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+function parseInput(mass){
+	var fuel = 0;
+	
+	mass = mass / 3;
+	mass = Math.floor(mass);
+	mass = mass - 2;
+	
+	if(mass > 0)
+		fuel = mass + parseInput(mass);
+	
+	return fuel;
+}
+
+</script>
+</body>
+</html>

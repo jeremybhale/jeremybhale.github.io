@@ -1,0 +1,83 @@
+<html>
+<body>
+
+<input type="file" id="files" name="files" multiple />
+
+<script>
+function handleFileSelect(e) {
+    var files = e.target.files;
+	
+    for (var i = 0, f; f = files[i]; i++) {	
+		var reader = new FileReader();
+
+		reader.onload = (function(theFile) {
+			return function(e) {
+				var answer = false;
+			
+				//Custom per challenge
+				var input = e.target.result.split("-");
+				var start = parseInt(input[0]);
+				var end = parseInt(input[1]);				
+				
+				var list = findAscendants(start, end);
+				
+				list = findDoubles(list);
+				
+				answer = list.length;
+				
+				console.log(answer);
+			};
+		})(f);
+
+		reader.readAsText(f);
+	}
+}
+
+function findDoubles(list) {
+	var doubles = [];
+	
+	for(i = 0; i < list.length; i++) {
+		var double = false;
+		
+		for(n = 0; n < 5; n++) {
+			var str = list[i].toString();
+
+			if(str[n] == str[n+1]){
+				double = true;
+				break;
+			}
+		}
+		
+		if(double)
+			doubles.push(list[i]);
+	}
+	
+	return doubles;
+}
+
+function findAscendants(start, end) {
+	var ascendants = [];
+	for(i = start; i < end; i++) {
+		var pass = 0;
+		
+		for(n = 0; n < 5; n++) {
+			var str = i.toString();
+
+			if(parseInt(str[n]) <= parseInt(str[n+1]))
+				pass++;
+			else
+				break;
+		}
+		
+		if(pass == 5)
+			ascendants.push(i);
+	}
+	
+	return ascendants;
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+</script>
+</body>
+</html>

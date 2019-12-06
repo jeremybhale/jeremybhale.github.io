@@ -1,0 +1,109 @@
+<html>
+<body>
+
+<input type="file" id="files" name="files" multiple />
+
+<script>
+function handleFileSelect(e) {
+    var files = e.target.files;
+	
+    for (var i = 0, f; f = files[i]; i++) {	
+		var reader = new FileReader();
+
+		reader.onload = (function(theFile) {
+			return function(e) {
+				var input = e.target.result.split(",");
+				var answer = false;
+				//console.log(input);
+				
+				//Custom per challenge
+				var diagInput = 1;
+				var n = 2;
+				
+				for(i = 0; i < input.length; i = i + n) {
+					var params = parseParams(input, i);
+					//[inst, first, second, pos, move, modes]
+					//console.log(params);
+					
+					if(params[0] == 99)
+						break;
+					
+					var modes = parseMode(input, params[5], params[1], params[2], false);
+					//[f, s, t]
+					//console.log(modes);
+					
+					var val = parseOpcode(input, params[0], modes[0], modes[1], modes[2], diagInput);					
+					//console.log(val);
+					
+					if(params[0] == 4)
+						diagInput = val;
+					else
+						input[params[3]] = val;
+					
+					n = params[4];
+				}
+				
+				console.log(input);
+				console.log(diagInput);
+			};
+		})(f);
+
+		reader.readAsText(f);
+	}
+}
+
+function parseOpcode(input, o, f, s, t, diagInput) {
+	if (o == 1)
+		return f + s;
+	else if (o == 2) 
+		return f * s;
+	else if (o == 3) 
+		return diagInput;
+	else if (o == 4) 
+		return f;
+		
+	return false;
+}
+
+function parseMode(input, modes, f, s, t) {
+	if(modes[0] == 0)
+		f = parseInt(input[f]);
+	if(modes[1] == 0)
+		s = parseInt(input[s]);
+	//if(modes[2] == 0)
+		//t = parseInt(input[f]);
+		
+	return [f, s, t];
+}
+
+function parseParams(input, pos) {
+	var o = input[pos].toString();
+	
+	while (o.length < 5)
+		o = "0" + o;
+	
+	var inst = parseInt(o.slice(-2));
+	var modes = [parseInt(o[2]), parseInt(o[1]), parseInt(o[0])];
+	var first = false;
+	var second = false;
+	var move = 2;
+		
+	if(inst != 99) {
+		first = parseInt(input[pos + 1]);
+		
+		if(inst < 3) {
+			second = parseInt(input[pos + 2]);
+			pos = parseInt(input[pos + 3]);
+			move = 4;
+		} else
+			pos = parseInt(input[pos + 1]);
+	}
+
+	return [inst, first, second, pos, move, modes];
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+</script>
+</body>
+</html>

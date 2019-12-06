@@ -1,0 +1,138 @@
+<html>
+<body>
+<script>
+
+	//read number
+
+	//divide by 3
+	
+	//round down
+	
+	//subtract 2
+	
+	//add to total
+
+//else
+
+	//print total
+
+	//close file
+
+</script>
+
+<input type="file" id="files" name="files" multiple />
+
+<script>
+function handleFileSelect(e) {
+    var files = e.target.files;
+	
+    for (var i = 0, f; f = files[i]; i++) {	
+		var reader = new FileReader();
+
+		reader.onload = (function(theFile) {
+			return function(e) {
+				var answer = false;
+			
+				//Custom per challenge
+				var input = e.target.result.split(/\n/);
+				var wireOne = input[0].split(",");
+				var wireTwo = input[1].split(",");				
+				
+				var wireOnePoints = plotPoints(wireOne);
+				var wireTwoPoints = plotPoints(wireTwo);
+				
+				var crosses = findCrosses(wireOnePoints, wireTwoPoints);
+				
+				answer = findShortest(crosses);
+				
+				console.log(answer);
+			};
+		})(f);
+
+		reader.readAsText(f);
+	}
+}
+function findShortest(points) {
+	var shortest = -1;
+	
+	for(i = 0; i < points.length; i++) {		
+		distance = points[i][2];
+		
+		if(shortest <= 0 || distance < shortest)
+			shortest = distance;
+	}
+	
+	return shortest;
+}
+
+function findNearest(points) {
+	var lowest = -1;
+	
+	for(i = 0; i < points.length; i++) {
+		var x = Math.abs(points[i][0]);
+		var y = Math.abs(points[i][1]);
+		
+		distance = x + y;
+		
+		if(lowest <= 0 || distance < lowest)
+			lowest = distance;
+	}
+	
+	return lowest;
+}
+
+function findCrosses(one, two) {
+	var crossed = [];
+	for(i = 0; i < one.length; i++) {
+		for(n = 0; n < two.length; n++) {
+			if(two[n][0] == one[i][0] && two[n][1] == one[i][1])
+				crossed.push([two[n][0], two[n][1], one[i][2] + two[n][2]]);
+		}
+	}
+	
+	return crossed;
+}
+
+function plotPoints(wire){
+	var points = [];
+	var x = 0;
+	var y = 0;
+	var step = 0;
+	
+	for(var i = 0; i < wire.length; i++) {
+		var val = wire[i].slice(1);
+		var xMod = 0;
+		var yMod = 0;
+		
+		switch(wire[i][0]) {
+			case "R":
+				xMod = 1;
+				break;
+			case "L":
+				xMod = -1;
+				break;
+			case "U":
+				yMod = 1;
+				break;
+			case "D":
+				yMod = -1;
+				break;
+		}
+		
+		for(n = 0; n < val; n++) {
+			x = x + xMod;
+			y = y + yMod;
+			step++;
+			
+			points.push([x, y, step]);
+		}
+	}
+	
+	return points;
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+</script>
+</body>
+</html>
