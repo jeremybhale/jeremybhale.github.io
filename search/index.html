@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html, body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  overflow: hidden;
+}
+
+h1 {
+	font-style: italic;
+	margin-bottom: 0.5rem;
+}
+
+h4 {
+	margin-top: 0;
+}
+
+.flip-card, .start-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  display: inline-block;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: scale(1.05);
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  left: 0;
+}
+
+.flip-card-front {
+  color: black;
+}
+
+.flip-card-back {
+  color: white;
+  transform: rotateY(180deg);
+  transform-origin: 50% 50%;
+}
+
+.board {
+	text-align: center;
+	min-width: max-content;
+	overflow: auto;
+}
+
+.tile-row {
+	position: relative;
+}
+
+.tile-row:nth-child(n+2) {
+  margin-top: -2.5rem;
+}
+
+.legend {
+	text-align: center;
+}
+
+.rules {
+	border: 2px solid rgba(0,0,0,.25);
+	margin: 1rem;
+	padding: 1rem 1rem 1rem 1rem;
+	grid-row: 2;
+}
+
+.rules:empty {
+	display: none;
+}
+
+.day {
+	font-size: 1.25rem;
+}
+
+.number {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+.roles {
+	position:absolute;
+	bottom: 1.5rem;
+	left: 1rem;
+}
+
+.roles svg {
+	vertical-align: middle;
+}
+
+.roles span {
+	margin-left: .5rem;
+}
+
+.role {
+	padding: 0.5rem;
+	text-align: left;
+	cursor: pointer;
+}
+
+.leader:hover,
+.spotter:hover,
+.ranger:hover,
+.crewman:hover {
+	font-weight: bold;
+}
+
+.equipment {
+	margin: 2rem 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="legend">
+	<h1 class="has-rule" data-rule-title="WELCOME" data-rule-description="Welcome to SEARCH, the game where you and your teammates work together to rescue a person missing in the wilderness. It's up to you to use your supplies and set up base camps wisely before time runs out. Will you save the day, or will the missing be lost forever?">SEARCH</h1>
+	
+	<div class="timer">
+		<svg height="100" width="100" class="has-rule" data-rule-title="TIME" data-rule-description="A day is split into three parts, morning, midday, and evening. After each player moves once, the day advances to the next stage. After the third turn, the day ends and the next day begins.">
+		  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#ebc921" />
+		</svg>
+		<div class="has-rule"  data-rule-title="DAYS" data-rule-description="Each day that passes means the missing person has a lower chance of survival. At the end of the FIFTH day, the search is called off and the game ends.">
+			<div class="day">DAY</div>
+			<div class="number">1</div>
+		</div>
+	</div>
+	
+	<div class="equipment has-rule" data-rule-title="EQUIPMENT" data-rule-description="There are three types of equipment: FOOD, WATER, and ROPE. Each will be needed in certain situations, either to escape an obstacle or rescue your missing person. Once a piece of equipment has been used, it is gone. However, equipment can be recovered at SAFE ZONES or by landing on other beneficial tiles. A player can also pass a piece of equipment to another player in an adjacent square, though they lose that piece for their own use.">
+		<b>FOOD</b> |
+		<b>WATER</b> |
+		<b>ROPE</b>
+	</div>
+
+	<div class="roles">
+		<div class="role leader has-rule" data-rule-title="LEADER" data-rule-description="Once per day the LEADER can move across two tiles instead of one.">
+			<svg width="56" height="31">
+				<rect width="50" y="3" x="3" height="25" style="fill:blue;stroke-width:3;stroke:purple;"/>
+			</svg>
+			<span>LEADER</span>
+		</div>
+		<div class="role spotter has-rule" data-rule-title="SPOTTER" data-rule-description="Once per day the SPOTTER can reveal an adjacent tile instead of moving there.">
+			<svg width="56" height="31">
+				<rect y="3" x="3" width="50" height="25" style="fill:red;stroke-width:3;stroke:purple;"/>
+			</svg>
+			<span>SPOTTER</span>
+		</div>
+		<div class="role ranger has-rule" data-rule-title="RANGER" data-rule-description="Once per day the RANGER can gather a missing piece of equipment from their surroundings.">
+			<svg width="56" height="31">
+				<rect y="3" x="3" width="50" height="25" style="fill:yellow;stroke-width:3;stroke:purple;"/>
+			</svg>
+			<span>RANGER</span>
+		</div>
+		<div class="role crewman has-rule" data-rule-title="CREWMAN" data-rule-description="Once per day the CREWMAN can spend one piece of equipment to create a base camp on their tile.">
+		<svg width="56" height="31">
+			<rect y="3" x="3" width="50" height="25" style="fill:orange;stroke-width:3;stroke:purple;"/>
+		</svg>
+			<span>CREWMAN</span>
+		</div>
+	</div>
+	
+	<div class="rules">
+		<h4>WELCOME</h4>
+		<div>Welcome to SEARCH, the game where you and your teammates work together to rescue a person missing in the wilderness. It's up to you to use your supplies and set up base camps wisely before time runs out. Will you save the day, or will the missing be lost forever?</div>
+	</div>
+</div>
+
+<div class="board">
+  <div class="tile-row">
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+  </div>
+  
+  <div class="tile-row">
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+  </div>
+
+  <div class="tile-row">
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+  </div>
+
+<div class="tile-row">
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+  </div>
+
+  <div class="tile-row">
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+  </div>
+
+  <div class="tile-row">
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+  </div>
+
+  <div class="tile-row">
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+  </div>
+
+<div class="tile-row">
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+  </div>
+
+  <div class="tile-row">
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+  </div>
+  
+    <div class="tile-row">
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+  </div>
+
+  <div class="tile-row">
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+  </div>
+
+<div class="tile-row">
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+  </div>
+
+  <div class="tile-row">
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+    <div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+	<div class="flip-card">
+    	<div class="flip-card-inner">
+    		<svg width="200" height="200" class="flip-card-back">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:blue;stroke:purple;stroke-width:5;" />
+          	</svg>
+            <svg width="200" height="200" class="flip-card-front">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:lime;stroke:purple;stroke-width:5;" />
+      		</svg>
+    	</div>
+  	</div>
+	
+      <div class="start-card">
+    		<svg width="200" height="200">
+        		<polygon points="100,10 10,50 10,150 100,190 190,150 190,50"
+      style="fill:gray;stroke:purple;stroke-width:5;" />
+          	</svg>
+  	</div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+<script>
+$("polygon").on("click", function() {
+	$(this)
+		.parents(".flip-card")
+		.addClass("flipped")
+		.on("mouseover", function() {
+			var title = "SEARCHED LAND";
+			var rule = "Tiles can have various effects. Some may be beneficial, offering equipment or other boons. Some will be obstacles, requiring the use of certain pieces of equipment before the player can escape. Others will be empty, free space to move through. Only one tile hides your missing person.";
+		
+			$(".rules").html("").append("<h4>" + title + "</h4><div>" + rule + "</div>");
+		})
+		.on("mouseout", function() {
+			$("h1").trigger("mouseover");
+		})
+		.trigger("mouseover");
+});
+
+$(".has-rule")
+	.on("mouseover", function() {
+		var title = $(this).data("rule-title");
+		var rule = $(this).data("rule-description");
+	
+		$(".rules").html("").append("<h4>" + title + "</h4><div>" + rule + "</div>");
+	})
+	.on("mouseout", function() {
+		$("h1").trigger("mouseover");
+	});
+
+$(".start-card")
+	.on("mouseover", function() {
+		var title = "SAFE ZONES";
+		var rule = "At the beginning of the game, each player chooses a gray tile to start on as a SAFE ZONE. When the search begins, all other safe zone tiles are removed from play. Once the missing has been found and aid has been given, they must be brought back to any SAFE ZONE. Additionally, any player returning to a SAFE ZONE will regain all missing equipment.";
+		
+		$(".rules").html("").append("<h4>" + title + "</h4><div>" + rule + "</div>");
+	})
+	.on("mouseout", function() {
+		$("h1").trigger("mouseover");
+	});
+	
+$(".flip-card").not(".flipped")
+	.on("mouseover", function() {
+		var title = "WILDERNESS";
+		var rule = "Each player takes their turn moving from one adjacent tile to another, looking for the missing person. When they land on a tile they must flip it over and take whatever action is presented.";
+		
+		$(".rules").html("").append("<h4>" + title + "</h4><div>" + rule + "</div>");
+	})
+	.on("mouseout", function() {
+		$("h1").trigger("mouseover");
+	});
+</script>
+
+</body>
+</html>
