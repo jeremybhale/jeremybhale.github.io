@@ -444,6 +444,10 @@ footer .logo {
 		grid-row: 1;
 		text-align: left;
 	}
+	
+	footer a.social {
+		margin: 1rem .15rem 0;
+	}
 }
 
 /* Helpers */
