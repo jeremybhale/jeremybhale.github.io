@@ -1,185 +1,207 @@
-//https://www.w3.org/WAI/tutorials/carousels/full-code/
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Thouron Award</title>
+		<meta name="viewport" content="user-scalable=no, width=device-width">
+		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	</head>
+	<body>
+		<a class="skiplink" href="#main">Skip to content</a>
+		<header>
+			<a href="/">
+				<img class="logo" src="images/logo.png" alt="Thouron Award"/>
+			</a>
+			<a href="#" title="Menu Toggle Open" class="menu-open"></a>
+			<nav>
+				<ul>
+					<li><a href="#About">The Award</a></li>
+					<li><a href="#Opportunities">Study</a></li>
+					<li><a href="#Alumni">Scholars & Alumni</a></li>
+					<li><a href="#Contact">Contact</a></li>
+					<li><a href="#ApplyUK" class="button">Apply from the U.K.</a></li>
+					<li><a href="#ApplyPenn" class="button">Apply from Penn</a></li>
+				</ul>
+				<img src="images/flagLogo.png" alt="UK and American Flags Waving Together"/>
+				<a href="#" title="Menu Toggle Closed" class="menu-close"></a>
+			</nav>
+		</header>
 
-var alumniCarousel = (function() {
-	"use strict";
-
-	var carousel, slides, index, slidenav, settings, timer, setFocus;
-
-	function init(set) {
-		settings = set;
-		
-		carousel = document.getElementById(settings.id);
-		slides = carousel.querySelectorAll('li');
-		
-		var ctrls = document.createElement('ul');
-
-		ctrls.className = 'controls';
-		ctrls.innerHTML = '<li>' +
-			'<button type="button" class="btn-prev" title="Previous Item"></button>' +
-		  '</li>' +
-		  '<li>' +
-			'<button type="button" class="btn-next" title="Next Item"></button>' +
-		  '</li>';
-
-		ctrls.querySelector('.btn-prev')
-			.addEventListener('click', function () {
-				clearInterval(timer);
-				prevSlide(true, index-1);
-			});
-		ctrls.querySelector('.btn-next')
-			.addEventListener('click', function () {
-				clearInterval(timer);
-				nextSlide(true, index+1);
-			});
-
-		carousel.appendChild(ctrls);
-		
-		if (settings.slidenav || settings.animate) {
-			slidenav = document.createElement('ul');
-
-			slidenav.className = 'slidenav';
+		<main id="main">
+			<section id="introduction">
+				<h1 class="h2">Graduate Scholarship, Lifetime Fellowship</h1>
+				<h2 class="h4">The Thouron Award,</h2>
+				<p>
+					a graduate exchange program between the United Kingdom and the University of Pennsylvania, offers a life-changing opportunity for exceptional students. Its funding provides generous scholarships for postgraduate study abroad, and recipients join a stimulating community of international scholars and Thouron alumni. Explore how to apply for a graduate scholarship <a href="#UK">from the U.K.</a> or <a href="#Penn">from Penn</a>.
+				</p>
+			</section>
 			
-			if (settings.slidenav) {
-				for(var i = 0; i < slides.length; i++) {
-					var li = document.createElement('li');
-					var klass = (i===0) ? 'class="active" ' : '';
-					var kurrent = (i===0) ? ' <span class="visuallyhidden">(Current Item)</span>' : '';
-					var name = slides[i].getElementsByClassName('featured-name')[0].textContent;
+			<section id="featuredAlumni" class="js" aria-labelledby="carouselHeading">
+			  <h2 id="carouselHeading" class="visuallyhidden">Featured Alumni</h2>
+			  <ul class="featured_container">
+				<li tabindex="-1" class="alumni active">
+					<article class="featured">
+						<img src="images/alumni1.png" alt="Photograph of Alumni"/>
+						<div class="featured-info">
+							<h3 class="h2 featured-name">Michelle Peluso</h3>
+							<p class="featured-job">Senior VP, Digital Sales &amp; Chief Marketing Officer, IBM</P>
+							<span class="featured-grad">'93</span>
+						</div>
+					</article>
+				</li>
+				<li tabindex="-1" class="alumni">
+					<article class="featured">
+						<img src="images/alumni2.png" alt="Photograph of Alumni"/>
+						<div class="featured-info">
+							<h3 class="h2 featured-name">NAME</h3>
+							<p class="featured-job">POSITION</P>
+							<span class="featured-grad">GRADUATION</span>
+						</div>
+					</article>
+				</li>
+				<li tabindex="-1" class="alumni">
+					<article class="featured">
+						<img src="images/alumni3.png" alt="Photograph of Alumni"/>
+						<div class="featured-info">
+							<h3 class="h2 featured-name">NAME</h3>
+							<p class="featured-job">POSITION</P>
+							<span class="featured-grad">GRADUATION</span>
+						</div>
+					</article>
+				</li>
+				<li tabindex="-1" class="alumni">
+					<article class="featured">
+						<img src="images/alumni4.png" alt="Photograph of Alumni"/>
+						<div class="featured-info">
+							<h3 class="h2 featured-name">NAME</h3>
+							<p class="featured-job">POSITION</P>
+							<span class="featured-grad">GRADUATION</span>
+						</div>
+					</article>
+				</li>
+			  </ul>
+			</section>
+			
+			<section id="scholarsAndDeadlines">
+				<div class="scholars_container">
+					<h2 class="icon-bell">What's New</h2>
+					<h3>2020 Scholars Named</h3>
+					<div class="scholars">
+						<h4>British:</h4>
+						<ul>
+							<li>
+								<span class="scholar">Radha Bhatt</span>
+								<span class="degree">Master's in Law</span>
+							</li>
+							<li>
+								<span class="scholar">Laura Edwards</span>
+								<span class="degree">Master's in Law</span>
+							</li>
+							<li>
+								<span class="scholar">Ben Gregson</span>
+								<span class="degree">Master of Art's in English</span>
+							</li>
+						</ul>
+					</div>
+					<div class="scholars">
+						<h4>American:</h4>
+						<ul>
+							<li>
+								<span class="scholar">Braden Cordivari</span>
+								<span class="degree">Master's in Archaeological Science</span>
+							</li>
+							<li>
+								<span class="scholar">Daniel De Varona Brennan</span>
+								<span class="degree">Master's in Military History</span>
+							</li>
+							<li>
+								<span class="scholar">Gregory Forkin</span>
+								<span class="degree">Master's in Mathematics</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="deadlines_container">
+					<img src="images/landscape.png" alt="On Campus Landscape"/>
+					<h2 class="icon-calendar">What's Next</h2>
+					<h3>Application Deadlines for 2020</h3>
+					<div class="deadlines">
+						<h4>British Candidates:</h4>
+						<span>1 November 2020</span>
+					</div>
+					<div class="deadlines">
+						<h4>American Candidates:</h4>
+						<span>15 October 2020</span>
+					</div>
+					<h3>Interview Weekend</h3>
+					<div class="interviews">
+						<h4>British Candidates:</h4>
+						<div>
+							<span>January 2021</span>
+							<span>London or Virtual</span>
+						</div>
+					</div>
+					<div class="interviews">
+						<h4>American Candidates:</h4>
+						<div>
+							<span>Late January 2021</span>
+							<span>Philadelphia or Virtual</span>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="keepInTouch">
+				<h2>Keep in Touch</h2>
+				<div class="double-frame_container">
+					<div class="double-frame">
+						<h3>Scholars</h3>
+						<p>You've got a lot going on. Tell us your news and keep up with other Thourons.</p>
+					</div>				
+					<div class="double-frame">
+						<h3>Alumni</h3>
+						<p>Let us know how your year is going, and take advantage of the Alumni community. There are a lot of Thourons to visit.</p>
+					</div>
+				</div>
+				<a href="#" class="button">For Current Scholars & Alumni</a>
+			</section>
+		</main>
 
-					li.innerHTML = '<button '+ klass +'data-slide="' + i + '"><span class="visuallyhidden">' + name + '</span> ' + kurrent + '</button>';
-					slidenav.appendChild(li);
-				}
-			}
-
-			slidenav.addEventListener('click', function(event) {
-				var button = event.target;
-				if (button.localName == 'button') {
-					var slide = button.getAttribute('data-slide');
-					if (slide) {
-						clearInterval(timer);
-						if(slide > index)
-							nextSlide(true, slide);
-						else if(slide < index)
-							prevSlide(true, slide);
-					}
-				}
-			}, true);
-
-			carousel.className = 'js';
-			carousel.appendChild(slidenav);
-		}
-		
-		var liveregion = document.createElement('div');
-		liveregion.setAttribute('aria-live', 'polite');
-		liveregion.setAttribute('aria-atomic', 'true');
-		liveregion.setAttribute('class', 'liveregion visuallyhidden');
-		carousel.appendChild(liveregion);
-		
-		slides[0].parentNode.addEventListener('transitionend', function (event) {
-			var slide = event.target;
-			for (var i = slides.length - 1; i >= 0; i--) {
-				slides[i].classList.remove('in-transition');
-			}
-			if (slide.classList.contains('active'))  {
-				if(setFocus) {
-					slide.focus();
-					setFocus = false;
-				}
-			}
-		});
-		
-		index = 0;
-		setSlides(index);
-		
-		timer = setInterval(function(){ nextSlide(false, index+1); }, 5000);
-	}
-	
-	function setSlides(new_current, setFocusHere, transition, announceItemHere) {
-		setFocus = typeof setFocusHere !== 'undefined' ? setFocusHere : false;
-		transition = typeof transition !== 'undefined' ? transition : 'none';
-		
-		var announceItem = typeof announceItemHere !== 'undefined' ? announceItemHere : false;
-		
-		new_current = parseFloat(new_current);
-
-		var length = slides.length;
-		var new_next = new_current+1;
-		var new_prev = new_current-1;
-		
-		if(new_next === length) {
-			new_next = 0;
-		} else if(new_prev < 0) {
-			new_prev = length-1;
-		}
-		
-		for (var i = slides.length - 1; i >= 0; i--) {
-			slides[i].className = "";
-		}
-		
-		slides[index].className = 'in-transition';
-		
-		slides[new_next].classList.add('next');
-		slides[new_next].setAttribute('aria-hidden', 'true');
-
-		slides[new_prev].classList.add('prev');
-		slides[new_prev].setAttribute('aria-hidden', 'true');
-
-		slides[new_current].classList.add('active');
-		slides[new_current].removeAttribute('aria-hidden');
-		
-		if (announceItem) {
-			carousel.querySelector('.liveregion').textContent = 'Item ' + (new_current + 1) + ' of ' + slides.length;
-		}
-		
-		if(settings.slidenav) {
-			var buttons = carousel.querySelectorAll('.slidenav button[data-slide]');
-			for (var j = buttons.length - 1; j >= 0; j--) {
-				var name = slides[j].getElementsByClassName('featured-name')[0].textContent;
-				buttons[j].className = '';
-				buttons[j].innerHTML = '<span class="visuallyhidden">' + name + '</span>';
-			}
-			buttons[new_current].className = "active";
-			buttons[new_current].innerHTML = '<span class="visuallyhidden">' + slides[new_current].getElementsByClassName('featured-name')[0].textContent + '</span> ' + ' <span class="visuallyhidden">(Current Item)</span>';
-		}		
-
-		index = new_current;
-	}
-	
-	function nextSlide(announceItem, slide) {
-		announceItem = typeof announceItem !== 'undefined' ? announceItem : false;
-		
-		var length = slides.length,
-		new_current = slide;
-
-		if(new_current === length) {
-			new_current = 0;
-		}
-
-		setSlides(new_current, false, 'prev', announceItem);
-	}
-
-	function prevSlide(announceItem, slide) {
-		announceItem = typeof announceItem !== 'undefined' ? announceItem : false;
-
-		var length = slides.length,
-		new_current = slide;
-
-		if(new_current < 0) {
-			new_current = length-1;
-		}
-		
-		setSlides(new_current, false, 'next', announceItem);
-	}
-	
-	return {
-		init:init,
-		next:nextSlide,
-		prev:prevSlide
-	};
-});
-
-var carousel = new alumniCarousel();
-carousel.init({
-  id: 'featuredAlumni',
-  slidenav: true
-});
+		<footer>
+			<nav>
+				<ul>
+					<li><a href="#ApplyPenn">Apply from Penn</a></li>
+					<li><a href="#ApplyUK">Apply from the U.K.</a></li>
+					<li><a href="#About">About the Award</a></li>
+					<li><a href="#Opportunities">Study Opportunities</a></li>
+					<li><a href="#Alumni">Scholars & Alumni</a></li>
+				</ul>
+			</nav>
+			
+			<section id="contact">
+				<a href="#Contact">Contact Us</a>
+				<p>
+					<strong>In the U.K.</strong> 07906 153 210
+				</p>
+				<p>
+					<strong>In the U.S.</strong> 215-746-6488
+				</p>
+				<a class="social li" href="#LinkedIn" title="Thouron on LinkedIn"></a>
+				<a class="social in" href="#Instagram" title="Thouron on Instagram"></a>
+				<a class="social fb" href="#Facebook" title="Thouron on Facebook"></a>
+			</section>
+			
+			<section>
+				<img class="logo" src="images/logo.png" alt="Thouron Award Logo"/>
+				<ul class="legal">
+					<li><a href="#Terms">Terms of Use</a></li>
+					<li><a href="#Privacy">Privacy Policy</a></li>
+				</ul>
+				<p>
+					&copy; Copyright 2021 Thouron Award. All rights reserved.
+				</p>
+			</section>
+		</footer>
+		<script src="scripts/carousel.js"></script>
+	</body>
+</html>
