@@ -1,0 +1,200 @@
+<!doctype>
+<html>
+<head>
+<style>
+	@keyframes entice {
+		from {
+			height: 105%;
+			opacity: 0;
+			width: 105%;
+		}
+		to {
+			height: 100%;
+			opacity: 1;
+			width: 100%;
+		}
+	}
+
+	body {
+		background-color: #eee;
+		margin: 0;
+	}
+	
+	section {
+		align-items: center;
+		display: grid;
+		grid-gap: 5rem;
+		grid-template-columns: .5fr .5fr;
+		margin: 5rem 0;
+	}
+	
+	div {
+		display: inline-block;
+	}
+	
+	.carousel {
+		cursor: pointer;
+		height: 400px;
+		padding: 2rem;
+		position: relative;
+		transition: transform .2s, height .2s, width .2s;
+		width: 600px;
+		z-index: 1000;
+	}
+	
+	.carousel:hover {
+		transform: scale(1.05);
+	}
+	
+	.carousel:focus-within {
+		background-color: rgba(0,0,0,.75);
+		height: 100vh;
+		padding: 0;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		width: 100vw;
+	}
+	
+	.carousel:focus-within:hover {
+		transform: scale(1);
+	}
+	
+	.carousel .slide {
+		animation-duration: .2s;
+		animation-fill-mode: forwards;
+		animation-name: entice;
+		background-color: #fff;
+		border: 3px solid #fff;
+		box-shadow: 3px 3px rgba(0,0,0,.05);
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		position: absolute;
+		transition: border-width .2s;
+		width: 100%;
+	}
+	
+	.carousel .slide:nth-child(1) {
+		animation-delay: .2s;
+		top: 2.5rem;
+		transform: rotate(-5deg);
+	}
+	
+	.carousel .slide:nth-child(2) {
+		animation-delay: .4s;
+		left: 1rem;
+		top: 2rem;
+		transform: rotate(1deg);
+	}
+	
+	.carousel .slide:nth-child(3) {
+		animation-delay: .6s;
+		bottom: -2.5rem;
+		left: 1rem;
+		transform: rotate(4deg);
+	}
+	
+	.carousel .slide:nth-child(4) {
+		animation-delay: .8s;
+		right: -2rem;
+		top: 1rem;
+		transform: rotate(-3deg);
+	}
+	
+	.carousel .slide:nth-child(5) {
+		animation-delay: 1s;
+		bottom: -2rem;
+		transform: rotate(2deg);		
+	}
+	
+	.carousel .slide:nth-child(6) {
+		animation-delay: 1.2s;
+	}
+	
+	.carousel:focus-within .slide {
+		animation-fill-mode: initial;
+		border-width: 0;
+		bottom: auto;
+		box-shadow: none;
+		height: 80vh;
+		left: auto;
+		margin: 10vh 10vw;
+		opacity: .75;
+		overflow: hidden;
+		right: 10vw;
+		top: auto;
+		transform: rotate(0deg);
+		transition: height .2s, left .2s, margin .2s, opacity .2s, right .2s;
+		width: 80vw;
+		z-index: 1;
+	}
+	
+	.carousel:focus-within .slide:hover {
+		height: 85vh;
+		margin: 7.5vh 10vw;
+		opacity: .9;
+	}
+	
+	.carousel:focus-within .slide:focus {
+		height: 90vh;
+		left: auto;
+		margin: 5vh 5vw;
+		opacity: 1;
+		right: auto;
+		width: 90vw;
+		z-index: 7;
+	}
+	
+	.carousel:focus-within .slide:focus:hover {
+		transform: scale(1);
+		opacity: 1;
+	}
+	
+	.carousel:focus-within .slide:focus ~ .slide {
+		left: 10vw;
+		right: auto;
+	}
+	
+	.carousel:focus-within  .slide:focus + .slide:nth-child(2) {
+		z-index: 6;
+	}
+	
+	.carousel:focus-within  .slide:focus + .slide:nth-child(3) {
+		z-index: 5;
+	}
+	
+	.carousel:focus-within  .slide:focus + .slide:nth-child(4) {
+		z-index: 4;
+	}
+	
+	.carousel:focus-within  .slide:focus + .slide:nth-child(5) {
+		z-index: 3;
+	}
+	
+	.carousel:focus-within  .slide:focus + .slide:nth-child(6) {
+		z-index: 2;
+	}
+
+</style>
+</head>
+<body>
+
+<section>
+<div class="carousel">
+	<img src="311.jpg" class="slide" tabindex="-1">
+	<img src="312.jpeg" class="slide" tabindex="-1">
+	<img src="313.jpg" class="slide" tabindex="-1">
+	<img src="314.jpg" class="slide" tabindex="-1">
+	<img src="315.jpg" class="slide" tabindex="-1">
+	<img src="316.jpg" class="slide" tabindex="-1">
+</div>
+<div>
+	<p>This is a marketing production.</p>
+</div>
+</section>
+
+</body>
+</html>
