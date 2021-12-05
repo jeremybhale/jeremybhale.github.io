@@ -252,7 +252,7 @@
 	}
 	
 	function update(){
-		$(document).keydown( function(e){
+		document.keydown( function(e){
 		//console.log(e.which)
 			if(e.which == 39){
 				PLAYER_DIRECTION = 1;
@@ -270,7 +270,7 @@
 			}
 		});
 		
-		$(document).keyup( function(e){
+		document.keyup( function(e){
 			if(e.which == 39 || e.which == 37){
 				PLAYER_DIRECTION = 0;
 			}
