@@ -1,0 +1,2390 @@
+<html>
+<head>
+<title>SH2 All Collectibles Walkthrough</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+
+html, body {
+margin: 0;
+padding: 0;
+}
+
+body {
+background-color: #000;
+color: #fff;
+height: 100%;
+overflow: hidden;
+text-align: center;
+width: 100%;
+}
+
+body > form {
+height: 100%;
+position: relative;
+width: 100%;
+}
+
+label {
+display: block;
+height: 100%;
+left: calc(-100% + 4rem);
+position: absolute;
+top: calc(-100% + 3rem);
+transition: all .25s;
+width: 100%;
+z-index: 1;
+}
+
+label:has(> input:checked) {
+left: 0;
+top: 0;
+z-index: initial;
+}
+
+label:has(> input:checked) ~ label {
+display:none;
+left: 100%;
+top: 100%;
+z-index: initial;
+}
+
+label:has(> input:checked) + label {
+display: block;
+left: calc(100% - 4rem);
+top: calc(100% - 3rem);
+width: 4rem;
+}
+
+input {
+opacity: 0;
+}
+
+label span {
+display: block;
+}
+
+.heading {
+font-size: 1.75rem;
+font-weight: bold;
+margin: 3rem auto;
+padding: 0 2rem;
+}
+
+label:has(> input:checked) .heading {
+	margin: 1rem auto;
+}
+
+.description {
+font-size: 1.5rem;
+padding: 0 2rem;
+}
+
+label:has(> input:checked)::before {
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+content: "";
+display: block;
+height: 64px;
+margin: 3rem auto 0;
+width: 64px;
+}
+
+.key-item::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><path d="M24 32L38 18M38 18L42 22M38 18L34 14M28 36H22V40H18V44H14V48" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.map::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><path d="M16 20L28 14L36 20L48 14V44L36 50L28 44L16 50V20Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 14V44M36 20V50" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.photo::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><rect x="18" y="14" width="28" height="36" stroke="white" stroke-width="2" stroke-linejoin="round"/><rect x="18" y="40" width="28" height="10" stroke="white" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="26" r="6" stroke="white" stroke-width="2"/></svg>');
+}
+
+.glimpse::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><path d="M16 32C20 24 26 20 32 20C38 20 44 24 48 32C44 40 38 44 32 44C26 44 20 40 16 32Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="6" stroke="white" stroke-width="2"/></svg>');
+}
+
+.memo::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><path d="M18 14H46V46L36 50H18V14Z" stroke="white" stroke-width="2" stroke-linejoin="round"/><path d="M46 46H36V50" stroke="white" stroke-width="2" stroke-linejoin="round"/><path d="M24 22H40M24 30H40M24 38H32" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>');
+}
+
+.event::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><path d="M22 22L42 42M42 22L22 42" stroke="red" stroke-width="2" stroke-linecap="round"/></svg>');
+}
+
+.event-ufo::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><ellipse cx="32" cy="32" rx="16" ry="8" stroke="turquoise" stroke-width="2"/><ellipse cx="32" cy="26" rx="8" ry="4" stroke="turquoise" stroke-width="2"/></svg>');
+}
+
+.event-puzzle::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/><path d="M32 11C30.3431 11 29 12.3431 29 14V19H25C23.3431 19 22 20.3431 22 22V28H17C15.3431 28 14 29.3431 14 31V35C14 36.6569 15.3431 38 17 38H22V40C22 41.6569 23.3431 43 25 43H29V48C29 49.6569 30.3431 51 32 51C33.6569 51 35 49.6569 35 48V43H39C40.6569 43 42 41.6569 42 40V34H47C48.6569 34 50 32.6569 50 31V27C50 25.3431 48.6569 24 47 24H42V19C42 17.3431 40.6569 16 39 16H35V14C35 12.3431 33.6569 11 32 11Z" stroke="gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.event-ending::before {
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/></svg>');
+}
+
+.event .heading {
+color: red;
+}
+
+.event-ufo .heading {
+color: turquoise;
+}
+
+.event-puzzle .heading {
+color: wheat;
+}
+
+.event-puzzle .heading {
+color: gold;
+}
+
+.prev {
+bottom: 1rem;
+position: absolute;
+right: 1rem;
+}
+
+.next {
+position: absolute;
+top: 1rem;
+left: 1rem;
+}
+
+label:has(> input:checked) .prev, label:has(> input:checked) .next{
+display: none;
+}
+</style>
+</head>
+<body>
+<form autocomplete="off">
+<label class="map"> 
+	<input type="radio" name="sh2" checked />
+	<span class="heading">Map of South Vale</span> 
+	<span class="description">The map is in James’ car on the driver’s side right at the starting area. It’s the turquoise-colored car directly where you started.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Crimson Ceremony</span> 
+	<span class="description">Take the book of Crimson Ceremony from the Graveyard.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Chainsaw</span> 
+	<span class="description">Take the Chainsaw from Silent Hill Ranch.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Auto Parts key</span> 
+	<span class="description">After reaching the end of Silent Hill Ranch you will come to a locked door (main story path). Here turn left and enter the ‘Best Auto Parts’ building to find the key inside in a drawer.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past 1</span> 
+	<span class="description">Immediately after going through the locked door, directly straight ahead in front of you interact with the barricaded tunnel (before going through the next fenced gate).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Key of Sorrow</span> 
+	<span class="description">Use the Chainsaw to break into the car just past the auto parts shop, before you reach Eastern South Vale, and retrieve the Key of Sorrow.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Flower Shop Message</span> 
+	<span class="description">After the cutscene, turn left to see a flower shop. Inside on the table pick up the piece of paper.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past 2</span> 
+	<span class="description">After the next cutscene where you see an enemy in the fog, you will reach Vachss Rd. Here interact with the ‘Do not enter sign’ on the barbed fence to trigger the glimpse.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Blue Gem</span> 
+	<span class="description">Grab the Blue Gem from Jewellers in Eastern South Vale.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Broken Key Part 1</span> 
+	<span class="description">Enter the Pet Center in Eastern South Vale and take the first Broken Key Part from the back room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past 3</span> 
+	<span class="description">After you have defeated the first enemy, exit the building by breaking through the window. Go through the garden gate then turn right again. Examine the blood on the floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Matchbook</span> 
+	<span class="description">After you collected the Glimpse, follow the main path until you find a corpse on the floor of Martin St. The memo is next to the corpse.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Martin Street Note</span> 
+	<span class="description">Found on the ground a few steps north of the corpse.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Neely’s Bar Coin</span> 
+	<span class="description">Located in Texan Cafe (check the map, the stores are named on the map). Examine the cash register on the counter. Turn the key and then press the bottom button on the right to open the cash compartment and get the coin.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Big Jay’s Note</span> 
+	<span class="description">This memo is in Big Jay’s Cafe, on the table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Record Store Note</span> 
+	<span class="description">Inside Groovy Music shop on the counter.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Broken Vinyl Record + Vinyl Glue</span> 
+	<span class="description">Inside Groovy Music shop, smash the window (press R2) to climb to the locked room. Both key items are on the table in the center.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Texan Cafe Flyer</span> 
+	<span class="description">Head west onto Katz St., next to the Wood Side Apartments there is a flyer on the left in front of the door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past 4</span> 
+	<span class="description">To the right of the door to Wood Side Apartments you can interact with the blue dumpster.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"So many people here!"</span> 
+	<span class="description">To the left of the door to Wood Side Apartments, check behind the fence, in the corner on the ground (between power pole and a blue barrel where some trash bags are).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Barrier Note</span> 
+	<span class="description">At the end of Katz St., the memo is on the ground in front of the barricade next to a corpse.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #5</span> 
+	<span class="description">At the end of Katz St., approach the white barricade and interact with the gap. The next Glimpse will be there.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"I’ve been happy"</span> 
+	<span class="description">South of Neely St, before turning onto Saul St, smash the shop window right of The Dance Company to find the photo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Old map</span> 
+	<span class="description">Head west on Saul St. to find this memo on a corpse outside a gate that leads to a Motor Home.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Saul Street Note (1)</span> 
+	<span class="description">Directly in front of the corpse will be the first of three notes along a blood trail.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Saul Street Note (2)</span> 
+	<span class="description">Follow the blood trail on the floor to the next note.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Saul Street Note (3)</span> 
+	<span class="description">Follow the blood trail on the floor to the next note, directly outside the Motor Home.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Motor Home Note</span> 
+	<span class="description">Inside the Motor Home, this note is on the table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Small Note</span> 
+	<span class="description">Inside the Saul Street Apartments. Enter through the front door at Saul St., left of Best Auto Parts. On the ground floor, straight ahead on the right is a shelf blocking access to the room. Move it and proceed. The memo is on the table there.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ufo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">UFO Trigger Point</span> 
+	<span class="description">Use the Blue Gem on the roof of Saul Apartments.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Apartment Key</span> 
+	<span class="description">From the memo, turn around. The Apartment Key for Apartment 5 can be found hanging on the wall.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Tenant’s Note</span> 
+	<span class="description">Go up the stairs to the floor above, next to Apartment 7 you can crawl through the open vent on the floor to enter this Apartment. There on the table is the memo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Jukebox button</span> 
+	<span class="description">Use the key to enter Apartment 5, then go through the broken walls and out the window. Climb up the stairs and enter the next apartment. Enter the bathroom and interact with the hole in the wall 3 times to get the key item.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Code Note</span> 
+	<span class="description">Halfway along Sanders St. there will be a truck in a parking bay. Next to the truck will be a corpse, the memo is on the ground next to it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Sanders Street Note</span> 
+	<span class="description">On the other side of the corpse.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Neely’s Bar Note</span> 
+	<span class="description">Inside Neely’s Bar on the counter.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Broken Vinyl Record</span> 
+	<span class="description">Inside Neely’s Bar. Interact with the jukebox that is covered with the cloth.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glued Up Vinyl Record</span> 
+	<span class="description">Combine the vinyl glue with the two broken pieces of vinyl in the inventory to get the new key item.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Neely’s Bar Key</span> 
+	<span class="description">Interact with the Jukebox and insert the glued vinyl. Also insert the jukebox button and then the coin. Then press buttons “C” and “2”. After the cutscene you will receive the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Back Room Letter</span> 
+	<span class="description">Now use the key to open the locked door in Neely’s Bar. Move the trolley to the right and climb through the upper hatch. In the room you will find the memo on the table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Wood Side Apartments Key</span> 
+	<span class="description">From the Memo, exit Neely’s Bar and go through the backyard, go through the door at the end. In the next area investigate the bloody clothes to get the Key to Wood Side Apartments. Note: Once you pick up the key, a storm will start and some buildings can no longer be entered (make sure you got all collectibles before this).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">As soon as you go inside the Wood Side Apartments you will be locked into that area and can’t go back. Make sure you’ve found everything by then. Before you go to the Wood Side Apartments, it is advisable to take a look at the Grand Market. The code for the door is 4442 (Easy Puzzles Difficulty) / 4444 (Standard Puzzles Difficulty), there you will find medicine and ammo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Wood Side Apartments map</span> 
+	<span class="description">Immediately after entering Wood Side Apartments on the wall in front of you, at the reception.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Administration Note</span> 
+	<span class="description">From the reception desk, go left to find this memo underneath the stairs in a locker.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Chute Courtyard Key</span> 
+	<span class="description">Inside the drawer directly behind the mannequin.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">2F Hallway Key</span> 
+	<span class="description">Head downstairs and use the Chute Courtyard Key in the corridor to the right of the reception that leads north. This leads to a courtyard, pull the trolley and use it to climb the window. Then follow the dark corridor all the way to the right, at the end you can interact with a key behind some bars, this triggers a cutscene where the key gets knocked back. Backtrack to the reception where you first entered Wood Side Apartments. To the right of the reception a new corridor door has opened, go through and follow the corridor to the end to find this key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Golden Apple Handle</span> 
+	<span class="description">Inside Apartment 108, there is a wardrobe with golden handles. Interact with it and this will fall onto the ground. Pick it up.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Valentine’s Day"</span> 
+	<span class="description">Head back to reception and the gate leading west will now be open. Enter Apartment 102 and this photo will be on a trolley by the television.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #6</span> 
+	<span class="description">Head upstairs and unlock the door with the 2F Hallway Key. Enter Apartment 213 and interact with the scratched-up wall in the bedroom.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Apartment 212 Key</span> 
+	<span class="description">After returning to Apartment 213, this key will now be sitting on a stand next to the television.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Career’s humble beginnings"</span> 
+	<span class="description">Go through Apartment 212 and enter Apartment 210 via the balcony. Enter the living room and this photo will be sitting on the last window still.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Coin [Man] + Steel Key</span> 
+	<span class="description">Inside the safe in Apartment 206, which you can access via the Golden Apple Wardrobe in Apartment 208 using the Golden Apple Handle key item. The code for the safe is 15 Right, 11 Left, 13 Right (Light Puzzle Difficulty) / 13 Right, 7 Left, 11 Right (Standard Puzzle Difficulty).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">2F Small Staircase Key</span> 
+	<span class="description">Sitting on the chair in the middle of Apartment 205.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Strange Note</span> 
+	<span class="description">Return to Apartment 213, squeeze through the gap there to the corridor behind the room, use the 2F Small Staircase Key on the door. Then go up those stairs to the 3rd floor. You will find the note in a drawer before Apartment 310. Before squeezing through the gap to Apartment 310, follow the corridor to the right to find a side room, open the drawer for the note.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Sinister Note</span> 
+	<span class="description">On a wall inside Apartment 312, which can be accessed by going through Apartment 310 and across the balcony.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Canned Juice</span> 
+	<span class="description">Now crawl through the vent in the wall to access the laundry room to find the Canned Juice.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Coin [Woman]</span> 
+	<span class="description">Use the Canned Juice on the garbage chute right next to you to unblock it, you’ll get a small cutscene showing the coin drop out of the chute, outside in the courtyard. Now return to floor 1F and go outside to the central courtyard area, the coin will be on the ground, in front of the chute where a note hangs on the wall. It will have a red “!” icon on the map to mark the spot.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Coin [Snake]</span> 
+	<span class="description">Go to Apartment 116, you will get a cutscene, then climb out the window to another courtyard with an empty pool. The coin is inside the baby stroller inside the pool.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Apartment 201 Key</span> 
+	<span class="description">With all three coins, return to the reception desk in the south of floor 1F where you first entered the Wood Side Apartments. Behind the reception desk enter the back room to find a coin puzzle.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Interacting with the Handkerchief will lock you out from the rest of Wood Side Apartments. Make sure you’ve found everything before interacting with it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Handkerchief</span> 
+	<span class="description">Inside Apartment 201, sitting on a desk. Interacting with it will start a cutscene, after which it will be on the floor. Interact with it again to collect it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Blue Creek Apartments map</span> 
+	<span class="description">Leave the room and this map will be on the wall in the corridor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Apartment 306 Key</span> 
+	<span class="description">Progress through the area until you arrive at Apartment 307 with the hanging radio. Go through the balcony to reach the back rooms of Apartment 305 to find this key on a small table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Valve</span> 
+	<span class="description">On the wall in Apartment 304, which can be accessed via Apartment 306.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">The Hour Hand</span> 
+	<span class="description">Return to Apartment 307 and use the Valve to drop the radio and collect the hour hand.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">The Minute Hand</span> 
+	<span class="description">Inside Apartment 210, behind the H Door. In order to unlock this apartment, you must place the Hour Hand on the grandfather clock in Apartment 212 (where the save point is) and set it on the number 9. Now enter Apartment 210 and destroy the wall in the kitchen to access the bathroom. Search the toilet three times to get the minute hand.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Pigeon Figurine</span> 
+	<span class="description">Leave the bathroom and the apartment is now corrupted. The Pigeon Figurine is on a cabinet shelf.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Wooden Swan Head</span> 
+	<span class="description">Leave the apartment and enter Apartment 211. You will see a shadow being cast onto the wall in the back room, head in here to find the swan head hanging in a corner.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Malformed Figurine Part</span> 
+	<span class="description">Inside Apartment 209. Enter the bathroom in the back and break the glass on the bathtub to grab this item.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Swan Figurine</span> 
+	<span class="description">Combine the Wooden Swan Head and Malformed Figurine Part.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Winged Key</span> 
+	<span class="description">Place the Swan and Pigeon Figurines on the seesaw in Apartment 210, the Swan must be in the second notch to balance them.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #7</span> 
+	<span class="description">As soon as you jump down the hole into Apartment 110, there will be a broken TV stand in front of you as you leave the room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Key of Resilience</span> 
+	<span class="description">On the table directly in front of you after the cutscene.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Forever together"</span> 
+	<span class="description">In the stairwell on floor 1F, on the ground next to a barrel.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">The Second Hand</span> 
+	<span class="description">Return to the clock room and place the minute hand on the number 2 to make the time 9:10, which will unlock Apartment 202 with the M on the door. Head inside for a puzzle with moths. The code to the lock is 582 (Light Puzzle Difficulty) / 373 (Standard Puzzle Difficulty). Go through and search the hole in the wall three times to get the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"How the time flies"</span> 
+	<span class="description">Return to the clock room again to find it corrupted. Enter the bedroom to find this photo on the floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #8</span> 
+	<span class="description">Place the second hand on the clock on the number 3 to make the time 9:10:15, which will unlock the door with the S on floor 1F. Enter the stairwell again and there will be a corpse you can examine for this glimpse.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">To advance the story you must interact with the door with the “S” on floor 1F. This will lock you out of the Blue Creek Apartments. Make sure you’ve found everything before going through.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"So far from home"</span> 
+	<span class="description">After entering Rosewater Park, turn right to find this in the first nook on the right, on the stone bench.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ufo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">UFO Trigger Point</span> 
+	<span class="description">Use the Blue Gem on the boardwalk in Rosewater Park before you meet Maria.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">White Chrism</span> 
+	<span class="description">Take the White Chrism from the table outside Baldwin Mansion in Western South Vale.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Bloody Note</span> 
+	<span class="description">Head west all the way along Nathan Ave. to find this note next to a corpse where the road ends.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #9</span> 
+	<span class="description">On the way back, enter Pete’s Bowl-O-Rama. The pizza can be found on a bench in the back left.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Cryptic Letter</span> 
+	<span class="description">This memo can only be found on New Game+. Inside the safe in Bowl-O-Rama The code is 1887. You won’t be able to interact with this safe on New Game as it will be covered. This will replace the Lost & Found Note in Lakeview Hotel that disappears on New Game+, so you will need to collect this to get the Archivist trophy/achievement for all Memos on New Game+.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Rusted Key</span> 
+	<span class="description">Take the Rusted Key from the safe in Pete's Bowl-O-Rama.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #10</span> 
+	<span class="description">Directly south of Pete’s Bowl-O-Rama, there are some stairs leading up to a barred gate, just before the barricade. Examine the gate for another glimpse.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Garage Jack Lever</span> 
+	<span class="description">Enter the back lot of Octantis Fuels to grab this from the green car.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"made it!"</span> 
+	<span class="description">Return all the way east and use the lever on the Garage Jack at the back of the garage outside Rosewater Park. Head inside to find this photo on a red cabinet next to a raised car.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Reception Desk Note</span> 
+	<span class="description">Inside reception of Jack’s Inn, on the bulletin board next to the safe.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Gate Key</span> 
+	<span class="description">Found inside the safe in Jack’s Inn reception. Code is 0451 (Light + Standard Puzzle Difficulty).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Toolbox memo</span> 
+	<span class="description">Upstairs at Jack’s Inn, enter Room 108 by breaking the window. Smash the wall inside and enter Room 107 to find this on the table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Heading west down Katz St. will lock you out of the previous areas. Make sure you’ve found everything before continuing.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Broken Key Part 2</span> 
+	<span class="description">Take the second Broken Key Part from the doghouse on the north side of Katz St. in Western South Vale.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Ready to kill it!"</span> 
+	<span class="description">Inside Heaven’s Night, on one of the mirrors in the dressing room. Highly Missable! Make sure to get this before entering Moonlight Grove.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Church entrance"</span> 
+	<span class="description">Inside Moonlight Grove, after the cutscene walk down the southern path to find this sitting next to a fountain. Highly Missable! Make sure to get this before entering the movie theater.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Best Flavor!"</span> 
+	<span class="description">Inside Reverie Theater, you can get in a row between seats on the right side of the theater (basically behind Eddie, a few steps up, on some of the chairs). Highly Missable! Make sure to get this before leaving the movie theater.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Brookhaven Hospital map</span> 
+	<span class="description">On the small newspaper holder directly in front of you after going through the entrance to Brookhaven Hospital.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Key Locker Note</span> 
+	<span class="description">On the noticeboard inside the Reception area.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Basement Key</span> 
+	<span class="description">In the Reception Office, unlock the key cabinet with the code 287 (Light Puzzle) / 724 (Standard Puzzle).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Nurse’s memo</span> 
+	<span class="description">Inside Exam Room 3, break the window to climb in and go into the next room to find it in a desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Hospital Basement map</span> 
+	<span class="description">Go down the staircase in the southeast corner of the map, then it’s directly in front of you as you enter the basement.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Empty Fuel Can</span> 
+	<span class="description">On some pallets in the back of the Boiler Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Filled Fuel Can</span> 
+	<span class="description">Use the Empty Fuel Can on the red hose in Storage, reached by moving the laundry trolley and climbing into the gap.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Staff memo</span> 
+	<span class="description">Use the Filled Fuel Can in the Generator Room and press the button on the Generator to turn it on. Then use the Elevator next to the Tech Room to go to the 2nd floor. You find this on the window of the Nurses’ Station on the second floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Her drawings"</span> 
+	<span class="description">Inside the Observation Room, on a desk. This area can be accessed by crawling through a vent into Room L3, opposite the Nurses’ Station.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #11</span> 
+	<span class="description">Inside the second floor Laundry Room, interact with the blue fabric in a bin.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Patient #0050</span> 
+	<span class="description">Inside the Director’s Office, all three can be found on a counter next to the desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Patient #0090</span> 
+	<span class="description">Inside the Director’s Office, all three can be found on a counter next to the desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Patient #0130</span> 
+	<span class="description">Inside the Director’s Office, all three can be found on a counter next to the desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Interview Transcript</span> 
+	<span class="description">In Room C1, interact with the poster and search it to find the memo behind it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #12</span> 
+	<span class="description">Interact with the bed in Room M1, at the end of the hallway.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Bent Needle</span> 
+	<span class="description">Inside Women’s Locker Room, interact with the teddy bear on a chair to get the needle.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">L1 Room Key</span> 
+	<span class="description">Inside Nurses’ Lounge, on the coffee table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Scribbled Note</span> 
+	<span class="description">Inside Medical Records on the first floor, accessed by going through the wall space on Room L1 on the second floor. Sitting on the ground.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #13</span> 
+	<span class="description">In the same room, interact with the typewriter.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Marked Bracelet</span> 
+	<span class="description">In the corner of the same room, sitting on a red book.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">1F Inner Ward Key</span> 
+	<span class="description">On the third floor inside Exam Room 5, smash the window to get inside. The key is on the desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">X-ray memo</span> 
+	<span class="description">On a bench in the X-Ray Room, directly through the door in front of you.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Radiograph of a Pelvis</span> 
+	<span class="description">Underneath the previous memo, make sure to pick this up too.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"At least she was there"</span> 
+	<span class="description">Return to the first floor and Examination Room 1 will now be unlocked. Go inside and open the drawer at the back to find the photo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Keypad Combination Note</span> 
+	<span class="description">On the bulletin board in the Doctors’ Lounge, accessible by unlocking the Inner Ward door in the lobby. Contains the code for the Nurses’ Station.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Small Chest</span> 
+	<span class="description">Take the Small Chest from the Garden in Brookhaven Hospital. Combine the Rusted Key and Small Chest to get the White Claudia.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Medical Tube</span> 
+	<span class="description">Go through Dayroom > Pharmacy (climb out window) > Garden > Greenhouse > Pool > Shower Room. This is inside the Shower Room of the Pool, sitting on a faucet.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Medical Tube with Bent Needle attached</span> 
+	<span class="description">Combine the Medical Tube with the Bent Needle.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Maintenance Key</span> 
+	<span class="description">Use the combined item on the drain in the Pharmacy to get the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Bloodstained Bracelet</span> 
+	<span class="description">Return to the Pool and use the key on the hatch to drain the pool itself. Enter it and smash the wall with the crying eye to find the bracelet.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Mold Remover</span> 
+	<span class="description">In the Kitchen on the west side of the first floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Treatment Room Note</span> 
+	<span class="description">Back on the second floor, unlock the Nurses’ Station with the code 3578 (Light + Standard Puzzle Difficulty). Go through to the Treatment Room to find this on a bench.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Moldy Radiograph</span> 
+	<span class="description">In the bathtub in the same room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Cleaned Up Radiograph</span> 
+	<span class="description">Combine the Moldy Radiograph with the Mold Remover.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Filthy Bracelet</span> 
+	<span class="description">Return to the X-Ray Room on the third floor and use the Radiographs on the viewer. Rotate them to match the markings to find the code 4 Right, 37 Left, 12 Right (Light + Standard Puzzle Difficulty). Use this on the combination lock at Room D1. Interact with the bed inside to find it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Director’s Storage Room Key</span> 
+	<span class="description">In the Director’s Office, place all three bracelets on the mannequin hand in this order from top to bottom: Bloodstained Bracelet (Top), Marked Bracelet (Mid), Filthy Bracelet (Bottom). Rotate them so they read 92-45-71 (Light + Standard Puzzle Difficulty) to get the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Safe Button</span> 
+	<span class="description">Use the key on the room next to the save point to find this inside.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Rooftop Key</span> 
+	<span class="description">Organize the books on the shelf by matching the lion to get the code system for the safe. Note the symbols for the code 92-45-71 and use them on the safe: Triangle in Circle, h, Circle with Arrow, Circle with Dot, Stickman with Horns, Circle with Lines (Light + Standard Puzzle).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Safe Note</span> 
+	<span class="description">In the safe, make sure to grab it after getting the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #14</span> 
+	<span class="description">Once on the Rooftop, walk onto the catwalk opposite the next door and follow it to find this glimpse. Highly Missable! Make sure to grab this before you enter the room via the Rooftop.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Page From A Diary</span> 
+	<span class="description">On the floor immediately as you re-enter from the Rooftop. Highly Missable! Make sure you grab this before you leave this room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #15</span> 
+	<span class="description">After the cutscene, enter Room I3 to find a blood-stained wall behind the door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Going any further towards Laura will trigger a cutscene and a POINT OF NO RETURN, so make sure to do everything in the Hospital before continuing.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Evaluation Card, Patient #3141</span> 
+	<span class="description">On a wheelchair immediately in front of you after going through the first door, in the Dayroom.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">The Procedure</span> 
+	<span class="description">When you reach the room with the Chained Box, take the western path through The Nurses’ Station. Continue until you go up some stairs to the third floor. This note will be on a table in the X-Ray Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Instrument of Force</span> 
+	<span class="description">In the next room, on a medical table next to a mannequin in a chair.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Key of Bliss</span> 
+	<span class="description">After going down a ladder to the Kitchen, go through Storage/Medical Records to find this in a hole in a wall.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lapis Eye Key</span> 
+	<span class="description">Return to the mannequin and use both items on it to get the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Using the Lapis Eye Key on the Chained Box will lock you out from the western path of the Hospital (Otherworld). Make sure you have everything there before you use it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Calendar Page</span> 
+	<span class="description">Return to the Chained Box and take the southern path. Enter Room M3 and smash the wall to find this memo on the floor. This memo contains the hints for the first code for the Chained Box.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #16</span> 
+	<span class="description">On the far east wall of Room M5, there are handprints you can examine.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Using the 1622 code on the Chained Box will lock you out from the southern path of the Hospital (Otherworld). Make sure you have everything there before you use it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Patient’s Note</span> 
+	<span class="description">Return to the Chained Box and take the eastern path. Break the wall into the Laundry Room and move the trolley so you can climb into Room L3. The note can be found on a bed in the Observation Room through the next door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Director’s Office Key</span> 
+	<span class="description">On the floor in the same room, in front of the static television.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"No one knows"</span> 
+	<span class="description">In the bedside table of Room C5, through the hole directly in front of you.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Manic Scribble</span> 
+	<span class="description">On the bench inside the Director’s Office.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Nurse’s Note</span> 
+	<span class="description">Go up the ladder in the office to Room I7, where you will find the note on a small table in the corner.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Director’s Note</span> 
+	<span class="description">Follow the red cable to the generator to power it on, then crawl through the hole to find this memo on the floor in the locked restroom.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Using the 9659 code on the Chained Box will lock you out from the eastern path of the Hospital (Otherworld). Make sure you have everything there before you use it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Elevator Button</span> 
+	<span class="description">Return to the Chained Box and open all three locks: Lapis Eye Key, 1622 and 9659 (Light + Standard Puzzle).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Copper Ring</span> 
+	<span class="description">Make your way through the basement until you reach the Pump Room, where you will find the ring on a crate.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"They mustn’t know"</span> 
+	<span class="description">Continue upstairs to the first floor and you’ll go through the Pool area. On a bench at the back is this photo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lead Ring</span> 
+	<span class="description">Interact with the freezer in the Doctors’ Lounge to find the ring, accessed through Shower Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Dissociated Notice</span> 
+	<span class="description">On a bench in the Locker Room, which is the next room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Using the rings on the door will lock you out of the rest of the Hospital (Otherworld). Make sure you have everything before you open it. Info: There is a jeweled box in the Pharmacy you can open with the questions from the Elevator Quiz, it contains health and ammo. The answers are Q1 = 2, Q2 = 3, Q3 = 1 (Light + Standard Puzzle), if you get any wrong you cannot retry it and will take damage.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Ominous Note</span> 
+	<span class="description">After going through the door with the two rings, you’ll be on some stairs. Head down one landing to spot a note on the floor. Highly Missable! Make sure you grab it before going all the way down the stairs.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Hospital Entrance Key</span> 
+	<span class="description">On a book in the Reception Office.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Note on a map</span> 
+	<span class="description">After going through the tunnel to the east side of South Vale, there will be a caravan with a save point on your right. Inside on the table is this memo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #17</span> 
+	<span class="description">Inside Neely’s Bar, your old map can be examined on the bar.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Letter</span> 
+	<span class="description">Answer the ringing payphone next to Martin St. and you’ll get this letter.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Wrench</span> 
+	<span class="description">Also found at the payphone, make sure to grab it after getting the letter.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"They’re here"</span> 
+	<span class="description">At the end of Katz St. outside the Lucky Jade Restaurant, there is a car with a photo in the driver seat. Smash the window to grab it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">After going through the tunnel you unlock with the Wrench, you’ll return to the regular world and won’t be able to go back. Make sure you got everything before going through the tunnel.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Historical Society Key</span> 
+	<span class="description">After the cutscene in Rosewater Park, interact with the statue to get the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Obsidian Goblet</span> 
+	<span class="description">Take the Obsidian Goblet from the Silent Hill Historical Society.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"The new clock"</span> 
+	<span class="description">In the second room on the left, behind the glass of one of the cabinets by the locked door. Highly Missable! Make sure to grab this before going down the set of stairs at the back of the building.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Spiral-writing Key</span> 
+	<span class="description">After jumping into the well and breaking the wall, go down the tunnel and go through doors on your right twice to find this key on the ground illuminated by a red light.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #18</span> 
+	<span class="description">As soon as you drop into the canteen of the prison, head to the right to spot this on a dining table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Toluca Prison map</span> 
+	<span class="description">Directly ahead of the Canteen is the Armory. The map is on the wall inside.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Gun Cabinet Notice</span> 
+	<span class="description">Inside the Armory, next to the gun cabinet.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">The Heaviest Weight</span> 
+	<span class="description">On the altar in the Chapel.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #19</span> 
+	<span class="description">Inside Cell A3, examine the shrine on the wall.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-puzzle"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Scale Puzzle</span> 
+	<span class="description">Head outside to the Yard to find the scales in the center. Place the heaviest weight on the right scale and the lightest weight on the left scale to unlock the Serpent Door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Family Photo</span> 
+	<span class="description">Go through the Serpent Door in Cell Block A to reach Death Row. This memo can be found on the bed of Cell E4.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Medium Weight</span> 
+	<span class="description">In the Witness Room, there is a generator panel next to the Death Chamber. Flick the switches so all of them are turned on, then flip the lever to cause a power failure and unlock all the cells. Head inside the Death Chamber to find the weight on the chair.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Four months to go"</span> 
+	<span class="description">With the cells open, enter Cell E1 and break the wall to access the other side. Then enter Cell E13 to find this on a shelf.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Armory Key</span> 
+	<span class="description">Inside the Witness Checkpoint office, which can be accessed via the broken wall in Cell E10. Sitting in a key cabinet.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-puzzle"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Scale Puzzle</span> 
+	<span class="description">Return to the scales and place the heaviest and lightest weights on the left scale, and the medium weight on the right scale. This will unlock the Ox Door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Guard’s Letter</span> 
+	<span class="description">Go through the Ox Door in Block A to reach the second floor. Straight ahead will be this letter posted next to a locked door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">lock D Key</span> 
+	<span class="description">In the Guardroom at the end of Block C, open the drawer of the desk to get this key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Threatening Note</span> 
+	<span class="description">In Cell D5 of Block D, stuck to the blood-covered wall.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Shiv Key</span> 
+	<span class="description">In the orange container in the same cell.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Paranoid Note</span> 
+	<span class="description">Unlock Cell C4 with the Shiv Key, then crawl through the hole to find this note on some pipes.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Crumpled Note</span> 
+	<span class="description">On a bench in the Changing Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #20</span> 
+	<span class="description">In the Showers, turn right and go along the wall. There will be a broken section halfway along with a tablet on a cloth, examine it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Heavy Weight</span> 
+	<span class="description">In the back of the Showers, search the hole in the wall three times to find it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-puzzle"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Scale Puzzle</span> 
+	<span class="description">Return to the scales and place the lightest weight on the left scale, and all other weights on the right scale. This will unlock the Boar Door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Old man’s always prepared"</span> 
+	<span class="description">Go through the Boar Door in Block B to enter the Administrative Section. Head into the Warehouse from the rear door. Sitting on the desk will be this photo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Prisoner’s Letter</span> 
+	<span class="description">Taped to the glass of cubicle 7 in the Visitation Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #21</span> 
+	<span class="description">Southwest of the Break Room, examine the object on the ground.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Upper Floor Key</span> 
+	<span class="description">In the room behind the Infirmary, sitting on a desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Unfinished Report</span> 
+	<span class="description">On another desk in the same room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Light Weight</span> 
+	<span class="description">In the Warden’s Office on the third floor, interact with the typewriter and press any button four times. The drawer will open to reveal the weight. To get here, use the Upper Floor Key on the staircase in the south of the first floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-puzzle"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Scale Puzzle</span> 
+	<span class="description">Return to the scales and place the medium weight on the right scale, and all other weights on the left scale. This will unlock the Dove Door.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Confession</span> 
+	<span class="description">Head downstairs through the Dove Door into the Basement. Progress through until you’re able to press a button to unlock Cell F6. Enter the cell to find it on the wall.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">The Lightest Weight</span> 
+	<span class="description">On the floor in the same cell.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Once you get the execution lever you will be locked out of the rest of the Prison, so make sure you have everything first.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Execution Lever</span> 
+	<span class="description">Return to the scales and place three weights on each scale to balance them and receive the lever.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Labyrinth Center map</span> 
+	<span class="description">Automatically appears as you leave the apartment.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-puzzle"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Rotating Cube Puzzle</span> 
+	<span class="description">When you reach a rotating cube, move it sideways and also up/down until the door of the spinning room lines up with the floor and a bridge comes out. Spin it to the door with the two “Triangle” icons and a face over it.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Rotten Area map</span> 
+	<span class="description">Automatically appears when entering the Rotten Area, after rotating the cube.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #22</span> 
+	<span class="description">From the Suspended Cage room, take the western path and to your immediate right will be a breakable wall. Smash it and go through to find a broken noose you can examine.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lighter Wick</span> 
+	<span class="description">From the Suspended Cage room, take the southern path and follow it to an apartment. Search the hole in the wall to find the Lighter Wick.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Iron Key</span> 
+	<span class="description">As you leave the previous area, there’ll be a room on your right. In the desk inside will be a key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lighter Gas</span> 
+	<span class="description">Now take the eastern path and follow it through until you arrive at an apartment. Open the fridge inside to find the Lighter Gas.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Broken Lighter</span> 
+	<span class="description">Use the Iron Key on the door at the beginning of the eastern path, then shimmy through the hole in the wall to find a valve. Turn it, then return to the room and search the bathtub for the lighter.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lighter</span> 
+	<span class="description">Combine the Lighter Wick, Lighter Gas and Broken Lighter. Use this on the rope in the Suspended Cage room to break open the ground.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Once you jump down the hole you won’t be able to return to the Rotten Area, so make sure you have everything first.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-puzzle"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Rotating Cube Puzzle 2</span> 
+	<span class="description">Back at the rotating cube, rotate the building to the face with 2 infinity icons. Then go up the stairs on the right.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Desolate Area map</span> 
+	<span class="description">Automatically appears when entering the Desolate Area, after rotating the cube again.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Flooded Level map</span> 
+	<span class="description">Automatically appears when entering the Flooded Level, after climbing down a ladder.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Small Key</span> 
+	<span class="description">After going down the third ladder, follow the path to find the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Whole world ahead of us"</span> 
+	<span class="description">When you reach an octagonal room full of bugs, climb up the ladder on the left. Enter the next room to find this photo.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Wirecutter</span> 
+	<span class="description">After climbing out of the octagonal area, follow the path to find some wirecutters in a power box. Afterward, climb back down to the Flooded Level and use the Wirecutters on the Wires (will be circled red on your map, at the northernmost point of Flooded Level).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">Once you jump down the hole you won’t be able to return to the Desolate Area, so make sure you have everything first.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Your Best Buddy!"</span> 
+	<span class="description">When returning to the rotating cube for the third time, rotate it up twice so it shows the scratched out symbol. Go inside and down the stairs to find the photo on the floor. Highly Missable! Once you enter the Ruined Area you won’t be able to get this.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Ruined Area map</span> 
+	<span class="description">After you got the Strange Photo, rotate the cube twice to the left to the face with two downward triangles. Then go downstairs and exit through the back of the cube. The map appears automatically when entering the Ruined Area.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Road trip!"</span> 
+	<span class="description">Before you get on the boat, go around the building to the right to find this photo on the ground behind some steps. Highly Missable! Make sure to grab this before you get on the boat.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lakeview Hotel Garden map</span> 
+	<span class="description">After you get off the boat, on the wall in front of you to the right.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ufo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">UFO Trigger Point</span> 
+	<span class="description">Use the Blue Gem on the docks outside the Lakeview Hotel.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Rotten Apple</span> 
+	<span class="description">On a bench by a tree on the right path of the garden.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #23</span> 
+	<span class="description">When heading north from the Apple you will see a small fountain. Head around to the back to find a broken object inside it that you can interact with.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lakeview Hotel map</span> 
+	<span class="description">On the right when you enter the hotel.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Cleaning Staff Memo #1</span> 
+	<span class="description">Head downstairs and go to the Utility Room to find this on a table.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Laura’s Letter</span> 
+	<span class="description">Automatically received after the cutscene in the Lake Shore Restaurant.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Receptionist memo</span> 
+	<span class="description">Back upstairs on the first floor, on the counter of the Check-in desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Room 312 Key + Ornamental Key</span> 
+	<span class="description">In the same room, hanging from the key cabinet.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Key to Hotel Room 102</span> 
+	<span class="description">Behind the bar in Cafe Toluca.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lost & Found Note</span> 
+	<span class="description">This Memo can only be found on New Game. Inside Lost & Found on a shelf. In order to get in, you must break the wall in Cafe Toluca. On New Game+ this will be replaced with one of the Rebirth Ending items.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"aftermath…"</span> 
+	<span class="description">Inside the bedside table in Room 104.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Sunrise Wing Key</span> 
+	<span class="description">On a desk in the Utility Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Puzzle Books</span> 
+	<span class="description">All four of these books are found sitting around the Reading Room, on the second floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Three Photos</span> 
+	<span class="description">Place the books on the bookshelf to match the painting in the room. Top left to bottom right: Revelations: A New Understanding, The One Who Soared, Stalwart to the End, Pride Before the Fall (Light + Standard Puzzle). This will unlock a hidden entrance to Room 205, where you will find three photos on and around the bed.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Key to Hotel Room 202</span> 
+	<span class="description">On a couch in the Hall, which can be accessed via the Cloakroom.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Ripe Apple</span> 
+	<span class="description">On a small table in the back corner of the Hall.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Mirror Shard</span> 
+	<span class="description">On the bed in Room 202.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Snow White Figurine</span> 
+	<span class="description">Appears on the table in Room 201 after completing the mirror puzzle in Room 202. Use the Mirror Shard to fix the broken mirror with the other shards, rotating them to make it fit. Then place one of the apples on the plate.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #24</span> 
+	<span class="description">In Room 212, examine a suitcase on the floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Cleaning Staff Note #2</span> 
+	<span class="description">No further details provided.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Key to Hotel Room 107</span> 
+	<span class="description">Attached to the fireplace in the Conference Room on the third floor.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Boltcutters</span> 
+	<span class="description">On a shelf in the third floor Utility Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Can Opener</span> 
+	<span class="description">Head down to the second floor via the fire exit and go onto the balcony of Room 217. There will be a book sitting on a cracked glass skylight.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Light Bulb</span> 
+	<span class="description">Outside in the garden, use the boltcutters to cut open the gate. Go inside to find a light bulb on the fish statue.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Cleaning Staff Note #3</span> 
+	<span class="description">Immediately in front of you when entering Room 107.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Fireplace Key</span> 
+	<span class="description">In the gazebo in the garden that can be accessed through Room 107.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Cinderella Figurine</span> 
+	<span class="description">Back up in the Conference Room on the third floor, use the key on the fireplace to get the figurine.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Paint Can</span> 
+	<span class="description">On the coffee table in Room 318. You can access this by breaking open the wall in Room 316 via the Conference Room, then go across the balcony.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Employee Elevator Key</span> 
+	<span class="description">Return to the hidden room in the Reading Room on the second floor and use the red light bulb on the mirror to reveal the words DARK WISH (Light) / DEED DONE (Standard). Input these on the briefcase on the bed to get the key.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="map"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Lakeview Hotel Employee Section map</span> 
+	<span class="description">Enter the Employee Elevator area using the key, then interact with the cabinet and put all your items in it to get rid of the excess weight, then you can use the elevator. After arriving at the Employee Section, the map is on the wall in the break room, which is directly in front of you.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #25</span> 
+	<span class="description">On a shelf in the Pantry.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Blue Gemstone</span> 
+	<span class="description">In an open freezer in the Freezer Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Green Gemstone</span> 
+	<span class="description">On a counter in the Kitchen.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Red Gemstone</span> 
+	<span class="description">In a fancy box in the Manager’s Room. You can get in here by pushing a cabinet in the TV Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Keypad Numbers memo</span> 
+	<span class="description">Use the gemstones on the puzzle box on the manager’s office desk. Rotate them around to match the symbol on the painting in the background. Green = Top Left, Red = Top Right, Blue = Bottom Left (Light + Standard Puzzle).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Video Tape + Basement Key</span> 
+	<span class="description">Inside the safe in the Break Room, code is 7414.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Pump Valve</span> 
+	<span class="description">Use the key from the safe on the staircase north from the Break Room. Head down to the Basement and enter the Maintenance Room through a crack in the wall. The valve is on a desk.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Venus Tears Bar Key</span> 
+	<span class="description">Inside the Boiler Room, taped to a red pipe. Use the valve to get into the room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">When you use the Pump Valve in the Venus Tears Kitchen, you will lose access to the rest of the Employee Section. Make sure you have everything from here before you continue.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Better leave…"</span> 
+	<span class="description">Go through the Venus Tears Kitchen and turn right to spot this photo on a drink shelf behind the bar.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">The Little Mermaid Figurine</span> 
+	<span class="description">In front of the jukebox in the bar.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">3F Corridor Key</span> 
+	<span class="description">Return to the Employee Elevator on the 2nd Floor to grab your gear. Then go to the 1st floor Lobby and unlock the music box with the Ornamental Key, then place the figurines in the music box. For the second part of the puzzle with the keys, turn the first key 7 times, second key 2 times and third key 1 time (Light Puzzle) / 7-5-1 (Standard Puzzle).</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">POINT OF NO RETURN</span> 
+	<span class="description">When you put the video tape in the VCR you will be locked out of the previous areas, so collect everything first. Save your game in the hotel lobby.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ending"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">DOG ENDING</span> 
+	<span class="description">Combine the two Broken Key Parts to create the Dog Key. Go up to the third floor and use the Dog Key to open the Observation Room. This triggers the Dog Ending. After the credits, reload your save.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ending"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">UFO ENDING</span> 
+	<span class="description">Go up to the third floor, enter Room 312, and use the Blue Gem a fourth time. This triggers the UFO Ending. After the credits, reload your save.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ending"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">BLISS ENDING</span> 
+	<span class="description">Go to Room 312 and drink the White Claudia before you use the videotape. This triggers the Bliss Ending. After the credits, reload your save.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ending"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">REBIRTH ENDING</span> 
+	<span class="description">Before you go upstairs, break into the Lost & Found Room in the hotel and retrieve the book of Lost Memories. Go use the videotape on the player in Room 312 to trigger the typical endgame sequence. Progress through the game as usual and defeat the final bosses. With all 4 required key items in your inventory, you'll automatically get the Rebirth Ending.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"Still can’t get it right"</span> 
+	<span class="description">In the bathroom of Room 302. You will need to move a trolley out of the way to get in.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="glimpse"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Glimpse of the Past #26</span> 
+	<span class="description">Push the trolley to the hallway in front of Room 304, then the floor breaks and you can jump down to the 2nd floor. You find this on the couch in the Reading Room.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="memo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Burned Note</span> 
+	<span class="description">Take the elevator from 2nd floor to basement. Go through the flooded basement and up the stairs to the Employee Section. Collect this from the desk in the Manager’s Office.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="key-item"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">Eggs</span> 
+	<span class="description">Held by the Pyramid Heads after the fight. You place these in the doors to continue, and the door you choose to go through will give points towards either the Maria Ending (Scarlet Egg) or the In Water Ending (Rust-Colored Egg), so choose accordingly if you want a particular ending.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="photo"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">"SHAPE FORCES THE MIND"</span> 
+	<span class="description">After the long hallway you’ll be on a catwalk with stairs leading up. Ignore the stairs and go around to the right to find this photo just before stairs that lead into the water.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+<label class="event-ending"> 
+	<input type="radio" name="sh2" />
+	<span class="heading">SILLNESS ENDING</span> 
+	<span class="description">After the credits, reload your save one last time and run through the game as usual up until the Otherworld Hotel. In the Otherworld Hotel's Manager's Office, use the Key of Sorrow on the safe and enter the combination 314 to obtain the Toluca Postcard. Inspect the postcard once or twice. Defeat the Pyramid Heads and Her to see the Stillness ending.</span> 
+	<span class="next">Next</span>
+	<span class="prev">Prev</span>
+</label>
+
+</form>
+</body>
+</html>
